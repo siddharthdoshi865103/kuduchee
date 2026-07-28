@@ -6,15 +6,17 @@ Kuduchee 2.0 — "Dedicated to Aesthetic & Sustainability, Home and Living"
 import os
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY — rotate before production
-SECRET_KEY = 'django-insecure-kuduchee-2-dev-key-change-before-deploy'
+# ─── Security ─────────────────────────────────────────────────────────────────
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-kuduchee-2-dev-key-change-before-deploy')
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS', '*')
+ALLOWED_HOSTS = [h.strip() for h in ALLOWED_HOSTS_ENV.split(',')]
 
 # ─── Application Definition ──────────────────────────────────────────────────
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Serve static files in production
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,13 +70,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kuduchee_backend.wsgi.application'
 
 # ─── Database ─────────────────────────────────────────────────────────────────
+# Uses DATABASE_URL env var in production (Render PostgreSQL), falls back to SQLite locally
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # ─── Auth & Password Validation ──────────────────────────────────────────────
 
@@ -95,13 +105,23 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
 
-CORS_ALLOW_ALL_ORIGINS = True  # Restrict in production
+CORS_ALLOWED_ORIGINS_ENV = os.environ.get('CORS_ALLOWED_ORIGINS', '')
+if CORS_ALLOWED_ORIGINS_ENV:
+    CORS_ALLOWED_ORIGINS = [o.strip() for o in CORS_ALLOWED_ORIGINS_ENV.split(',')]
+    CORS_ALLOW_ALL_ORIGINS = False
+else:
+    CORS_ALLOW_ALL_ORIGINS = True  # Dev fallback
+
+CSRF_TRUSTED_ORIGINS_ENV = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
+if CSRF_TRUSTED_ORIGINS_ENV:
+    CSRF_TRUSTED_ORIGINS = [o.strip() for o in CSRF_TRUSTED_ORIGINS_ENV.split(',')]
 
 # ─── Django REST Framework ────────────────────────────────────────────────────
 
@@ -135,17 +155,15 @@ SIMPLE_JWT = {
 }
 
 # ─── Email (Gmail SMTP) ──────────────────────────────────────────────────────
-# Set GMAIL_APP_PASSWORD environment variable before running:
-#   $env:GMAIL_APP_PASSWORD="your-16-char-app-password"  (PowerShell)
-#
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'doshisiddharth530@gmail.com'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'doshisiddharth530@gmail.com')
 EMAIL_HOST_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD', '')
-DEFAULT_FROM_EMAIL = 'Kuduchee Studio <doshisiddharth530@gmail.com>'
-ADMIN_OTP_EMAIL = 'doshisiddharth530@gmail.com'
+DEFAULT_FROM_EMAIL = f'Kuduchee Studio <{EMAIL_HOST_USER}>'
+ADMIN_OTP_EMAIL = os.environ.get('ADMIN_OTP_EMAIL', 'doshisiddharth530@gmail.com')
 
 # ─── Misc ─────────────────────────────────────────────────────────────────────
 

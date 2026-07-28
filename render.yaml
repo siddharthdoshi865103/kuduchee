@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: kuduchee-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate
+    startCommand: gunicorn kuduchee_backend.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: "kuduchee-backend.onrender.com,api.kuduchee.in"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://kuduchee.in,https://www.kuduchee.in"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://kuduchee-backend.onrender.com,https://api.kuduchee.in"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: kuduchee-db
+          property: connectionString
+
+databases:
+  - name: kuduchee-db
+    databaseName: kuduchee
+    user: kuduchee_user
+    plan: free
