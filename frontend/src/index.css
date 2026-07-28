@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-charcoal: #1A1814;
+    --color-warm-white: #FAF8F5;
+    --color-porcelain: #F4EFEA;
+    --color-brass: #C2B267;
+    --color-brass-hover: #B3A358;
+    --color-sage: #7A8B6F;
+    --color-mid-gray: #767067;
+    --color-warm-gray: #E3D9CC;
+    --color-error: #B91C1C;
+    --color-success: #15803D;
+  }
+
+  body {
+    background-color: var(--color-warm-white);
+    color: var(--color-charcoal);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .font-brand {
+    font-family: 'DM Serif Display', serif;
+  }
+}
+
+/* Urban Classic Design Tokens & Animations */
+.bg-charcoal { background-color: #1A1814; }
+.bg-warm-white { background-color: #FAF8F5; }
+.bg-porcelain { background-color: #F4EFEA; }
+.bg-brass { background-color: #C2B267; }
+.bg-brass-hover { background-color: #B3A358; }
+.bg-sage { background-color: #7A8B6F; }
+
+.text-charcoal { color: #1A1814; }
+.text-warm-white { color: #FAF8F5; }
+.text-brass { color: #C2B267; }
+.text-mid-gray { color: #767067; }
+.text-warm-gray { color: #E3D9CC; }
+.text-sage { color: #7A8B6F; }
+.text-error { color: #B91C1C; }
+.text-success { color: #15803D; }
+
+.border-brass { border-color: #C2B267; }
+.border-warm-gray { border-color: #E3D9CC; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(196, 168, 130, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(196, 168, 130, 0.5); }
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-fadeUp { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulseGlow { animation: pulseGlow 3s infinite; }
+.animate-progressFill { animation: progressFill 6.5s linear forwards; }
+.animate-slideInRight { animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-scaleIn { animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Smooth GPU-Accelerated Transitions */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, .transition-transform {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Smooth page transitions */
+.transition-all { transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Rich Glassmorphism & Card Utilities */
+.glass-card {
+  background: rgba(250, 248, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(227, 217, 204, 0.6);
+}
+
+.glass-dark {
+  background: rgba(26, 24, 20, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(194, 178, 103, 0.3);
+}
+
+.shadow-brass-glow {
+  box-shadow: 0 10px 40px -10px rgba(194, 178, 103, 0.35);
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #C2B267 0%, #B3A358 100%);
+}
+
+/* Button & Form System */
+.btn-primary {
+  background-color: #C2B267;
+  color: #1A1814;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  background-color: #B3A358;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(194, 178, 103, 0.4);
+}
+
+.btn-soft {
+  background-color: #1A1814;
+  color: #FAF8F5;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-soft:hover {
+  background-color: #C2B267;
+  color: #1A1814;
+  transform: translateY(-2px);
+}
+
+.input-field {
+  width: 100%;
+  background-color: rgba(244, 239, 234, 0.6);
+  border: 1px solid rgba(227, 217, 204, 0.8);
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  color: #1A1814;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #C2B267;
+  box-shadow: 0 0 0 3px rgba(194, 178, 103, 0.15);
+  background-color: #FAF8F5;
+}
+
+.text-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #C2B267;
+}
+
+/* ─── Scrollbar Hide Utility ─── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Mobile Bottom Nav Safe Area ─── */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Input Label Utility ─── */
+.input-label {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #C2B267;
+  margin-bottom: 0.375rem;
+}
+
+/* ─── Input Error State ─── */
+.input-field-error {
+  border-color: #B91C1C !important;
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.1) !important;
+}
+
+/* ─── Mobile Bottom Nav Tap Highlight ─── */
+@media (max-width: 767px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ─── Snap Scroll for Mobile Carousels ─── */
+.snap-x { scroll-snap-type: x mandatory; }
+.snap-start { scroll-snap-align: start; }
+.snap-center { scroll-snap-align: center; }
+

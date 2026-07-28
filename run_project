@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "========================================================"
+echo "  Launching KUDUCHEE 2.0 (Django Backend + Vite Frontend)"
+echo "========================================================"
+echo ""
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+(cd "$DIR/backend" && python manage.py runserver 8000) &
+(cd "$DIR/frontend" && npm run dev) &
+
+echo "Both servers launched in background!"
+echo "Backend API : http://127.0.0.1:8000/api/"
+echo "Frontend App: http://localhost:5173/"
+echo ""
