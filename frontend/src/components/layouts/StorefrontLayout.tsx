@@ -28,12 +28,18 @@ export const StorefrontLayout: React.FC = () => {
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [tickerText, setTickerText] = useState(
-    'Handcrafted Studio Stoneware · Fired at 1280°C for Lifetime Durability · 100% Lead-Free & Food-Safe Porcelain'
+    '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Stoneware · Lead-Free & Food Safe'
   );
 
   useEffect(() => {
     siteService.getSiteSettings().then((res) => {
-      if (res?.ticker_text) setTickerText(res.ticker_text);
+      if (res?.ticker_text) {
+        let text = res.ticker_text;
+        if (text.includes('Free shipping on orders above ₹999')) {
+          text = text.replace(/Free shipping on orders above ₹999\s*·?\s*/gi, '100% Damage Replacement Guarantee · ');
+        }
+        setTickerText(text);
+      }
     }).catch(() => {});
   }, []);
 
