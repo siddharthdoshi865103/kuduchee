@@ -22,7 +22,7 @@ export const AdminSettings: React.FC = () => {
   // Hero Banners & Site Settings State
   const [heroBanners, setHeroBanners] = useState<HeroBannerData[]>([]);
   const [siteSettings, setSiteSettings] = useState<SiteSettingsData>({
-    ticker_text: 'Free shipping on orders above ₹999 · Designing Experiences Around Every Meal · Lead-free & 100% vegetarian porcelain',
+    ticker_text: 'Handcrafted Studio Stoneware · Fired at 1280°C for Lifetime Durability · 100% Lead-Free & Food-Safe Porcelain',
     brand_quote: 'Serve What You Deserve.',
     brand_author: 'Kuduchee',
     contact_email: 'anil.panda@kuduchee.com',

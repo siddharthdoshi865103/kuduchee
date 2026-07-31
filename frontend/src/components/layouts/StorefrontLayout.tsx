@@ -28,7 +28,7 @@ export const StorefrontLayout: React.FC = () => {
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [tickerText, setTickerText] = useState(
-    'Free shipping on orders above ₹999 · Handcrafted in small batches · Lead-free & 100% vegetarian porcelain'
+    'Handcrafted Studio Stoneware · Fired at 1280°C for Lifetime Durability · 100% Lead-Free & Food-Safe Porcelain'
   );
 
   useEffect(() => {

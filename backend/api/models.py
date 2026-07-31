@@ -289,7 +289,7 @@ class HeroBanner(models.Model):
 
 class SiteSettings(models.Model):
     """Global storefront text & contact info managed by Admin."""
-    ticker_text = models.TextField(default="Free shipping on orders above ₹999 · Designing Experiences Around Every Meal · Lead-free & 100% vegetarian porcelain")
+    ticker_text = models.TextField(default="Handcrafted Studio Stoneware · Fired at 1280°C for Lifetime Durability · 100% Lead-Free & Food-Safe Porcelain")
     brand_quote = models.TextField(default="Serve What You Deserve.")
     brand_author = models.CharField(max_length=100, default="Kuduchee")
     contact_email = models.CharField(max_length=100, default="anil.panda@kuduchee.com")
