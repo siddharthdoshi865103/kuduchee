@@ -1,8 +1,14 @@
-# Robots.txt for Kuduchee / Kudu Chee (kuduchee.in)
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /checkout
-Disallow: /cart
 
+# Priority crawl paths
+Allow: /shop
+Allow: /about
+Allow: /contact
+
+# Disallow admin and API
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
 Sitemap: https://kuduchee.in/sitemap.xml
