@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, Outlet, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
+const DJANGO_ADMIN_URL = 'https://siddharth200306.pythonanywhere.com/admin/';
+
 export const AdminLayout: React.FC = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Auth guard — redirect to login if not authenticated or not staff
+  if (!loading && (!user || !user.is_staff)) {
+    return <Navigate to="/admin/login" replace />;
+  }
+
+  // Show nothing while checking auth
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-[#F9F6F0]">
+        <div className="w-8 h-8 border-2 border-brass border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   const navItems = [
     { label: 'Dashboard',            path: '/admin/dashboard',     faIcon: 'fa-solid fa-chart-line' },
@@ -67,7 +83,7 @@ export const AdminLayout: React.FC = () => {
         {/* Divider */}
         <div className="pt-3 border-t border-warm-gray/30 mt-3 space-y-0.5">
           <a
-            href="http://localhost:8000/admin/"
+            href={DJANGO_ADMIN_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-brass hover:bg-brass/10 transition-all"
@@ -168,7 +184,7 @@ export const AdminLayout: React.FC = () => {
 
           <div className="flex items-center gap-2 md:gap-3">
             <a
-              href="http://localhost:8000/admin/"
+              href={DJANGO_ADMIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-brass/10 border border-brass/30 text-charcoal rounded-xl text-[11px] font-bold hover:bg-brass transition-all"

@@ -14,6 +14,13 @@ export const AdminLogin: React.FC = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
+  // Clear any stale/expired tokens when the login page loads
+  // This prevents 401 cascade from old tokens auto-refreshing
+  React.useEffect(() => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+  }, []);
+
   const { register, handleSubmit, formState: { errors, isSubmitting } } =
     useForm<LoginFormData>({ resolver: zodResolver(loginSchema), defaultValues: { username: '', password: '' } });
 
