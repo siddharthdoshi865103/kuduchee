@@ -17,6 +17,10 @@ import {
   Home as HomeIcon,
   LayoutGrid,
   User,
+  Menu,
+  X,
+  Info,
+  PhoneCall,
 } from 'lucide-react';
 
 export const StorefrontLayout: React.FC = () => {
@@ -27,6 +31,7 @@ export const StorefrontLayout: React.FC = () => {
   const location = useLocation();
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [tickerText, setTickerText] = useState(
     '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Stoneware · Lead-Free & Food Safe'
   );
@@ -113,10 +118,20 @@ export const StorefrontLayout: React.FC = () => {
       <header className="sticky top-0 z-40 bg-white/75 backdrop-blur-md border-b border-warm-gray/30 shadow-sm transition-all duration-300">
         <div className="max-w-screen-xl mx-auto px-4 md:px-12 h-14 md:h-20 flex items-center justify-between gap-4">
 
+          {/* Mobile Hamburger Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-charcoal hover:text-brass transition-colors rounded-xl hover:bg-charcoal/5"
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+
           {/* Left-Aligned Brand Logo */}
           <Link
             to="/"
             className="group shrink-0 mr-4"
+            onClick={() => setMobileMenuOpen(false)}
           >
             <img
               src="/kuduchee-logo-dark.png"
@@ -267,6 +282,143 @@ export const StorefrontLayout: React.FC = () => {
           </div>
         </div>
       </header>
+
+      {/* ─── MOBILE SLIDE-OUT NAVIGATION DRAWER ─── */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 flex">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-charcoal/60 backdrop-blur-sm animate-fadeIn"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Drawer Content */}
+          <div className="relative w-4/5 max-w-xs bg-warm-white h-full shadow-2xl z-10 flex flex-col justify-between p-6 overflow-y-auto animate-slideInLeft">
+            <div>
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between border-b border-warm-gray/40 pb-4 mb-6">
+                <img src="/kuduchee-logo-dark.png" alt="Kuduchee" className="h-9 w-auto object-contain" />
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-1.5 rounded-full hover:bg-charcoal/5 text-charcoal/70 hover:text-charcoal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Mobile Nav Links */}
+              <nav className="space-y-1">
+                <Link
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-charcoal/5 text-xs font-bold uppercase tracking-wider text-charcoal"
+                >
+                  <HomeIcon className="w-4 h-4 text-brass" />
+                  <span>Home</span>
+                </Link>
+
+                <Link
+                  to="/shop"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-charcoal/5 text-xs font-bold uppercase tracking-wider text-charcoal"
+                >
+                  <LayoutGrid className="w-4 h-4 text-brass" />
+                  <span>Shop All</span>
+                </Link>
+
+                <Link
+                  to="/shop?section=best-sellers"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-charcoal/5 text-xs font-bold uppercase tracking-wider text-amber-700"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  <span>Best Sellers</span>
+                </Link>
+
+                <Link
+                  to="/shop?section=new-arrivals"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-charcoal/5 text-xs font-bold uppercase tracking-wider text-emerald-700"
+                >
+                  <Sparkles className="w-4 h-4 text-emerald-600" />
+                  <span>New Arrivals</span>
+                </Link>
+
+                <Link
+                  to="/shop?section=exclusive"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-charcoal/5 text-xs font-bold uppercase tracking-wider text-[#C2B267]"
+                >
+                  <Sparkles className="w-4 h-4 text-[#C2B267]" />
+                  <span>Exclusive</span>
+                </Link>
+
+                <div className="my-3 border-t border-warm-gray/30" />
+
+                {/* About Us Navigation Link */}
+                <Link
+                  to="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-brass/10 text-xs font-bold uppercase tracking-wider text-charcoal group"
+                >
+                  <Info className="w-4 h-4 text-brass group-hover:scale-110 transition-transform" />
+                  <span>About Us</span>
+                </Link>
+
+                {/* Contact Us Navigation Link */}
+                <Link
+                  to="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-brass/10 text-xs font-bold uppercase tracking-wider text-charcoal group"
+                >
+                  <PhoneCall className="w-4 h-4 text-brass group-hover:scale-110 transition-transform" />
+                  <span>Contact Us</span>
+                </Link>
+
+                {isAuthenticated && (
+                  <Link
+                    to="/orders"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-charcoal/5 text-xs font-bold uppercase tracking-wider text-charcoal"
+                  >
+                    <ShoppingBag className="w-4 h-4 text-brass" />
+                    <span>My Orders</span>
+                  </Link>
+                )}
+              </nav>
+            </div>
+
+            {/* Drawer Footer */}
+            <div className="pt-6 border-t border-warm-gray/40 space-y-3">
+              <a
+                href="https://wa.me/919971118219"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 bg-[#25D366] text-white text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 shadow-sm"
+              >
+                <i className="fa-brands fa-whatsapp text-base" />
+                <span>WhatsApp Studio</span>
+              </a>
+              {isAuthenticated ? (
+                <button
+                  onClick={() => { setMobileMenuOpen(false); logout(); navigate('/'); }}
+                  className="w-full py-2 text-center text-xs font-bold uppercase tracking-wider text-error hover:bg-error/10 rounded-xl transition-colors"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full py-2.5 px-4 bg-charcoal text-warm-white text-xs font-bold uppercase tracking-wider rounded-xl block text-center shadow-sm"
+                >
+                  Sign In / Register
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ─── MAIN PAGE OUTLET ─── */}
       <main className="flex-1 pb-[100px] md:pb-0">
