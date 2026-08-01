@@ -16,9 +16,6 @@ import {
   MapPin,
   Home as HomeIcon,
   LayoutGrid,
-  User,
-  Menu,
-  X,
   Info,
   PhoneCall,
 } from 'lucide-react';
@@ -31,7 +28,6 @@ export const StorefrontLayout: React.FC = () => {
   const location = useLocation();
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [tickerText, setTickerText] = useState(
     '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Stoneware · Lead-Free & Food Safe'
   );
