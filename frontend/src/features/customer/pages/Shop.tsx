@@ -184,7 +184,7 @@ export const Shop: React.FC = () => {
             ordering: section === 'new-arrivals' ? '-created_at' : (ordering || undefined),
             badge: section === 'best-sellers' ? 'Best Seller' :
                    section === 'new-arrivals' ? 'New Arrival' :
-                   section === 'exclusive' ? 'Limited Run' : undefined,
+                   section === 'exclusive' ? 'Exclusive' : undefined,
           }),
         ]);
         setCategories(cats);

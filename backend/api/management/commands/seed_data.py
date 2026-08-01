@@ -75,7 +75,53 @@ class Command(BaseCommand):
                 'is_featured': True,
                 'badge': 'Best Seller',
                 'primary_image_url': 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop'
-            }
+            },
+            # Exclusive Collection
+            {
+                'category': cat_dinner,
+                'name': 'Midnight Gold Signature Dinner Set (12 Piece)',
+                'description': 'Limited-edition 12-piece obsidian black dinner set with hand-painted 24K gold rim accents. Certificate of authenticity included. Collector\'s batch #06.',
+                'mrp': 14999.00,
+                'offer_price': 11999.00,
+                'stock_quantity': 8,
+                'is_featured': True,
+                'badge': 'Exclusive',
+                'primary_image_url': 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop'
+            },
+            {
+                'category': cat_bowls,
+                'name': 'Wabi-Sabi Heritage Serving Platter',
+                'description': 'One-of-a-kind irregular-edge stoneware platter with natural ash glaze from wood-fired kiln. Each piece is uniquely shaped by nature.',
+                'mrp': 5999.00,
+                'offer_price': 4499.00,
+                'stock_quantity': 12,
+                'is_featured': True,
+                'badge': 'Exclusive',
+                'primary_image_url': 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=800&auto=format&fit=crop'
+            },
+            {
+                'category': cat_mugs,
+                'name': 'Artisan Celadon Tea Cup & Saucer Set',
+                'description': 'Studio-exclusive celadon jade green tea cups with matching saucers. Inspired by ancient Chinese Song dynasty pottery. Limited batch of 50.',
+                'mrp': 3499.00,
+                'offer_price': 2799.00,
+                'stock_quantity': 15,
+                'is_featured': True,
+                'badge': 'Exclusive',
+                'primary_image_url': 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop'
+            },
+            # New Arrivals
+            {
+                'category': cat_bowls,
+                'name': 'Sakura Petal Ramen Bowl Set (Set of 2)',
+                'description': 'Deep-walled ramen bowls with delicate cherry blossom relief pattern. Perfect for noodles, pho, and udon. 1280°C fired stoneware.',
+                'mrp': 2999.00,
+                'offer_price': 2299.00,
+                'stock_quantity': 35,
+                'is_featured': True,
+                'badge': 'New Arrival',
+                'primary_image_url': 'https://images.unsplash.com/photo-1590794056226-79ef1f5044d6?q=80&w=800&auto=format&fit=crop'
+            },
         ]
 
         for p_data in products_data:

@@ -266,8 +266,104 @@ export const Home: React.FC = () => {
     <div className="animate-fadeIn space-y-16 md:space-y-24 font-sans bg-[#FDFCFA] text-charcoal">
       <SEO
         title="Kuduchee (Kudu Chee) — Handcrafted Stoneware & Ceramic Tableware | Anil Panda"
-        description="Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited — Premium 1280°C high-fired stoneware dinnerware, ceramic dinner sets, serving bowls & artisan mugs."
+        description="Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited — Premium 1280°C high-fired stoneware dinnerware, ceramic dinner sets, serving bowls & artisan mugs. Shop at kuduchee.in"
         canonicalUrl="https://kuduchee.in/"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            'name': 'Kuduchee',
+            'alternateName': ['Kudu Chee', 'Kuduchee Studio', 'Kaviz Creations Private Limited'],
+            'url': 'https://kuduchee.in/',
+            'logo': 'https://kuduchee.in/kuduchee-logo-dark.png',
+            'founder': { '@type': 'Person', 'name': 'Anil Panda' },
+            'contactPoint': {
+              '@type': 'ContactPoint',
+              'telephone': '+91-9971118219',
+              'contactType': 'customer service',
+              'email': 'anil.panda@kuduchee.com',
+              'areaServed': 'IN',
+              'availableLanguage': ['English', 'Hindi']
+            },
+            'address': {
+              '@type': 'PostalAddress',
+              'streetAddress': '510 A, Sun West Bank, Ashram Road',
+              'addressLocality': 'Ahmedabad',
+              'addressRegion': 'Gujarat',
+              'postalCode': '380009',
+              'addressCountry': 'IN'
+            }
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            'name': 'Kuduchee',
+            'alternateName': 'Kudu Chee',
+            'url': 'https://kuduchee.in/',
+            'potentialAction': {
+              '@type': 'SearchAction',
+              'target': 'https://kuduchee.in/shop?search={search_term_string}',
+              'query-input': 'required name=search_term_string'
+            }
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            'name': 'Kuduchee Studio',
+            'alternateName': 'Kudu Chee',
+            'image': 'https://kuduchee.in/kuduchee-logo.jpg',
+            'url': 'https://kuduchee.in/',
+            'telephone': '+91-9971118219',
+            'email': 'anil.panda@kuduchee.com',
+            'priceRange': '₹999 - ₹14999',
+            'address': {
+              '@type': 'PostalAddress',
+              'streetAddress': '510 A, Sun West Bank, Ashram Road',
+              'addressLocality': 'Ahmedabad',
+              'addressRegion': 'Gujarat',
+              'postalCode': '380009',
+              'addressCountry': 'IN'
+            }
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            'mainEntity': [
+              {
+                '@type': 'Question',
+                'name': 'What is Kuduchee (Kudu Chee)?',
+                'acceptedAnswer': {
+                  '@type': 'Answer',
+                  'text': 'Kuduchee (Kudu Chee) is a premium Indian stoneware and ceramic tableware brand founded by Anil Panda under Kaviz Creations Private Limited. We create handcrafted 1280°C high-fired stoneware dinnerware, serving bowls, coffee mugs, and luxury home décor.'
+                }
+              },
+              {
+                '@type': 'Question',
+                'name': 'Who is the founder of Kuduchee?',
+                'acceptedAnswer': {
+                  '@type': 'Answer',
+                  'text': 'Kuduchee (Kudu Chee) was founded by Anil Panda. The brand operates under Kaviz Creations Private Limited, headquartered at 510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009, India.'
+                }
+              },
+              {
+                '@type': 'Question',
+                'name': 'Is Kuduchee stoneware safe for daily use?',
+                'acceptedAnswer': {
+                  '@type': 'Answer',
+                  'text': 'Yes! All Kuduchee stoneware is fired at 1280°C in high-temperature kilns, making it dishwasher-safe, microwave-safe, scratch-resistant, and 100% lead-free. Our glazes are non-toxic and food-safe.'
+                }
+              },
+              {
+                '@type': 'Question',
+                'name': 'Where can I buy Kuduchee products?',
+                'acceptedAnswer': {
+                  '@type': 'Answer',
+                  'text': 'You can shop the complete Kuduchee collection at kuduchee.in. We offer free shipping across India, 100% damage replacement guarantee, and secure online payment options.'
+                }
+              }
+            ]
+          }
+        ]}
       />
       
       {/* ─── EDITORIAL CINEMATIC HERO SLIDER ─── */}
@@ -1039,6 +1135,54 @@ export const Home: React.FC = () => {
             </form>
           </div>
         </div>
+      {/* ─── SEO-RICH CONTENT FOR GOOGLE INDEXING ─── */}
+      <section className="bg-porcelain/30 border-t border-warm-gray/30 py-16 px-6 md:px-12" aria-label="About Kuduchee Studio">
+        <div className="max-w-screen-xl mx-auto space-y-8">
+          <h2 className="font-brand text-2xl md:text-3xl text-charcoal">Kuduchee (Kudu Chee) — India's Artisan Stoneware Studio by Anil Panda</h2>
+          <div className="grid md:grid-cols-2 gap-8 text-xs md:text-sm text-mid-gray font-light leading-relaxed">
+            <div className="space-y-4">
+              <p>
+                <strong>Kuduchee</strong> (also known as <strong>Kudu Chee</strong>) is a premium Indian lifestyle and homeware brand founded by <strong>Anil Panda</strong> under <strong>Kaviz Creations Private Limited</strong>. Every piece in our collection is handcrafted from natural clay and fired at <strong>1280°C</strong> in high-temperature kilns, making our stoneware exceptionally durable, scratch-resistant, and 100% food-safe.
+              </p>
+              <p>
+                At <strong>kuduchee.in</strong>, we offer a curated range of <strong>stoneware dinner sets</strong>, <strong>ceramic quarter plates</strong>, <strong>artisan serving bowls</strong>, <strong>handcrafted coffee mugs</strong>, and <strong>luxury tableware</strong> designed for the modern Indian home. Our designs blend contemporary minimalism with traditional Indian craftsmanship.
+              </p>
+              <p>
+                We believe that every meal deserves a beautiful setting. Our tagline — <em>"Serve What You Deserve"</em> — reflects our commitment to transforming everyday dining into a memorable experience through thoughtfully designed ceramics.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <p>
+                The name <strong>Kuduchee</strong> is inspired by the grace of the deer and the curiosity of the squirrel — two creatures that embody the brand's philosophy of elegance and attention to detail. Based in <strong>Ahmedabad, Gujarat</strong>, our studio serves customers across India with free shipping, damage replacement guarantee, and certificate of authenticity on exclusive pieces.
+              </p>
+              <p>
+                Whether you're looking for the perfect <strong>ceramic dinner set</strong> for your home, a unique <strong>stoneware gift set</strong> for a loved one, or collector-grade <strong>exclusive pottery</strong>, Kuduchee offers handcrafted pieces that stand the test of time. All our glazes are <strong>lead-free</strong> and <strong>non-toxic</strong>, ensuring safe and healthy dining.
+              </p>
+              <p>
+                Explore our collections: <strong>Best Sellers</strong>, <strong>New Arrivals</strong>, and the <strong>Exclusive Store</strong> — limited-edition masterpieces for the discerning collector. Visit <strong>kuduchee.in</strong> or contact us at <strong>anil.panda@kuduchee.com</strong> | <strong>+91 9971118219</strong>.
+              </p>
+            </div>
+          </div>
+
+          {/* FAQ Schema Content */}
+          <details className="border border-warm-gray/40 rounded-2xl p-4 cursor-pointer">
+            <summary className="font-semibold text-charcoal text-sm">What is Kuduchee (Kudu Chee)?</summary>
+            <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">Kuduchee (Kudu Chee) is a premium Indian stoneware and ceramic tableware brand founded by Anil Panda under Kaviz Creations Private Limited. We create handcrafted 1280°C high-fired stoneware dinnerware, serving bowls, coffee mugs, and luxury home décor.</p>
+          </details>
+          <details className="border border-warm-gray/40 rounded-2xl p-4 cursor-pointer">
+            <summary className="font-semibold text-charcoal text-sm">Who is the founder of Kuduchee?</summary>
+            <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">Kuduchee (Kudu Chee) was founded by Anil Panda. The brand operates under Kaviz Creations Private Limited, headquartered at 510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009, India.</p>
+          </details>
+          <details className="border border-warm-gray/40 rounded-2xl p-4 cursor-pointer">
+            <summary className="font-semibold text-charcoal text-sm">Is Kuduchee stoneware safe for daily use?</summary>
+            <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">Yes! All Kuduchee stoneware is fired at 1280°C in high-temperature kilns, making it dishwasher-safe, microwave-safe, scratch-resistant, and 100% lead-free. Our glazes are non-toxic and food-safe, certified for everyday dining.</p>
+          </details>
+          <details className="border border-warm-gray/40 rounded-2xl p-4 cursor-pointer">
+            <summary className="font-semibold text-charcoal text-sm">Where can I buy Kuduchee products?</summary>
+            <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">You can shop the complete Kuduchee collection at kuduchee.in. We offer free shipping across India, 100% damage replacement guarantee, and secure online payment options including UPI, credit/debit cards, and net banking.</p>
+          </details>
+        </div>
+      </section>
       )}
     </div>
   );
