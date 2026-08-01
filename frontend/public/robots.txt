@@ -1,0 +1,8 @@
+# Robots.txt for Kuduchee / Kudu Chee (kuduchee.in)
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /checkout
+Disallow: /cart
+
+Sitemap: https://kuduchee.in/sitemap.xml

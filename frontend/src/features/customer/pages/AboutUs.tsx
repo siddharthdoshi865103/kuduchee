@@ -113,12 +113,12 @@ export const AboutUs: React.FC = () => {
 
           <div className="lg:col-span-6 space-y-5">
             <span className="text-label block">Name &amp; Origin Story</span>
-            <h2 className="font-brand text-3xl md:text-4xl text-charcoal">The Harmony of Grace &amp; Curiosity</h2>
+            <h2 className="font-brand text-3xl md:text-4xl text-charcoal">The Story of Kuduchee (Kudu Chee) by Anil Panda</h2>
             <p className="text-xs md:text-sm text-mid-gray font-light leading-relaxed">
-              The name <strong>Kuduchee</strong> is inspired by two remarkable creatures found in nature. The deer embodies elegance and calm, while the squirrel represents curiosity and painstaking attention to detail.
+              Founded by <strong>Anil Panda</strong> under <strong>Kaviz Creations Private Limited</strong>, <strong>Kuduchee</strong> (also known as <strong>Kudu Chee</strong>) is inspired by two remarkable creatures found in nature. The graceful deer embodies elegance and calm, while the curious squirrel represents intelligence, playfulness, and meticulous attention to detail.
             </p>
             <p className="text-xs md:text-sm text-mid-gray font-light leading-relaxed">
-              Together, they define Kuduchee — a brand that balances refinement with warmth, sophistication with simplicity, and beauty with functionality.
+              Together, they define <strong>Kuduchee (kuduchee.in)</strong> — an Indian lifestyle &amp; ceramic tableware studio that balances refinement with warmth, sophistication with simplicity, and artisanal beauty with everyday functionality.
             </p>
           </div>
         </div>
