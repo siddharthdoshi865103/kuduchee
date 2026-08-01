@@ -4,6 +4,7 @@ import { catalogService, type ProductData } from '../../../services/catalogServi
 import { siteService, type HeroBannerData, type SiteSettingsData } from '../../../services/siteService';
 import { useCart } from '../../../context/CartContext';
 import { useWishlist } from '../../../context/WishlistContext';
+import { SEO } from '../../../components/SEO';
 import toast from 'react-hot-toast';
 import {
   ArrowRight,
@@ -263,6 +264,11 @@ export const Home: React.FC = () => {
 
   return (
     <div className="animate-fadeIn space-y-16 md:space-y-24 font-sans bg-[#FDFCFA] text-charcoal">
+      <SEO
+        title="Kuduchee (Kudu Chee) — Handcrafted Stoneware & Ceramic Tableware | Anil Panda"
+        description="Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited — Premium 1280°C high-fired stoneware dinnerware, ceramic dinner sets, serving bowls & artisan mugs."
+        canonicalUrl="https://kuduchee.in/"
+      />
       
       {/* ─── EDITORIAL CINEMATIC HERO SLIDER ─── */}
       <section className="relative h-[95vh] md:h-[90vh] bg-[#171513] text-warm-white overflow-hidden flex items-center shadow-2xl">

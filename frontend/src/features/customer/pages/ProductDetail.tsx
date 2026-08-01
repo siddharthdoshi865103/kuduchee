@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { catalogService, type ProductData, type ProductVariantData } from '../../../services/catalogService';
 import { useCart } from '../../../context/CartContext';
 import { useWishlist } from '../../../context/WishlistContext';
+import { SEO } from '../../../components/SEO';
 import { api } from '../../../utils/api';
 import toast from 'react-hot-toast';
 import {
@@ -140,8 +141,66 @@ export const ProductDetail: React.FC = () => {
     }
   };
 
+  const productImages = [
+    product.primary_image_url,
+    ...(product.images?.map((i) => i.image_url) || [])
+  ].filter(Boolean);
+
   return (
     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-8 md:py-12 animate-fadeIn font-sans">
+      <SEO
+        title={`${product.name} — Kuduchee (Kudu Chee) Stoneware`}
+        description={`${product.name} handcrafted stoneware by Kuduchee (Kudu Chee) & Anil Panda (Kaviz Creations). 1280°C kiln-fired stoneware, lead-free and food-safe.`}
+        canonicalUrl={`https://kuduchee.in/product/${product.slug}`}
+        ogImage={productImages[0] || 'https://kuduchee.in/kuduchee-logo.jpg'}
+        ogType="product"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            'name': product.name,
+            'image': productImages,
+            'description': product.description || 'Handcrafted 1280°C high-fired stoneware dinnerware by Kuduchee.',
+            'sku': selectedVariant?.sku || `KUD-${product.id}`,
+            'brand': {
+              '@type': 'Brand',
+              'name': 'Kuduchee'
+            },
+            'offers': {
+              '@type': 'Offer',
+              'url': `https://kuduchee.in/product/${product.slug}`,
+              'priceCurrency': 'INR',
+              'price': currentPrice,
+              'availability': product.stock_quantity > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+              'itemCondition': 'https://schema.org/NewCondition'
+            }
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            'itemListElement': [
+              {
+                '@type': 'ListItem',
+                'position': 1,
+                'name': 'Home',
+                'item': 'https://kuduchee.in/'
+              },
+              {
+                '@type': 'ListItem',
+                'position': 2,
+                'name': 'Shop',
+                'item': 'https://kuduchee.in/shop'
+              },
+              {
+                '@type': 'ListItem',
+                'position': 3,
+                'name': product.name,
+                'item': `https://kuduchee.in/product/${product.slug}`
+              }
+            ]
+          }
+        ]}
+      />
       {/* Breadcrumb / Back Button */}
       <Link to="/shop" className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-mid-gray hover:text-brass transition-colors mb-6 md:mb-10">
         <ArrowLeft className="w-4 h-4" />

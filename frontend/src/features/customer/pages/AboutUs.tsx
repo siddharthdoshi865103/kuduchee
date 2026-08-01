@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight, Compass, Feather } from 'lucide-react';
+import { SEO } from '../../../components/SEO';
 
 export const AboutUs: React.FC = () => {
   return (
     <div className="animate-fadeIn font-sans text-charcoal space-y-16 pb-20">
+      <SEO
+        title="About Kuduchee (Kudu Chee) — Brand Story & Anil Panda"
+        description="Learn the origin story of Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited. Crafting 1280°C high-fired stoneware dinnerware inspired by nature."
+        canonicalUrl="https://kuduchee.in/about"
+      />
       
       {/* ─── HERO SECTION ─── */}
       <section className="relative bg-[#171511] text-warm-white py-24 md:py-32 px-6 md:px-12 border-b border-brass/20 shadow-2xl overflow-hidden">

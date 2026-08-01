@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { MapPin, Phone, Mail, Clock, Send, Sparkles } from 'lucide-react';
+import { SEO } from '../../../components/SEO';
 
 export const ContactUs: React.FC = () => {
   const [name, setName] = useState('');
@@ -15,6 +16,7 @@ export const ContactUs: React.FC = () => {
       toast.error('Please fill in all required fields.');
       return;
     }
+
     setSubmitting(true);
     setTimeout(() => {
       toast.success('Thank you! Your message has been sent to Kuduchee Studio.');
@@ -28,6 +30,11 @@ export const ContactUs: React.FC = () => {
 
   return (
     <div className="animate-fadeIn font-sans text-charcoal space-y-12 py-8 md:py-12 px-4 md:px-12 max-w-screen-xl mx-auto">
+      <SEO
+        title="Contact Kuduchee Studio (Kudu Chee) — Customer Support & Inquiry"
+        description="Contact Kuduchee (Kudu Chee) Studio by Anil Panda & Kaviz Creations Private Limited. Studio Phone: +91 9971118219, Email: anil.panda@kuduchee.com, Ashram Road, Ahmedabad."
+        canonicalUrl="https://kuduchee.in/contact"
+      />
       
       {/* ─── PAGE HEADER ─── */}
       <div className="border-b border-warm-gray/40 pb-6">

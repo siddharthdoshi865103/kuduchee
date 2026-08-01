@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { catalogService, type ProductData, type CategoryData } from '../../../services/catalogService';
 import { useCart } from '../../../context/CartContext';
 import { useWishlist } from '../../../context/WishlistContext';
+import { SEO } from '../../../components/SEO';
 import {
   Filter,
   Grid,
@@ -225,6 +226,16 @@ export const Shop: React.FC = () => {
 
   return (
     <div className={`animate-fadeIn font-sans ${isExclusive ? 'bg-[#0A0907]' : ''}`}>
+      <SEO
+        title={
+          isExclusive ? '✦ Exclusive Studio Collection — Kuduchee (Kudu Chee)' :
+          isBestSeller ? 'Best Sellers Crockery & Stoneware — Kuduchee (Kudu Chee)' :
+          isNewArrivals ? 'New Studio Arrivals — Kuduchee (Kudu Chee)' :
+          'Shop Artisan Stoneware & Ceramic Tableware — Kuduchee (Kudu Chee)'
+        }
+        description="Explore Kuduchee (Kudu Chee) studio collection. Handcrafted 1280°C high-fired stoneware dinner sets, quarter plates, serving bowls & ceramic coffee mugs by Anil Panda."
+        canonicalUrl="https://kuduchee.in/shop"
+      />
 
       {/* ═══════════════════════════════════════════
           HERO BANNER — Unique per section
