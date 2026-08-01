@@ -200,20 +200,20 @@ export const StorefrontLayout: React.FC = () => {
               )}
             </Link>
 
-            {/* Profile Dropdown (Desktop Only) */}
-            <div className="hidden md:block relative">
+            {/* Profile Dropdown (Mobile & Desktop) */}
+            <div className="relative">
               {isAuthenticated ? (
                 <button
                   onClick={(e) => { e.stopPropagation(); setProfileDropdownOpen(!profileDropdownOpen); }}
                   className="flex items-center gap-1 p-1 rounded-full hover:bg-charcoal/5 transition-colors text-xs font-semibold text-charcoal"
                 >
-                  <div className="w-8 h-8 rounded-full bg-charcoal text-warm-white border border-brass/45 flex items-center justify-center font-bold text-xs shadow-md">
+                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-charcoal text-warm-white border border-brass/45 flex items-center justify-center font-bold text-xs shadow-md">
                     {user?.username?.[0]?.toUpperCase()}
                   </div>
                   <ChevronDown className={`w-3.5 h-3.5 text-charcoal/60 transition-transform duration-200 ${profileDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
               ) : (
-                <Link to="/login" className="text-[10px] py-2.5 px-4 bg-charcoal text-warm-white font-extrabold uppercase tracking-widest rounded-xl hover:bg-brass hover:text-charcoal transition-all shadow-sm active:scale-95 block">Sign In</Link>
+                <Link to="/login" className="text-[9px] md:text-[10px] py-1.5 md:py-2.5 px-2.5 md:px-4 bg-charcoal text-warm-white font-extrabold uppercase tracking-widest rounded-lg md:rounded-xl hover:bg-brass hover:text-charcoal transition-all shadow-sm active:scale-95 block">Sign In</Link>
               )}
 
               {profileDropdownOpen && isAuthenticated && (

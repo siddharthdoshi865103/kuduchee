@@ -115,16 +115,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
 
-CORS_ALLOWED_ORIGINS_ENV = os.environ.get('CORS_ALLOWED_ORIGINS', '')
-if CORS_ALLOWED_ORIGINS_ENV:
-    CORS_ALLOWED_ORIGINS = [o.strip() for o in CORS_ALLOWED_ORIGINS_ENV.split(',')]
-    CORS_ALLOW_ALL_ORIGINS = False
-else:
-    CORS_ALLOW_ALL_ORIGINS = True  # Dev fallback
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS_ENV = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
-if CSRF_TRUSTED_ORIGINS_ENV:
-    CSRF_TRUSTED_ORIGINS = [o.strip() for o in CSRF_TRUSTED_ORIGINS_ENV.split(',')]
+CSRF_TRUSTED_ORIGINS_ENV = os.environ.get('CSRF_TRUSTED_ORIGINS', 'https://kuduchee.in,https://www.kuduchee.in,https://kuduchee-kappa.vercel.app,https://Siddharth200306.pythonanywhere.com')
+CSRF_TRUSTED_ORIGINS = [o.strip() for o in CSRF_TRUSTED_ORIGINS_ENV.split(',')]
 
 # ─── Django REST Framework ────────────────────────────────────────────────────
 
