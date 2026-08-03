@@ -5,7 +5,8 @@ dist/
 # Environment
 .env
 .env.local
-.env.*.local
+# .env.production is intentionally committed for Vercel build
+
 
 # Logs
 *.log
