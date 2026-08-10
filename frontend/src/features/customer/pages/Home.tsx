@@ -1135,6 +1135,8 @@ export const Home: React.FC = () => {
             </form>
           </div>
         </div>
+      )}
+
       {/* ─── SEO-RICH CONTENT FOR GOOGLE INDEXING ─── */}
       <section className="bg-porcelain/30 border-t border-warm-gray/30 py-16 px-6 md:px-12" aria-label="About Kuduchee Studio">
         <div className="max-w-screen-xl mx-auto space-y-8">
@@ -1183,7 +1185,6 @@ export const Home: React.FC = () => {
           </details>
         </div>
       </section>
-      )}
     </div>
   );
 };
