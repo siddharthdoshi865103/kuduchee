@@ -85,6 +85,63 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+import requests
+class GoogleLoginView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        token = request.data.get('credential')
+        if not token:
+            return Response({'detail': 'Google credential token is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            # Verify the token via Google's tokeninfo API
+            res = requests.get(f'https://oauth2.googleapis.com/tokeninfo?id_token={token}', timeout=10)
+            if res.status_code != 200:
+                return Response({'detail': 'Invalid Google credential token.'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            data = res.json()
+            
+            # Check email verification status
+            if not data.get('email_verified'):
+                return Response({'detail': 'Google email is not verified.'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            email = data.get('email')
+            first_name = data.get('given_name', '')
+            last_name = data.get('family_name', '')
+            
+            # Find existing user or create a new one
+            try:
+                user = User.objects.get(email=email)
+            except User.DoesNotExist:
+                # Generate a unique username
+                base_username = email.split('@')[0]
+                username = base_username
+                counter = 1
+                while User.objects.filter(username=username).exists():
+                    username = f"{base_username}{counter}"
+                    counter += 1
+                
+                user = User.objects.create_user(
+                    username=username,
+                    email=email,
+                    first_name=first_name,
+                    last_name=last_name,
+                )
+                
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                'user': UserSerializer(user).data,
+                'tokens': {
+                    'access': str(refresh.access_token),
+                    'refresh': str(refresh),
+                }
+            }, status=status.HTTP_200_OK)
+            
+        except requests.RequestException:
+            return Response({'detail': 'Failed to connect to Google verification service.'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
+
 class AdminSendOTPView(APIView):
     permission_classes = [AllowAny]
 

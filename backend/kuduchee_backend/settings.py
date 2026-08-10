@@ -163,6 +163,9 @@ EMAIL_HOST_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD', '')
 DEFAULT_FROM_EMAIL = f'Kuduchee Studio <{EMAIL_HOST_USER}>'
 ADMIN_OTP_EMAIL = os.environ.get('ADMIN_OTP_EMAIL', 'doshisiddharth530@gmail.com')
 
+# ─── Google OAuth ─────────────────────────────────────────────────────────────
+GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID', '')
+
 # ─── Misc ─────────────────────────────────────────────────────────────────────
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

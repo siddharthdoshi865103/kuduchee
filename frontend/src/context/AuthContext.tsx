@@ -21,6 +21,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isAdmin: boolean;
   login: (username: string, password: string) => Promise<User>;
+  loginWithGoogle: (credential: string) => Promise<User>;
   adminSendOTP: (username: string, password: string) => Promise<{ user_id: number; phone_number: string; otp_demo?: string }>;
   adminVerifyOTP: (userId: number, otpCode: string) => Promise<User>;
   register: (data: RegisterData) => Promise<User>;
@@ -83,6 +84,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return profileRes.data;
   };
 
+  const loginWithGoogle = async (credential: string): Promise<User> => {
+    const response = await api.post('/auth/google-login/', { credential });
+    const { user: userData, tokens } = response.data;
+    localStorage.setItem('access_token', tokens.access);
+    localStorage.setItem('refresh_token', tokens.refresh);
+    setUser(userData);
+    return userData;
+  };
+
   const adminSendOTP = async (username: string, password: string) => {
     const response = await api.post('/auth/admin-send-otp/', { username, password });
     return response.data;
@@ -124,6 +134,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAuthenticated: !!user,
         isAdmin: !!user?.is_staff,
         login,
+        loginWithGoogle,
         adminSendOTP,
         adminVerifyOTP,
         register,

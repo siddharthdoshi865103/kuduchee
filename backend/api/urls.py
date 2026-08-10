@@ -7,6 +7,7 @@ from rest_framework_simplejwt.views import (
 )
 from .views import (
     RegisterView,
+    GoogleLoginView,
     AdminSendOTPView,
     AdminVerifyOTPView,
     ProfileView,
@@ -50,6 +51,7 @@ urlpatterns = [
 
     # Registration & profile
     path('auth/register/', RegisterView.as_view(), name='register'),
+    path('auth/google-login/', GoogleLoginView.as_view(), name='google_login'),
     path('auth/profile/', ProfileView.as_view(), name='profile'),
 
     # Dynamic Site Content & Settings

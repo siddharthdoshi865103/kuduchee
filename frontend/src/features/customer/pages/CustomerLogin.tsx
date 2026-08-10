@@ -7,12 +7,62 @@ import { loginSchema, type LoginFormData } from '../../../utils/schemas';
 import toast from 'react-hot-toast';
 import { Eye, EyeOff, Sparkles, ShieldCheck, ArrowRight, LogIn } from 'lucide-react';
 
+declare global {
+  interface Window {
+    google: any;
+  }
+}
+
 export const CustomerLogin: React.FC = () => {
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [showPassword, setShowPassword] = React.useState(false);
   const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/';
+
+  const handleGoogleLoginSuccess = async (response: any) => {
+    try {
+      await loginWithGoogle(response.credential);
+      toast.success('Welcome back to Kuduchee!');
+      navigate(from, { replace: true });
+    } catch (err: any) {
+      toast.error(err.response?.data?.detail || 'Google authentication failed.');
+    }
+  };
+
+  React.useEffect(() => {
+    const initializeGoogleSignIn = () => {
+      if (window.google) {
+        const client_id = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'your-google-client-id-here.apps.googleusercontent.com';
+        window.google.accounts.id.initialize({
+          client_id: client_id,
+          callback: handleGoogleLoginSuccess,
+        });
+        window.google.accounts.id.renderButton(
+          document.getElementById('google-signin-button'),
+          { 
+            theme: 'outline', 
+            size: 'large', 
+            width: '320', 
+            shape: 'rectangular',
+            text: 'signin_with' 
+          }
+        );
+      }
+    };
+
+    if (window.google) {
+      initializeGoogleSignIn();
+    } else {
+      const interval = setInterval(() => {
+        if (window.google) {
+          initializeGoogleSignIn();
+          clearInterval(interval);
+        }
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, [loginWithGoogle, from]);
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -167,8 +217,18 @@ export const CustomerLogin: React.FC = () => {
               </button>
             </form>
 
+            <div className="relative flex py-3 items-center">
+              <div className="flex-grow border-t border-warm-gray/30"></div>
+              <span className="flex-shrink mx-4 text-mid-gray/70 text-[9px] font-bold uppercase tracking-widest">or</span>
+              <div className="flex-grow border-t border-warm-gray/30"></div>
+            </div>
+
+            <div className="flex justify-center">
+              <div id="google-signin-button" className="w-full max-w-[320px] rounded-xl overflow-hidden hover:shadow-2xs transition-shadow"></div>
+            </div>
+
             {/* Bottom Links */}
-            <div className="pt-4 border-t border-warm-gray/40 flex items-center justify-between text-xs">
+            <div className="pt-4 border-t border-warm-gray/40 flex items-center justify-between text-xs mt-2">
               <span className="text-mid-gray/80 font-light">New to Kuduchee?</span>
               <Link
                 to="/register"
