@@ -15,7 +15,7 @@ services:
       - key: CORS_ALLOWED_ORIGINS
         value: "https://kuduchee.in,https://www.kuduchee.in"
       - key: CSRF_TRUSTED_ORIGINS
-        value: "https://kuduchee-backend.onrender.com,https://api.kuduchee.in,https://kuduchee.in,https://www.kuduchee.in"
+        value: "https://kuduchee-backend.onrender.com,https://api.kuduchee.in"
       - key: DATABASE_URL
         fromDatabase:
           name: kuduchee-db

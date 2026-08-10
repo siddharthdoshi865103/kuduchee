@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-const DJANGO_ADMIN_URL = 'https://api.kuduchee.in/admin/';
+const DJANGO_ADMIN_URL = 'https://siddharth200306.pythonanywhere.com/admin/';
 
 export const AdminLayout: React.FC = () => {
   const { user, logout, loading } = useAuth();
