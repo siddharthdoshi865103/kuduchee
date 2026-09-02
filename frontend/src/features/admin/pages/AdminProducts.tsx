@@ -1,35 +1,47 @@
 import React, { useEffect, useState } from 'react';
-import { catalogService, type ProductData, type CategoryData, type CreateProductPayload } from '../../../services/catalogService';
+import {
+  catalogService,
+  type ProductData,
+  type CategoryData,
+  type SubCategoryData,
+  type CreateProductPayload,
+  type ProductImageData,
+} from '../../../services/catalogService';
 import toast from 'react-hot-toast';
 import {
-  ShoppingBag,
   Plus,
   Edit2,
   Trash2,
   Search,
   Star,
   X,
-  AlertTriangle,
-  CheckCircle,
+  Upload,
   Eye,
   EyeOff,
+  Image as ImageIcon,
 } from 'lucide-react';
 
 export const AdminProducts: React.FC = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [categories, setCategories] = useState<CategoryData[]>([]);
+  const [subCategories, setSubCategories] = useState<SubCategoryData[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Filters
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<number | ''>('');
+  const [selectedSubCategory, setSelectedSubCategory] = useState<number | ''>('');
   const [stockFilter, setStockFilter] = useState<'all' | 'low' | 'out'>('all');
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<ProductData | null>(null);
+  const [productImages, setProductImages] = useState<ProductImageData[]>([]);
+  const [uploadingFiles, setUploadingFiles] = useState(false);
+
   const [formData, setFormData] = useState<{
     category: number;
+    sub_category: number | '';
     name: string;
     description: string;
     mrp: number | string;
@@ -41,6 +53,7 @@ export const AdminProducts: React.FC = () => {
     primary_image_url: string;
   }>({
     category: 0,
+    sub_category: '',
     name: '',
     description: '',
     mrp: '',
@@ -56,14 +69,17 @@ export const AdminProducts: React.FC = () => {
   const loadData = async () => {
     try {
       setLoading(true);
-      const [cats, prods] = await Promise.all([
+      const [cats, subs, prods] = await Promise.all([
         catalogService.getCategories(),
+        catalogService.getSubCategories(),
         catalogService.getProducts({
           category: selectedCategory || undefined,
+          sub_category: selectedSubCategory || undefined,
           search: search || undefined,
         }),
       ]);
       setCategories(cats);
+      setSubCategories(subs);
 
       let filtered = prods;
       if (stockFilter === 'low') {
@@ -73,7 +89,7 @@ export const AdminProducts: React.FC = () => {
       }
       setProducts(filtered);
     } catch {
-      toast.error('Failed to load products');
+      toast.error('Failed to load products catalog');
     } finally {
       setLoading(false);
     }
@@ -81,12 +97,15 @@ export const AdminProducts: React.FC = () => {
 
   useEffect(() => {
     loadData();
-  }, [search, selectedCategory, stockFilter]);
+  }, [search, selectedCategory, selectedSubCategory, stockFilter]);
 
   const openCreateModal = () => {
     setEditingProduct(null);
+    setProductImages([]);
+    const firstCatId = categories[0]?.id || 0;
     setFormData({
-      category: categories[0]?.id || 0,
+      category: firstCatId,
+      sub_category: '',
       name: '',
       description: '',
       mrp: '',
@@ -102,8 +121,10 @@ export const AdminProducts: React.FC = () => {
 
   const openEditModal = (p: ProductData) => {
     setEditingProduct(p);
+    setProductImages(p.images || []);
     setFormData({
       category: p.category,
+      sub_category: p.sub_category || '',
       name: p.name,
       description: p.description || '',
       mrp: p.mrp,
@@ -117,10 +138,14 @@ export const AdminProducts: React.FC = () => {
     setIsModalOpen(true);
   };
 
+  const availableSubCategories = subCategories.filter(
+    (sub) => sub.category === formData.category
+  );
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.category) {
-      toast.error('Please select a category');
+      toast.error('Please select a main category');
       return;
     }
     if (!formData.name.trim()) {
@@ -132,6 +157,8 @@ export const AdminProducts: React.FC = () => {
       setSubmitting(true);
       const payload: CreateProductPayload = {
         ...formData,
+        category: formData.category,
+        sub_category: formData.sub_category ? Number(formData.sub_category) : null,
         mrp: Number(formData.mrp),
         offer_price: Number(formData.offer_price),
         stock_quantity: Number(formData.stock_quantity),
@@ -142,7 +169,7 @@ export const AdminProducts: React.FC = () => {
         toast.success('Product updated successfully');
       } else {
         await catalogService.createProduct(payload);
-        toast.success('Product created successfully');
+        toast.success('Product created! You can now upload images for it.');
       }
       setIsModalOpen(false);
       loadData();
@@ -150,6 +177,65 @@ export const AdminProducts: React.FC = () => {
       toast.error(err.response?.data?.detail || 'Operation failed');
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleDeviceImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    if (!editingProduct) {
+      toast.error('Please save the product first before uploading images.');
+      return;
+    }
+
+    const filesArray = Array.from(e.target.files);
+    try {
+      setUploadingFiles(true);
+      toast.loading(`Uploading ${filesArray.length} image(s)...`, { id: 'img-upload' });
+      await catalogService.uploadProductImages(editingProduct.id, filesArray);
+      toast.success('Images uploaded successfully from device!', { id: 'img-upload' });
+
+      // Refresh product list and update modal images
+      const updatedProductList = await catalogService.getProducts();
+      setProducts(updatedProductList);
+      const freshProd = updatedProductList.find((p: ProductData) => p.id === editingProduct.id);
+      if (freshProd) {
+        setProductImages(freshProd.images || []);
+        setFormData((prev) => ({ ...prev, primary_image_url: freshProd.primary_image_url }));
+      }
+    } catch (err: any) {
+      toast.error(err.response?.data?.detail || 'Failed to upload images from device', { id: 'img-upload' });
+    } finally {
+      setUploadingFiles(false);
+      e.target.value = '';
+    }
+  };
+
+  const handleSetPrimaryImage = async (imageId: number) => {
+    try {
+      await catalogService.setImagePrimary(imageId);
+      toast.success('Primary image updated');
+      loadData();
+      if (editingProduct) {
+        const freshList = await catalogService.getProducts();
+        const freshProd = freshList.find((p: ProductData) => p.id === editingProduct.id);
+        if (freshProd) {
+          setProductImages(freshProd.images || []);
+          setFormData((prev) => ({ ...prev, primary_image_url: freshProd.primary_image_url }));
+        }
+      }
+    } catch {
+      toast.error('Failed to set primary image');
+    }
+  };
+
+  const handleDeleteImage = async (imageId: number) => {
+    try {
+      await catalogService.deleteImage(imageId);
+      toast.success('Image deleted');
+      setProductImages((prev) => prev.filter((img) => img.id !== imageId));
+      loadData();
+    } catch {
+      toast.error('Failed to delete image');
     }
   };
 
@@ -189,12 +275,12 @@ export const AdminProducts: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-warm-gray/40 pb-6">
         <div>
-          <h1 className="font-brand text-3xl text-charcoal mb-1">Products</h1>
-          <p className="text-[13px] text-mid-gray font-light">Manage catalog items, pricing, inventory & low-stock alerts</p>
+          <h1 className="font-brand text-3xl text-charcoal mb-1">Products Catalog</h1>
+          <p className="text-[13px] text-mid-gray font-light">Manage products, subcategories, multiple device image uploads, and inventory</p>
         </div>
         <button
           onClick={openCreateModal}
-          className="flex items-center gap-2 bg-brass text-charcoal px-5 py-2.5 rounded-xl text-[12px] font-semibold hover:bg-brass-hover transition-all shadow-sm active:scale-[0.98] self-start sm:self-auto"
+          className="flex items-center gap-2 bg-brass text-charcoal px-5 py-2.5 rounded-xl text-[12px] font-semibold hover:bg-brass-hover transition-all shadow-sm active:scale-[0.98] self-start sm:self-auto cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           Add Product
@@ -217,14 +303,32 @@ export const AdminProducts: React.FC = () => {
 
           <select
             value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value ? Number(e.target.value) : '')}
+            onChange={(e) => {
+              setSelectedCategory(e.target.value ? Number(e.target.value) : '');
+              setSelectedSubCategory('');
+            }}
             className="bg-porcelain/60 border border-warm-gray/40 rounded-xl px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-brass"
           >
-            <option value="">All Categories</option>
+            <option value="">All Main Categories</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>{c.name}</option>
             ))}
           </select>
+
+          {selectedCategory && (
+            <select
+              value={selectedSubCategory}
+              onChange={(e) => setSelectedSubCategory(e.target.value ? Number(e.target.value) : '')}
+              className="bg-porcelain/60 border border-warm-gray/40 rounded-xl px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-brass"
+            >
+              <option value="">All Sub-Categories</option>
+              {subCategories
+                .filter((sub) => sub.category === selectedCategory)
+                .map((sub) => (
+                  <option key={sub.id} value={sub.id}>{sub.name}</option>
+                ))}
+            </select>
+          )}
 
           <select
             value={stockFilter}
@@ -248,123 +352,92 @@ export const AdminProducts: React.FC = () => {
         </div>
       ) : products.length === 0 ? (
         <div className="bg-warm-white border border-dashed border-warm-gray rounded-2xl p-12 text-center shadow-sm">
-          <ShoppingBag className="w-10 h-10 text-mid-gray/30 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-charcoal mb-1">No Products Match Your Criteria</h3>
-          <p className="text-[13px] text-mid-gray font-light mb-4">Add your first studio product to display it on the storefront.</p>
-          <button onClick={openCreateModal} className="btn-primary">Add Product</button>
+          <p className="text-mid-gray text-sm">No products found matching filters.</p>
         </div>
       ) : (
-        <div className="bg-warm-white border border-warm-gray/50 rounded-2xl overflow-hidden shadow-sm">
-          <table className="w-full text-left border-collapse">
+        <div className="bg-warm-white rounded-2xl border border-warm-gray/50 shadow-sm overflow-hidden">
+          <table className="w-full text-left text-xs text-charcoal border-collapse">
             <thead>
-              <tr className="border-b border-warm-gray/40 bg-porcelain/40 text-[10px] uppercase tracking-widest text-mid-gray font-bold">
-                <th className="py-3.5 px-6">Product</th>
-                <th className="py-3.5 px-6">Category</th>
-                <th className="py-3.5 px-6 text-right">Selling Price</th>
-                <th className="py-3.5 px-6 text-center">Stock Level</th>
-                <th className="py-3.5 px-6 text-center">Status</th>
-                <th className="py-3.5 px-6 text-center">Homepage</th>
-                <th className="py-3.5 px-6 text-right">Actions</th>
+              <tr className="bg-porcelain/80 border-b border-warm-gray/40 text-[10px] uppercase font-bold text-mid-gray tracking-wider">
+                <th className="py-3 px-4">Image</th>
+                <th className="py-3 px-4">Product Name</th>
+                <th className="py-3 px-4">Category / Sub-Category</th>
+                <th className="py-3 px-4">Price</th>
+                <th className="py-3 px-4">Stock</th>
+                <th className="py-3 px-4 text-center">Active</th>
+                <th className="py-3 px-4 text-center">Featured</th>
+                <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-warm-gray/30 text-xs text-charcoal">
+            <tbody className="divide-y divide-warm-gray/30">
               {products.map((p) => {
-                const isOut = Number(p.stock_quantity) === 0;
-                const isLow = Number(p.stock_quantity) > 0 && Number(p.stock_quantity) <= 5;
-
+                const imgCount = p.images?.length || 0;
                 return (
-                  <tr key={p.id} className="hover:bg-porcelain/30 transition-colors">
-                    <td className="py-3 px-6">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-porcelain border border-warm-gray/40 overflow-hidden shrink-0">
-                          {p.primary_image_url ? (
-                            <img src={p.primary_image_url} alt={p.name} className="w-full h-full object-cover" />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center text-mid-gray/40">
-                              <ShoppingBag className="w-5 h-5" />
-                            </div>
-                          )}
-                        </div>
-                        <div>
-                          <div className="font-semibold text-charcoal">{p.name}</div>
-                          {p.badge && (
-                            <span className="inline-block text-[9px] font-bold uppercase tracking-wider text-brass bg-brass/10 border border-brass/20 px-2 py-0.5 rounded mt-0.5">
-                              {p.badge}
-                            </span>
-                          )}
-                        </div>
+                  <tr key={p.id} className="hover:bg-porcelain/40 transition-colors">
+                    <td className="py-3 px-4">
+                      <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-warm-gray/40 bg-porcelain">
+                        {p.primary_image_url ? (
+                          <img src={p.primary_image_url} alt={p.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-mid-gray"><ImageIcon className="w-5 h-5" /></div>
+                        )}
+                        {imgCount > 1 && (
+                          <span className="absolute bottom-0.5 right-0.5 bg-charcoal/80 text-white text-[9px] px-1 rounded font-bold">
+                            +{imgCount}
+                          </span>
+                        )}
                       </div>
                     </td>
-
-                    <td className="py-3 px-6 text-mid-gray font-medium">{p.category_name}</td>
-
-                    <td className="py-3 px-6 text-right">
-                      <div className="font-bold text-charcoal">₹{p.offer_price}</div>
-                      {p.mrp !== p.offer_price && (
-                        <div className="text-[10px] text-mid-gray line-through">₹{p.mrp}</div>
-                      )}
-                    </td>
-
-                    {/* Stock Level Indicator */}
-                    <td className="py-3 px-6 text-center">
-                      {isOut ? (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-error bg-error/10 border border-error/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                          <AlertTriangle className="w-3 h-3" /> Out of Stock
-                        </span>
-                      ) : isLow ? (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                          <AlertTriangle className="w-3 h-3" /> Low Stock ({p.stock_quantity})
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-success bg-success/10 border border-success/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                          <CheckCircle className="w-3 h-3" /> {p.stock_quantity} Units
+                    <td className="py-3 px-4 font-semibold text-charcoal">
+                      <div>{p.name}</div>
+                      {p.badge && (
+                        <span className="inline-block mt-0.5 text-[9px] bg-brass/20 text-charcoal px-2 py-0.5 rounded font-bold">
+                          {p.badge}
                         </span>
                       )}
                     </td>
-
-                    {/* Active Status */}
-                    <td className="py-3 px-6 text-center">
-                      <button
-                        onClick={() => toggleActive(p)}
-                        className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full transition-all ${
-                          p.is_active
-                            ? 'bg-charcoal text-warm-white'
-                            : 'bg-warm-gray/40 text-mid-gray'
-                        }`}
-                      >
-                        {p.is_active ? <Eye className="w-3 h-3 text-brass" /> : <EyeOff className="w-3 h-3" />}
-                        {p.is_active ? 'Live' : 'Hidden'}
+                    <td className="py-3 px-4 text-mid-gray">
+                      <span className="font-medium text-charcoal">{p.category_name || 'Category'}</span>
+                      {p.sub_category_name && (
+                        <span className="block text-[10px] text-mid-gray">↳ {p.sub_category_name}</span>
+                      )}
+                    </td>
+                    <td className="py-3 px-4">
+                      <div className="font-semibold text-charcoal">₹{Number(p.offer_price).toLocaleString('en-IN')}</div>
+                      {Number(p.mrp) > Number(p.offer_price) && (
+                        <div className="text-[10px] text-mid-gray line-through">₹{Number(p.mrp).toLocaleString('en-IN')}</div>
+                      )}
+                    </td>
+                    <td className="py-3 px-4">
+                      <span className={`px-2 py-1 rounded text-[10px] font-bold ${
+                        p.stock_quantity === 0 ? 'bg-error/10 text-error' : p.stock_quantity <= 5 ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
+                      }`}>
+                        {p.stock_quantity === 0 ? 'Out of Stock' : `${p.stock_quantity} left`}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                      <button onClick={() => toggleActive(p)} className="p-1 text-mid-gray hover:text-charcoal transition-colors">
+                        {p.is_active ? <Eye className="w-4 h-4 text-emerald-600" /> : <EyeOff className="w-4 h-4 text-mid-gray" />}
                       </button>
                     </td>
-
-                    {/* Featured Toggle */}
-                    <td className="py-3 px-6 text-center">
-                      <button
-                        onClick={() => toggleFeatured(p)}
-                        className={`p-1.5 rounded-lg border transition-all ${
-                          p.is_featured
-                            ? 'bg-brass/20 text-brass border-brass/40'
-                            : 'text-mid-gray/40 border-warm-gray/40 hover:text-brass'
-                        }`}
-                        title={p.is_featured ? 'Featured on Home' : 'Not Featured'}
-                      >
-                        <Star className={`w-4 h-4 ${p.is_featured ? 'fill-brass' : ''}`} />
+                    <td className="py-3 px-4 text-center">
+                      <button onClick={() => toggleFeatured(p)} className="p-1 text-mid-gray hover:text-brass transition-colors">
+                        <Star className={`w-4 h-4 ${p.is_featured ? 'fill-brass text-brass' : ''}`} />
                       </button>
                     </td>
-
-                    <td className="py-3 px-6 text-right">
+                    <td className="py-3 px-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => openEditModal(p)}
-                          className="p-2 border border-warm-gray/40 rounded-lg text-mid-gray hover:text-brass hover:border-brass/30 transition-all"
-                          title="Edit"
+                          className="p-2 border border-warm-gray/40 rounded-lg text-mid-gray hover:text-brass hover:border-brass/30 transition-all cursor-pointer"
+                          title="Edit Product & Upload Images"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={() => handleDelete(p.id, p.name)}
-                          className="p-2 border border-warm-gray/40 rounded-lg text-mid-gray hover:text-error hover:border-error/30 transition-all"
-                          title="Delete"
+                          className="p-2 border border-warm-gray/40 rounded-lg text-mid-gray hover:text-error hover:border-error/30 transition-all cursor-pointer"
+                          title="Delete Product"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
@@ -381,26 +454,32 @@ export const AdminProducts: React.FC = () => {
       {/* Add / Edit Product Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-charcoal/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-fadeIn">
-          <div className="bg-warm-white border border-warm-gray/60 rounded-2xl w-full max-w-2xl shadow-2xl p-8 space-y-6 my-8">
+          <div className="bg-warm-white border border-warm-gray/60 rounded-2xl w-full max-w-3xl shadow-2xl p-8 space-y-6 my-8">
             <div className="flex items-center justify-between border-b border-warm-gray/40 pb-4">
-              <h3 className="font-brand text-2xl text-charcoal">
-                {editingProduct ? 'Edit Studio Product' : 'New Studio Product'}
-              </h3>
+              <div>
+                <h3 className="font-brand text-2xl text-charcoal">
+                  {editingProduct ? 'Edit Studio Product' : 'New Studio Product'}
+                </h3>
+                <p className="text-[11px] text-mid-gray">Define catalog metadata, subcategories & upload device photos</p>
+              </div>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-mid-gray hover:text-charcoal transition-colors p-1"
+                className="text-mid-gray hover:text-charcoal transition-colors p-1 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+            <form onSubmit={handleSubmit} className="space-y-5 text-xs">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="input-label">Category *</label>
+                  <label className="input-label">Main Category *</label>
                   <select
                     value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: Number(e.target.value) })}
+                    onChange={(e) => {
+                      const catId = Number(e.target.value);
+                      setFormData({ ...formData, category: catId, sub_category: '' });
+                    }}
                     className="input-field"
                     required
                   >
@@ -409,17 +488,32 @@ export const AdminProducts: React.FC = () => {
                     ))}
                   </select>
                 </div>
+
                 <div>
-                  <label className="input-label">Product Name *</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Imperial Brass Porcelain Bowl"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  <label className="input-label">Sub-Category (Optional)</label>
+                  <select
+                    value={formData.sub_category}
+                    onChange={(e) => setFormData({ ...formData, sub_category: e.target.value ? Number(e.target.value) : '' })}
                     className="input-field"
-                    required
-                  />
+                  >
+                    <option value="">-- Select Sub-Category --</option>
+                    {availableSubCategories.map((sub) => (
+                      <option key={sub.id} value={sub.id}>{sub.name}</option>
+                    ))}
+                  </select>
                 </div>
+              </div>
+
+              <div>
+                <label className="input-label">Product Name *</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Imperial Brass Porcelain Bowl"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="input-field"
+                  required
+                />
               </div>
 
               <div>
@@ -483,11 +577,12 @@ export const AdminProducts: React.FC = () => {
                     <option value="Best Seller">Best Seller</option>
                     <option value="Artisan Pick">Artisan Pick</option>
                     <option value="New Arrival">New Arrival</option>
+                    <option value="Exclusive">Exclusive</option>
                     <option value="Limited Run">Limited Run</option>
                   </select>
                 </div>
                 <div>
-                  <label className="input-label">Primary Image URL</label>
+                  <label className="input-label">External Image URL (Fallback)</label>
                   <input
                     type="url"
                     placeholder="https://images.unsplash.com/…"
@@ -496,6 +591,74 @@ export const AdminProducts: React.FC = () => {
                     className="input-field"
                   />
                 </div>
+              </div>
+
+              {/* ─── DIRECT DEVICE MULTI-IMAGE UPLOAD SECTION ──────────────── */}
+              <div className="border border-warm-gray/50 rounded-xl p-4 bg-porcelain/40 space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="font-bold text-charcoal text-xs flex items-center gap-1.5">
+                      <ImageIcon className="w-4 h-4 text-brass" /> Direct Device Image Uploads
+                    </span>
+                    <p className="text-[10px] text-mid-gray">Select multiple image files from your computer/device to upload directly.</p>
+                  </div>
+                  {editingProduct ? (
+                    <label className="cursor-pointer bg-charcoal text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-black transition-colors flex items-center gap-1.5 shadow-xs">
+                      <Upload className="w-3.5 h-3.5 text-brass" />
+                      <span>{uploadingFiles ? 'Uploading…' : 'Upload Files'}</span>
+                      <input
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        onChange={handleDeviceImageUpload}
+                        disabled={uploadingFiles}
+                        className="hidden"
+                      />
+                    </label>
+                  ) : (
+                    <span className="text-[10px] text-amber-700 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">
+                      Save product first to enable image upload
+                    </span>
+                  )}
+                </div>
+
+                {/* Uploaded Images List */}
+                {productImages.length > 0 && (
+                  <div className="grid grid-cols-4 sm:grid-cols-6 gap-3 pt-2">
+                    {productImages.map((img) => (
+                      <div key={img.id} className="relative group border border-warm-gray/40 rounded-lg overflow-hidden bg-white aspect-square shadow-xs">
+                        <img
+                          src={img.image_src || img.image_url}
+                          alt={img.alt_text || 'Product image'}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => img.id && handleSetPrimaryImage(img.id)}
+                            title={img.is_primary ? 'Primary Image' : 'Set as Primary'}
+                            className={`p-1.5 rounded-full ${img.is_primary ? 'bg-brass text-charcoal' : 'bg-white/80 text-charcoal hover:bg-brass'}`}
+                          >
+                            <Star className="w-3.5 h-3.5 fill-current" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => img.id && handleDeleteImage(img.id)}
+                            title="Delete Image"
+                            className="p-1.5 rounded-full bg-white/80 text-error hover:bg-error hover:text-white transition-colors"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                        {img.is_primary && (
+                          <span className="absolute top-1 left-1 bg-brass text-charcoal text-[8px] font-bold px-1.5 py-0.5 rounded shadow-xs">
+                            Primary
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="flex gap-6 pt-2">
@@ -524,14 +687,14 @@ export const AdminProducts: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex-1 bg-brass text-charcoal rounded-xl py-3 text-xs font-semibold hover:bg-brass-hover transition-all shadow-sm disabled:opacity-50"
+                  className="flex-1 bg-brass text-charcoal rounded-xl py-3 text-xs font-semibold hover:bg-brass-hover transition-all shadow-sm disabled:opacity-50 cursor-pointer"
                 >
                   {submitting ? 'Saving…' : editingProduct ? 'Update Product' : 'Create Product'}
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-5 border border-warm-gray/50 rounded-xl text-xs font-medium text-mid-gray hover:border-charcoal transition-colors"
+                  className="px-5 border border-warm-gray/50 rounded-xl text-xs font-medium text-mid-gray hover:border-charcoal transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -543,4 +706,5 @@ export const AdminProducts: React.FC = () => {
     </div>
   );
 };
+
 export default AdminProducts;

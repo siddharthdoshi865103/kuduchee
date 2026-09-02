@@ -57,7 +57,7 @@ export const Cart: React.FC = () => {
           <ShoppingCart className="w-12 h-12 text-mid-gray/30 mx-auto mb-4" />
           <h3 className="font-brand text-2xl text-charcoal mb-2">Your Shopping Cart is Empty</h3>
           <p className="text-[13px] text-mid-gray font-light max-w-sm mx-auto mb-6">
-            Explore our handcrafted stoneware collections and add items to your cart.
+            Explore our handcrafted porcelain collections and add items to your cart.
           </p>
           <Link to="/shop" className="btn-primary inline-flex items-center gap-2">
             <span>Explore Catalog</span>

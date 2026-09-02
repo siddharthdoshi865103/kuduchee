@@ -35,3 +35,8 @@ frontend/.env.local
 # OS Metadata
 .DS_Store
 Thumbs.db
+
+# Media & Archives
+backend/media/
+*.rar
+

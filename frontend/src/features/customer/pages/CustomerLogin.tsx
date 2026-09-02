@@ -90,11 +90,11 @@ export const CustomerLogin: React.FC = () => {
 
       <div className="w-full max-w-4xl grid lg:grid-cols-12 gap-0 rounded-[32px] overflow-hidden border border-warm-gray/60 shadow-[0_30px_70px_-15px_rgba(27,24,20,0.15)] bg-warm-white relative z-10 animate-fadeIn">
         
-        {/* Left Column: Stunning Editorial Stoneware Studio Banner */}
+        {/* Left Column: Stunning Editorial Porcelain Studio Banner */}
         <div className="hidden lg:flex lg:col-span-5 relative bg-[#1C1A17] text-warm-white p-12 flex-col justify-between overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&q=80"
-            alt="Kuduchee Stoneware Studio"
+            alt="Kuduchee Porcelain Studio"
             className="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-[1.05] z-0 scale-102 transition-transform duration-[10000ms] hover:scale-108"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1C1A17] via-[#1C1A17]/35 to-transparent z-10" />
@@ -116,7 +116,7 @@ export const CustomerLogin: React.FC = () => {
                 "Every piece shaped by hand. Every glaze kissed by fire."
               </p>
               <span className="text-[8px] uppercase tracking-[0.25em] text-brass font-bold block">
-                — 1280°C Stoneware Collection
+                — 1280°C Porcelain Collection
               </span>
             </div>
 

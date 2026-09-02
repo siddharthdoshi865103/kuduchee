@@ -1,50 +1,108 @@
 @import "tailwindcss";
 
+@theme {
+  --color-olive: #C2B280;
+  --color-brass: #C2B280;
+  --color-brass-hover: #B2A270;
+  --color-terracotta: #D69151;
+  --color-sage: #A8BC8F;
+  --color-dusty-rose: #CEAA9D;
+  --color-pink: #CEAA9D;
+  --color-beige: #EFE8E2;
+  --color-warm-white: #EFE8E2;
+  --color-porcelain: #EFE8E2;
+  --color-charcoal: #2D2D2D;
+
+  --font-ashford: 'Ashford', 'DM Serif Display', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-space: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: 'Ashford', 'DM Serif Display', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-secondary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Ashford', 'DM Serif Display', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-brand: 'Ashford', 'DM Serif Display', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+@font-face {
+  font-family: 'Ashford';
+  src: local('Ashford'), local('Ashford-Regular'), local('Ashford Display');
+  font-weight: 400 700;
+  font-display: swap;
+}
+
 @layer base {
   :root {
-    --color-charcoal: #1A1814;
-    --color-warm-white: #FAF8F5;
-    --color-porcelain: #F4EFEA;
-    --color-brass: #C2B267;
-    --color-brass-hover: #B3A358;
-    --color-sage: #7A8B6F;
+    --color-charcoal: #2D2D2D;
+    --color-warm-white: #EFE8E2;
+    --color-porcelain: #EFE8E2;
+    --color-brass: #C2B280;
+    --color-brass-hover: #B2A270;
+    --color-terracotta: #D69151;
+    --color-sage: #A8BC8F;
+    --color-dusty-rose: #CEAA9D;
     --color-mid-gray: #767067;
-    --color-warm-gray: #E3D9CC;
+    --color-warm-gray: #D8CEC4;
     --color-error: #B91C1C;
-    --color-success: #15803D;
+    --color-success: #A8BC8F;
+
+    --font-primary: 'Ashford', 'DM Serif Display', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --font-secondary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  body {
+  html, body {
     background-color: var(--color-warm-white);
     color: var(--color-charcoal);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, .font-brand {
-    font-family: 'DM Serif Display', serif;
+  /* Primary Display Font: Ashford */
+  h1, h2, h3, h4, .font-ashford, .font-primary, .font-brand {
+    font-family: 'Ashford', 'DM Serif Display', 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+  }
+
+  /* Secondary Clean UI Font: Space Grotesk */
+  body, p, span, div, a, button, input, select, textarea, label, nav, header, footer, .font-space, .font-secondary {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 }
 
-/* Urban Classic Design Tokens & Animations */
-.bg-charcoal { background-color: #1A1814; }
-.bg-warm-white { background-color: #FAF8F5; }
-.bg-porcelain { background-color: #F4EFEA; }
-.bg-brass { background-color: #C2B267; }
-.bg-brass-hover { background-color: #B3A358; }
-.bg-sage { background-color: #7A8B6F; }
+.font-ashford {
+  font-family: 'Ashford', 'DM Serif Display', 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+}
 
-.text-charcoal { color: #1A1814; }
-.text-warm-white { color: #FAF8F5; }
-.text-brass { color: #C2B267; }
+.font-space {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+
+/* Kuduchee Character Theme Palette Tokens & Direct Utility Classes */
+.bg-olive, .bg-brass { background-color: #C2B280; }
+.bg-olive-hover, .bg-brass-hover { background-color: #B2A270; }
+.bg-terracotta { background-color: #D69151; }
+.bg-sage { background-color: #A8BC8F; }
+.bg-dusty-rose, .bg-pink { background-color: #CEAA9D; }
+.bg-beige, .bg-warm-white, .bg-porcelain { background-color: #EFE8E2; }
+.bg-charcoal { background-color: #2D2D2D; }
+
+.text-olive, .text-brass { color: #C2B280; }
+.text-terracotta { color: #D69151; }
+.text-sage { color: #A8BC8F; }
+.text-dusty-rose, .text-pink { color: #CEAA9D; }
+.text-beige, .text-warm-white { color: #EFE8E2; }
+.text-charcoal { color: #2D2D2D; }
 .text-mid-gray { color: #767067; }
-.text-warm-gray { color: #E3D9CC; }
-.text-sage { color: #7A8B6F; }
+.text-warm-gray { color: #D8CEC4; }
 .text-error { color: #B91C1C; }
-.text-success { color: #15803D; }
+.text-success { color: #A8BC8F; }
 
-.border-brass { border-color: #C2B267; }
-.border-warm-gray { border-color: #E3D9CC; }
+.border-olive, .border-brass { border-color: #C2B280; }
+.border-terracotta { border-color: #D69151; }
+.border-sage { border-color: #A8BC8F; }
+.border-dusty-rose, .border-pink { border-color: #CEAA9D; }
+.border-beige, .border-warm-white { border-color: #EFE8E2; }
+.border-charcoal { border-color: #2D2D2D; }
+.border-warm-gray { border-color: #D8CEC4; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -105,31 +163,51 @@ img, .transition-transform {
 
 /* Rich Glassmorphism & Card Utilities */
 .glass-card {
-  background: rgba(250, 248, 245, 0.85);
+  background: rgba(239, 232, 226, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(227, 217, 204, 0.6);
+  border: 1px solid rgba(216, 206, 196, 0.6);
 }
 
 .glass-dark {
-  background: rgba(26, 24, 20, 0.85);
+  background: rgba(45, 45, 45, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(194, 178, 103, 0.3);
+  border: 1px solid rgba(194, 178, 128, 0.3);
 }
 
 .shadow-brass-glow {
-  box-shadow: 0 10px 40px -10px rgba(194, 178, 103, 0.35);
+  box-shadow: 0 10px 40px -10px rgba(194, 178, 128, 0.35);
+}
+
+.shadow-terracotta-glow {
+  box-shadow: 0 10px 40px -10px rgba(214, 145, 81, 0.35);
+}
+
+.shadow-sage-glow {
+  box-shadow: 0 10px 40px -10px rgba(168, 188, 143, 0.35);
 }
 
 .bg-gold-gradient {
-  background: linear-gradient(135deg, #C2B267 0%, #B3A358 100%);
+  background: linear-gradient(135deg, #C2B280 0%, #B2A270 100%);
+}
+
+.bg-terracotta-gradient {
+  background: linear-gradient(135deg, #D69151 0%, #C2B280 100%);
+}
+
+.bg-organic-gradient {
+  background: linear-gradient(135deg, #EFE8E2 0%, rgba(206, 170, 157, 0.25) 50%, rgba(168, 188, 143, 0.25) 100%);
+}
+
+.bg-charcoal-gradient {
+  background: linear-gradient(135deg, #2D2D2D 0%, #1F1F1F 100%);
 }
 
 /* Button & Form System */
 .btn-primary {
-  background-color: #C2B267;
-  color: #1A1814;
+  background-color: #C2B280;
+  color: #2D2D2D;
   font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -140,14 +218,50 @@ img, .transition-transform {
 }
 
 .btn-primary:hover {
-  background-color: #B3A358;
+  background-color: #B2A270;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(194, 178, 103, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(194, 178, 128, 0.4);
+}
+
+.btn-terracotta {
+  background-color: #D69151;
+  color: #EFE8E2;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-terracotta:hover {
+  background-color: #C57E3F;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(214, 145, 81, 0.4);
+}
+
+.btn-sage {
+  background-color: #A8BC8F;
+  color: #2D2D2D;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-sage:hover {
+  background-color: #97AA7E;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(168, 188, 143, 0.4);
 }
 
 .btn-soft {
-  background-color: #1A1814;
-  color: #FAF8F5;
+  background-color: #2D2D2D;
+  color: #EFE8E2;
   font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -158,27 +272,27 @@ img, .transition-transform {
 }
 
 .btn-soft:hover {
-  background-color: #C2B267;
-  color: #1A1814;
+  background-color: #C2B280;
+  color: #2D2D2D;
   transform: translateY(-2px);
 }
 
 .input-field {
   width: 100%;
-  background-color: rgba(244, 239, 234, 0.6);
-  border: 1px solid rgba(227, 217, 204, 0.8);
+  background-color: rgba(239, 232, 226, 0.6);
+  border: 1px solid rgba(216, 206, 196, 0.8);
   border-radius: 0.75rem;
   padding: 0.625rem 0.875rem;
   font-size: 0.8125rem;
-  color: #1A1814;
+  color: #2D2D2D;
   transition: all 0.2s ease;
 }
 
 .input-field:focus {
   outline: none;
-  border-color: #C2B267;
-  box-shadow: 0 0 0 3px rgba(194, 178, 103, 0.15);
-  background-color: #FAF8F5;
+  border-color: #C2B280;
+  box-shadow: 0 0 0 3px rgba(194, 178, 128, 0.2);
+  background-color: #EFE8E2;
 }
 
 .text-label {
@@ -186,7 +300,7 @@ img, .transition-transform {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #C2B267;
+  color: #C2B280;
 }
 
 /* ─── Scrollbar Hide Utility ─── */
@@ -210,7 +324,7 @@ img, .transition-transform {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #C2B267;
+  color: #C2B280;
   margin-bottom: 0.375rem;
 }
 

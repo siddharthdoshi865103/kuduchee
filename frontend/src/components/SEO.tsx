@@ -11,9 +11,9 @@ interface SEOProps {
 }
 
 export const SEO: React.FC<SEOProps> = ({
-  title = 'Kuduchee (Kudu Chee) — Handcrafted Stoneware & Ceramic Tableware | Anil Panda',
-  description = 'Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited — Premium 1280°C high-fired stoneware dinnerware, ceramic dinner sets, serving bowls & artisan mugs inspired by Indian heritage.',
-  keywords = 'Kuduchee, Kudu Chee, Anil Panda, kuduchee.in, Kaviz Creations Private Limited, Kuduchee Studio, stoneware dinnerware, ceramic dinner sets India, handcrafted pottery, high fired stoneware, luxury tableware, stoneware plates, ceramic bowls, stoneware mugs',
+  title = 'Kuduchee (Kudu Chee) — Handcrafted Porcelain & Ceramic Tableware | Anil Panda',
+  description = 'Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited — Premium 1280°C high-fired porcelain dinnerware, ceramic dinner sets, serving bowls & artisan mugs inspired by Indian heritage.',
+  keywords = 'Kuduchee, Kudu Chee, Anil Panda, kuduchee.in, Kaviz Creations Private Limited, Kuduchee Studio, porcelain dinnerware, ceramic dinner sets India, handcrafted pottery, high fired porcelain, luxury tableware, porcelain plates, ceramic bowls, porcelain mugs',
   canonicalUrl = 'https://kuduchee.in/',
   ogImage = 'https://kuduchee.in/kuduchee-logo.jpg',
   ogType = 'website',
@@ -91,7 +91,7 @@ export const SEO: React.FC<SEOProps> = ({
         },
         'sameAs': [
           'https://www.instagram.com',
-          'https://wa.me/919971118219'
+          'https://wa.me/919599652190'
         ]
       }
     ];

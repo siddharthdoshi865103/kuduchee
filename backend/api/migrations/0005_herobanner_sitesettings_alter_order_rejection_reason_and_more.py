@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('tagline', models.CharField(default='AUTUMN / WINTER STUDIO COLLECTION', max_length=255)),
-                ('title', models.CharField(default='Opulence Fired in Stoneware.', max_length=255)),
+                ('title', models.CharField(default='Opulence Fired in Porcelain.', max_length=255)),
                 ('quote', models.TextField(default='Elegance is when the inside is as beautiful as the outside.')),
                 ('cta_text', models.CharField(default='Discover Collection', max_length=100)),
                 ('cta_link', models.CharField(default='/shop', max_length=255)),

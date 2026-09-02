@@ -1,5 +1,17 @@
 import { api } from '../utils/api';
 
+export interface SubCategoryData {
+  id: number;
+  category: number;
+  category_name?: string;
+  name: string;
+  slug: string;
+  description: string;
+  is_active: boolean;
+  product_count?: number;
+  created_at?: string;
+}
+
 export interface CategoryData {
   id: number;
   name: string;
@@ -8,6 +20,7 @@ export interface CategoryData {
   image_url: string;
   is_featured: boolean;
   product_count: number;
+  sub_categories?: SubCategoryData[];
   created_at: string;
 }
 
@@ -24,7 +37,8 @@ export interface ProductVariantData {
 export interface ProductImageData {
   id?: number;
   product?: number;
-  image_url: string;
+  image_url?: string;
+  image_src?: string;
   alt_text?: string;
   is_primary?: boolean;
 }
@@ -34,6 +48,8 @@ export interface ProductData {
   category: number;
   category_name?: string;
   category_slug?: string;
+  sub_category?: number | null;
+  sub_category_name?: string | null;
   name: string;
   slug: string;
   description: string;
@@ -56,6 +72,7 @@ export interface ProductData {
 
 export interface CreateProductPayload {
   category: number;
+  sub_category?: number | null;
   name: string;
   description?: string;
   mrp: number;
@@ -88,10 +105,32 @@ export const catalogService = {
     await api.delete(`/categories/${id}/`);
   },
 
+  // ─── SubCategories ──────────────────────────────────────────────────────────
+  async getSubCategories(params?: { category?: number; is_active?: boolean; search?: string }) {
+    const res = await api.get('/sub-categories/', { params });
+    return res.data.results || res.data;
+  },
+
+  async createSubCategory(data: Partial<SubCategoryData>) {
+    const res = await api.post('/sub-categories/', data);
+    return res.data;
+  },
+
+  async updateSubCategory(id: number, data: Partial<SubCategoryData>) {
+    const res = await api.patch(`/sub-categories/${id}/`, data);
+    return res.data;
+  },
+
+  async deleteSubCategory(id: number) {
+    await api.delete(`/sub-categories/${id}/`);
+  },
+
   // ─── Products ───────────────────────────────────────────────────────────────
   async getProducts(params?: {
     category?: number;
     category__slug?: string;
+    sub_category?: number;
+    sub_category__slug?: string;
     is_active?: boolean;
     is_featured?: boolean;
     badge?: string;
@@ -134,6 +173,24 @@ export const catalogService = {
 
   async createImage(image: ProductImageData) {
     const res = await api.post('/images/', image);
+    return res.data;
+  },
+
+  async uploadProductImages(productId: number, files: File[]) {
+    const formData = new FormData();
+    files.forEach((file) => {
+      formData.append('images', file);
+    });
+    const res = await api.post(`/products/${productId}/upload-images/`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return res.data;
+  },
+
+  async setImagePrimary(imageId: number) {
+    const res = await api.post(`/images/${imageId}/set-primary/`);
     return res.data;
   },
 

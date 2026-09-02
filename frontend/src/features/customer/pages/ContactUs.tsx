@@ -32,7 +32,7 @@ export const ContactUs: React.FC = () => {
     <div className="animate-fadeIn font-sans text-charcoal space-y-12 py-8 md:py-12 px-4 md:px-12 max-w-screen-xl mx-auto">
       <SEO
         title="Contact Kuduchee Studio (Kudu Chee) — Customer Support & Inquiry"
-        description="Contact Kuduchee (Kudu Chee) Studio by Anil Panda & Kaviz Creations Private Limited. Studio Phone: +91 9971118219, Email: anil.panda@kuduchee.com, Ashram Road, Ahmedabad."
+        description="Contact Kuduchee (Kudu Chee) Studio by Kaviz Creations Private Limited. Studio Phone: +91 9599652190, Email: info@kuduchee.in, Website: www.kuduchee.in, Ashram Road, Ahmedabad."
         canonicalUrl="https://kuduchee.in/contact"
       />
       
@@ -78,8 +78,8 @@ export const ContactUs: React.FC = () => {
                 <Phone className="w-4.5 h-4.5 text-brass shrink-0" />
                 <div>
                   <span className="font-bold text-charcoal block">Phone / WhatsApp</span>
-                  <a href="tel:9971118219" className="text-mid-gray hover:text-brass transition-colors font-mono">
-                    +91 9971118219
+                  <a href="tel:9599652190" className="text-mid-gray hover:text-brass transition-colors font-mono">
+                    +91 9599652190
                   </a>
                 </div>
               </div>
@@ -88,8 +88,8 @@ export const ContactUs: React.FC = () => {
                 <Mail className="w-4.5 h-4.5 text-brass shrink-0" />
                 <div>
                   <span className="font-bold text-charcoal block">Official Email Address</span>
-                  <a href="mailto:anil.panda@kuduchee.com" className="text-mid-gray hover:text-brass transition-colors font-mono">
-                    anil.panda@kuduchee.com
+                  <a href="mailto:info@kuduchee.in" className="text-mid-gray hover:text-brass transition-colors font-mono">
+                    info@kuduchee.in
                   </a>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export const ContactUs: React.FC = () => {
 
           {/* Quick WhatsApp Banner */}
           <a
-            href="https://wa.me/919971118219?text=Hello%20Kuduchee%20Studio!%20I%20have%20an%20inquiry."
+            href="https://wa.me/919599652190?text=Hello%20Kuduchee%20Studio!%20I%20have%20an%20inquiry."
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#25D366]/10 border border-[#25D366]/30 rounded-2xl p-5 flex items-center justify-between gap-4 text-charcoal hover:bg-[#25D366]/20 transition-all shadow-sm group"

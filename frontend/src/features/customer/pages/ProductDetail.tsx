@@ -141,16 +141,16 @@ export const ProductDetail: React.FC = () => {
     }
   };
 
-  const productImages = [
+  const productImages = Array.from(new Set([
     product.primary_image_url,
-    ...(product.images?.map((i) => i.image_url) || [])
-  ].filter(Boolean);
+    ...(product.images?.map((i) => i.image_src || i.image_url) || [])
+  ])).filter(Boolean) as string[];
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-8 md:py-12 animate-fadeIn font-sans">
       <SEO
-        title={`${product.name} — Kuduchee (Kudu Chee) Stoneware`}
-        description={`${product.name} handcrafted stoneware by Kuduchee (Kudu Chee) & Anil Panda (Kaviz Creations). 1280°C kiln-fired stoneware, lead-free and food-safe.`}
+        title={`${product.name} — Kuduchee (Kudu Chee) Porcelain`}
+        description={`${product.name} handcrafted porcelain by Kuduchee (Kudu Chee) & Anil Panda (Kaviz Creations). 1280°C kiln-fired porcelain, lead-free and food-safe.`}
         canonicalUrl={`https://kuduchee.in/product/${product.slug}`}
         ogImage={productImages[0] || 'https://kuduchee.in/kuduchee-logo.jpg'}
         ogType="product"
@@ -160,7 +160,7 @@ export const ProductDetail: React.FC = () => {
             '@type': 'Product',
             'name': product.name,
             'image': productImages,
-            'description': product.description || 'Handcrafted 1280°C high-fired stoneware dinnerware by Kuduchee.',
+            'description': product.description || 'Handcrafted 1280°C high-fired porcelain dinnerware by Kuduchee.',
             'sku': selectedVariant?.sku || `KUD-${product.id}`,
             'brand': {
               '@type': 'Brand',
@@ -202,10 +202,15 @@ export const ProductDetail: React.FC = () => {
         ]}
       />
       {/* Breadcrumb / Back Button */}
-      <Link to="/shop" className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-mid-gray hover:text-brass transition-colors mb-6 md:mb-10">
-        <ArrowLeft className="w-4 h-4" />
-        Back to {product.category_name || 'Catalog'}
-      </Link>
+      <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-mid-gray mb-6 md:mb-10">
+        <Link to="/shop" className="inline-flex items-center gap-1.5 hover:text-brass transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+          {product.category_name || 'Catalog'}
+        </Link>
+        {product.sub_category_name && (
+          <span className="text-mid-gray/60 font-bold">/ {product.sub_category_name}</span>
+        )}
+      </div>
 
       <div className="grid lg:grid-cols-12 gap-6 md:gap-12 items-start">
         {/* Left Column: Image Gallery */}
@@ -217,32 +222,24 @@ export const ProductDetail: React.FC = () => {
               </span>
             )}
             <img
-              src={selectedImage || product.primary_image_url}
+              src={selectedImage || productImages[0] || product.primary_image_url}
               alt={product.name}
               className="w-full h-full object-cover transition-all duration-500"
             />
           </div>
 
           {/* Gallery Thumbnails */}
-          {product.images && product.images.length > 0 && (
+          {productImages.length > 1 && (
             <div className="flex items-center gap-3 overflow-x-auto pb-2">
-              <button
-                onClick={() => setSelectedImage(product.primary_image_url)}
-                className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition-all shrink-0 ${
-                  selectedImage === product.primary_image_url ? 'border-brass ring-2 ring-brass/20' : 'border-warm-gray/50 opacity-70 hover:opacity-100'
-                }`}
-              >
-                <img src={product.primary_image_url} alt="Thumbnail" className="w-full h-full object-cover" />
-              </button>
-              {product.images.map((img) => (
+              {productImages.map((src, idx) => (
                 <button
-                  key={img.id}
-                  onClick={() => setSelectedImage(img.image_url)}
-                  className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition-all shrink-0 ${
-                    selectedImage === img.image_url ? 'border-brass ring-2 ring-brass/20' : 'border-warm-gray/50 opacity-70 hover:opacity-100'
+                  key={idx}
+                  onClick={() => setSelectedImage(src)}
+                  className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
+                    (selectedImage || productImages[0]) === src ? 'border-brass ring-2 ring-brass/20' : 'border-warm-gray/50 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img src={img.image_url} alt="Gallery" className="w-full h-full object-cover" />
+                  <img src={src} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -281,7 +278,7 @@ export const ProductDetail: React.FC = () => {
           </div>
 
           <p className="text-[13px] text-mid-gray font-light leading-relaxed border-t border-warm-gray/40 pt-4">
-            {product.description || 'Handcrafted stoneware piece fired at 1280°C with organic mineral glazes.'}
+            {product.description || 'Handcrafted porcelain piece fired at 1280°C with organic mineral glazes.'}
           </p>
 
           {/* Variants Selector */}

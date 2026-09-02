@@ -56,7 +56,7 @@ const SECTION_THEMES: Record<string, SectionTheme> = {
   '': {
     heroTag: 'EXPLORE COLLECTION',
     heroTitle: 'All Studio Ceramics',
-    heroSubtitle: 'Browse our complete range of handcrafted stoneware, tableware, and artisan pottery pieces.',
+    heroSubtitle: 'Browse our complete range of handcrafted porcelain, tableware, and artisan pottery pieces.',
     heroBg: 'bg-gradient-to-br from-[#F4EFEA] via-[#FAF8F5] to-[#E8E0D5]',
     heroOverlay: '',
     heroImage: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&q=80',
@@ -78,82 +78,80 @@ const SECTION_THEMES: Record<string, SectionTheme> = {
   /* ── BEST SELLERS: Warm amber & social proof ──
      Psychology: Orange/amber = enthusiasm, confidence, social validation.
      Triggers herd instinct — "others love this, I should too." */
+  /* ── BEST SELLERS: Warm Terracotta Orange & Social Validation ── */
   'best-sellers': {
     heroTag: 'MOST LOVED BY COLLECTORS',
     heroTitle: 'Best Seller Collection',
     heroSubtitle: 'The pieces our customers keep coming back for. Handpicked favorites rated 5-stars by over 500+ collectors across India.',
-    heroBg: 'bg-gradient-to-br from-[#2D1F0E] via-[#1A1309] to-[#0F0C07]',
-    heroOverlay: 'bg-gradient-to-r from-[#C2B267]/10 via-transparent to-[#D4A574]/5',
+    heroBg: 'bg-gradient-to-br from-[#2D2D2D] via-[#241E18] to-[#1A1510]',
+    heroOverlay: 'bg-gradient-to-r from-[#D69151]/15 via-transparent to-[#C2B280]/10',
     heroImage: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80',
-    heroIcon: <TrendingUp className="w-5 h-5" />,
+    heroIcon: <TrendingUp className="w-5 h-5 text-[#D69151]" />,
     heroBadge: '500+ HAPPY COLLECTORS',
-    heroBadgeClass: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
-    cardBorder: 'border-amber-200/60 shadow-[0_4px_20px_-4px_rgba(245,158,11,0.15)]',
-    cardHover: 'hover:shadow-[0_8px_30px_-4px_rgba(245,158,11,0.25)] hover:border-amber-300/80',
+    heroBadgeClass: 'bg-[#D69151]/20 text-[#D69151] border-[#D69151]/40',
+    cardBorder: 'border-[#D69151]/40 shadow-terracotta-glow',
+    cardHover: 'hover:shadow-[0_8px_30px_-4px_rgba(214,145,81,0.35)] hover:border-[#D69151]',
     cardBadge: 'BEST SELLER',
-    cardBadgeClass: 'bg-gradient-to-r from-amber-500 to-amber-600 text-white',
-    btnClass: 'bg-gradient-to-r from-amber-500 to-amber-600 text-white hover:from-amber-600 hover:to-amber-700',
-    accentColor: 'text-amber-500',
-    pillActive: 'bg-amber-500 text-white border-amber-500',
-    pillInactive: 'bg-amber-50 text-amber-700 border-amber-200/60 hover:border-amber-400 hover:text-amber-800',
-    toolbarClass: 'bg-amber-50/80 border-amber-200/50',
-    gridBg: 'bg-gradient-to-b from-amber-50/30 to-transparent rounded-3xl p-4 md:p-6',
+    cardBadgeClass: 'bg-[#D69151] text-[#EFE8E2]',
+    btnClass: 'btn-terracotta',
+    accentColor: 'text-[#D69151]',
+    pillActive: 'bg-[#D69151] text-[#EFE8E2] border-[#D69151]',
+    pillInactive: 'bg-[#EFE8E2] text-[#767067] border-[#D8CEC4] hover:border-[#D69151] hover:text-[#D69151]',
+    toolbarClass: 'bg-[#EFE8E2] border-[#D8CEC4]',
+    gridBg: 'bg-gradient-to-b from-[#D69151]/10 to-transparent rounded-3xl p-4 md:p-6',
   },
 
-  /* ── NEW ARRIVALS: Fresh green & curiosity ──
-     Psychology: Teal/green = freshness, growth, novelty, discovery.
-     Creates urgency through newness — "get it before anyone else." */
+  /* ── NEW ARRIVALS: Soft Sage Green & Studio Launches ── */
   'new-arrivals': {
     heroTag: 'FRESH FROM THE KILN',
     heroTitle: 'New Studio Arrivals',
     heroSubtitle: 'Freshly glazed pieces straight from the 1280°C Ahmedabad kiln. Be the first to own these new creations.',
-    heroBg: 'bg-gradient-to-br from-[#0C1F1A] via-[#0A1A14] to-[#06110D]',
-    heroOverlay: 'bg-gradient-to-r from-emerald-500/8 via-transparent to-teal-500/5',
+    heroBg: 'bg-gradient-to-br from-[#2D2D2D] via-[#1E241C] to-[#121A12]',
+    heroOverlay: 'bg-gradient-to-r from-[#A8BC8F]/15 via-transparent to-[#C2B280]/10',
     heroImage: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=80',
-    heroIcon: <Clock className="w-5 h-5" />,
+    heroIcon: <Clock className="w-5 h-5 text-[#A8BC8F]" />,
     heroBadge: 'JUST LAUNCHED',
-    heroBadgeClass: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
-    cardBorder: 'border-emerald-200/60 shadow-[0_4px_20px_-4px_rgba(16,185,129,0.12)]',
-    cardHover: 'hover:shadow-[0_8px_30px_-4px_rgba(16,185,129,0.2)] hover:border-emerald-300/80',
+    heroBadgeClass: 'bg-[#A8BC8F]/20 text-[#A8BC8F] border-[#A8BC8F]/40',
+    cardBorder: 'border-[#A8BC8F]/40 shadow-sage-glow',
+    cardHover: 'hover:shadow-[0_8px_30px_-4px_rgba(168,188,143,0.35)] hover:border-[#A8BC8F]',
     cardBadge: 'NEW ARRIVAL',
-    cardBadgeClass: 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white',
-    btnClass: 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white hover:from-emerald-700 hover:to-teal-800',
-    accentColor: 'text-emerald-600',
-    pillActive: 'bg-emerald-600 text-white border-emerald-600',
-    pillInactive: 'bg-emerald-50 text-emerald-700 border-emerald-200/60 hover:border-emerald-400 hover:text-emerald-800',
-    toolbarClass: 'bg-emerald-50/80 border-emerald-200/50',
-    gridBg: 'bg-gradient-to-b from-emerald-50/30 to-transparent rounded-3xl p-4 md:p-6',
+    cardBadgeClass: 'bg-[#A8BC8F] text-[#2D2D2D]',
+    btnClass: 'btn-sage',
+    accentColor: 'text-[#A8BC8F]',
+    pillActive: 'bg-[#A8BC8F] text-[#2D2D2D] border-[#A8BC8F]',
+    pillInactive: 'bg-[#EFE8E2] text-[#767067] border-[#D8CEC4] hover:border-[#A8BC8F] hover:text-[#A8BC8F]',
+    toolbarClass: 'bg-[#EFE8E2] border-[#D8CEC4]',
+    gridBg: 'bg-gradient-to-b from-[#A8BC8F]/10 to-transparent rounded-3xl p-4 md:p-6',
   },
 
-  /* ── EXCLUSIVE STORE: Deep obsidian & gold, ultra-premium ──
-     Psychology: Black/gold = luxury, exclusivity, power, status.
-     Creates scarcity instinct — "this is rare, I deserve this." */
+  /* ── EXCLUSIVE STORE: Deep Obsidian & Kuduchee Olive Gold ── */
   'exclusive': {
     heroTag: 'LIMITED EDITION MASTERPIECES',
     heroTitle: 'The Exclusive Store',
     heroSubtitle: 'Bespoke, limited-run clay masterpieces for the discerning collector. Each piece is numbered and comes with a certificate of authenticity.',
-    heroBg: 'bg-gradient-to-br from-[#0A0907] via-[#121010] to-[#0A0907]',
-    heroOverlay: 'bg-gradient-to-r from-[#C2B267]/8 via-transparent to-[#D4B892]/5',
+    heroBg: 'bg-gradient-to-br from-[#2D2D2D] via-[#1F1F1F] to-[#141414]',
+    heroOverlay: 'bg-gradient-to-r from-[#C2B280]/15 via-transparent to-[#CEAA9D]/10',
     heroImage: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&q=80',
-    heroIcon: <Crown className="w-5 h-5" />,
+    heroIcon: <Crown className="w-5 h-5 text-[#C2B280]" />,
     heroBadge: 'COLLECTOR\'S EDITION',
-    heroBadgeClass: 'bg-[#C2B267]/15 text-[#D4B892] border-[#C2B267]/30',
-    cardBorder: 'border-[#C2B267]/40 shadow-brass-glow',
-    cardHover: 'hover:shadow-[0_12px_45px_-8px_rgba(194,178,103,0.4)] hover:border-[#C2B267]/70',
+    heroBadgeClass: 'bg-[#C2B280]/20 text-[#C2B280] border-[#C2B280]/40',
+    cardBorder: 'border-[#C2B280]/40 shadow-brass-glow',
+    cardHover: 'hover:shadow-[0_12px_45px_-8px_rgba(194,178,128,0.4)] hover:border-[#C2B280]',
     cardBadge: 'EXCLUSIVE BATCH',
-    cardBadgeClass: 'bg-gradient-to-r from-[#C2B267] to-[#D4B892] text-[#0A0907]',
-    btnClass: 'bg-gradient-to-r from-[#C2B267] to-[#D4B892] text-[#0A0907] hover:from-[#D4B892] hover:to-[#C2B267] font-extrabold',
-    accentColor: 'text-[#C2B267]',
-    pillActive: 'bg-[#C2B267] text-[#0A0907] border-[#C2B267]',
-    pillInactive: 'bg-[#0A0907] text-[#D4B892]/80 border-[#C2B267]/25 hover:border-[#C2B267]/60 hover:text-[#D4B892]',
-    toolbarClass: 'bg-[#0E0D0B] border-[#C2B267]/20',
-    gridBg: 'bg-gradient-to-b from-[#0A0907]/50 to-transparent rounded-3xl p-4 md:p-6',
+    cardBadgeClass: 'bg-[#C2B280] text-[#2D2D2D]',
+    btnClass: 'btn-primary',
+    accentColor: 'text-[#C2B280]',
+    pillActive: 'bg-[#C2B280] text-[#2D2D2D] border-[#C2B280]',
+    pillInactive: 'bg-[#2D2D2D] text-[#EFE8E2]/80 border-[#C2B280]/25 hover:border-[#C2B280] hover:text-[#C2B280]',
+    toolbarClass: 'bg-[#2D2D2D] border-[#C2B280]/25 text-[#EFE8E2]',
+    gridBg: 'bg-gradient-to-b from-[#2D2D2D]/40 to-transparent rounded-3xl p-4 md:p-6',
   },
 };
 
 export const Shop: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedCategorySlug = searchParams.get('category') || '';
+  const selectedSubCategorySlug = searchParams.get('subcategory') || '';
   const initialSearch = searchParams.get('search') || '';
   const section = searchParams.get('section') || '';
 
@@ -180,6 +178,7 @@ export const Shop: React.FC = () => {
           catalogService.getCategories(),
           catalogService.getProducts({
             category__slug: selectedCategorySlug || undefined,
+            sub_category__slug: selectedSubCategorySlug || undefined,
             search: searchQuery || undefined,
             ordering: section === 'new-arrivals' ? '-created_at' : (ordering || undefined),
             badge: section === 'best-sellers' ? 'Best Seller' :
@@ -197,13 +196,23 @@ export const Shop: React.FC = () => {
     };
 
     fetchCatalog();
-  }, [selectedCategorySlug, searchQuery, ordering, section]);
+  }, [selectedCategorySlug, selectedSubCategorySlug, searchQuery, ordering, section]);
 
   const handleCategorySelect = (slug: string) => {
+    searchParams.delete('subcategory');
     if (slug === selectedCategorySlug) {
       searchParams.delete('category');
     } else {
       searchParams.set('category', slug);
+    }
+    setSearchParams(searchParams);
+  };
+
+  const handleSubCategorySelect = (subSlug: string) => {
+    if (subSlug === selectedSubCategorySlug) {
+      searchParams.delete('subcategory');
+    } else {
+      searchParams.set('subcategory', subSlug);
     }
     setSearchParams(searchParams);
   };
@@ -229,11 +238,11 @@ export const Shop: React.FC = () => {
       <SEO
         title={
           isExclusive ? '✦ Exclusive Studio Collection — Kuduchee (Kudu Chee)' :
-          isBestSeller ? 'Best Sellers Crockery & Stoneware — Kuduchee (Kudu Chee)' :
+          isBestSeller ? 'Best Sellers Crockery & Porcelain — Kuduchee (Kudu Chee)' :
           isNewArrivals ? 'New Studio Arrivals — Kuduchee (Kudu Chee)' :
-          'Shop Artisan Stoneware & Ceramic Tableware — Kuduchee (Kudu Chee)'
+          'Shop Artisan Porcelain & Ceramic Tableware — Kuduchee (Kudu Chee)'
         }
-        description="Explore Kuduchee (Kudu Chee) studio collection. Handcrafted 1280°C high-fired stoneware dinner sets, quarter plates, serving bowls & ceramic coffee mugs by Anil Panda."
+        description="Explore Kuduchee (Kudu Chee) studio collection. Handcrafted 1280°C high-fired porcelain dinner sets, quarter plates, serving bowls & ceramic coffee mugs by Anil Panda."
         canonicalUrl="https://kuduchee.in/shop"
       />
 
@@ -360,33 +369,74 @@ export const Shop: React.FC = () => {
         isExclusive ? 'text-[#FAF8F5]' : ''
       }`}>
 
-        {/* ─── FACETED CATEGORIES FILTER ─── */}
-        <div className="-mx-4 px-4 md:mx-0 md:px-0 overflow-x-auto scrollbar-hide">
-          <div className="flex items-center gap-2 md:flex-wrap pb-1 md:pb-0" style={{ minWidth: 'max-content' }}>
-            <button
-              onClick={() => handleCategorySelect('')}
-              className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-wider transition-all border whitespace-nowrap ${
-                !selectedCategorySlug ? theme.pillActive : theme.pillInactive
-              }`}
-            >
-              All Items
-            </button>
+        {/* ─── FACETED CATEGORIES & SUB-CATEGORIES FILTER ─── */}
+        <div className="space-y-3">
+          <div className="-mx-4 px-4 md:mx-0 md:px-0 overflow-x-auto scrollbar-hide">
+            <div className="flex items-center gap-2 md:flex-wrap pb-1 md:pb-0" style={{ minWidth: 'max-content' }}>
+              <button
+                onClick={() => handleCategorySelect('')}
+                className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-wider transition-all border whitespace-nowrap cursor-pointer ${
+                  !selectedCategorySlug ? theme.pillActive : theme.pillInactive
+                }`}
+              >
+                All Items
+              </button>
 
-            {categories.map((cat) => {
-              const isSelected = selectedCategorySlug === cat.slug;
-              return (
+              {categories.map((cat) => {
+                const isSelected = selectedCategorySlug === cat.slug;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => handleCategorySelect(cat.slug)}
+                    className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-wider transition-all border whitespace-nowrap cursor-pointer ${
+                      isSelected ? theme.pillActive : theme.pillInactive
+                    }`}
+                  >
+                    {cat.name} ({cat.product_count})
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* SubCategories Row */}
+          {selectedCategorySlug && (() => {
+            const activeCatObj = categories.find((c) => c.slug === selectedCategorySlug);
+            const activeSubs = activeCatObj?.sub_categories || [];
+            if (activeSubs.length === 0) return null;
+
+            return (
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 pl-2 border-l-2 border-brass/60">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-mid-gray shrink-0">Series:</span>
                 <button
-                  key={cat.id}
-                  onClick={() => handleCategorySelect(cat.slug)}
-                  className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-wider transition-all border whitespace-nowrap ${
-                    isSelected ? theme.pillActive : theme.pillInactive
+                  onClick={() => handleSubCategorySelect('')}
+                  className={`px-3 py-1 rounded-full text-[10px] font-semibold transition-all border whitespace-nowrap cursor-pointer ${
+                    !selectedSubCategorySlug
+                      ? 'bg-charcoal text-white border-charcoal'
+                      : 'bg-porcelain text-mid-gray border-warm-gray/40 hover:border-charcoal hover:text-charcoal'
                   }`}
                 >
-                  {cat.name} ({cat.product_count})
+                  All {activeCatObj?.name}
                 </button>
-              );
-            })}
-          </div>
+                {activeSubs.map((sub) => {
+                  const isSubSelected = selectedSubCategorySlug === sub.slug;
+                  return (
+                    <button
+                      key={sub.id}
+                      onClick={() => handleSubCategorySelect(sub.slug)}
+                      className={`px-3 py-1 rounded-full text-[10px] font-semibold transition-all border whitespace-nowrap cursor-pointer ${
+                        isSubSelected
+                          ? 'bg-brass text-charcoal font-bold border-brass shadow-xs'
+                          : 'bg-porcelain text-mid-gray border-warm-gray/40 hover:border-brass hover:text-charcoal'
+                      }`}
+                    >
+                      {sub.name}
+                    </button>
+                  );
+                })}
+              </div>
+            );
+          })()}
         </div>
 
         {/* ─── TOOLBAR (Search & Sorting) ─── */}
@@ -395,7 +445,7 @@ export const Shop: React.FC = () => {
             <Search className={`w-4 h-4 absolute left-3.5 top-3 ${isExclusive ? 'text-[#D4B892]/50' : 'text-mid-gray'}`} />
             <input
               type="text"
-              placeholder="Search stoneware, ceramic mugs, vases…"
+              placeholder="Search porcelain, ceramic mugs, vases…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className={`w-full border rounded-xl pl-10 pr-4 py-2.5 text-xs focus:outline-none transition-all ${

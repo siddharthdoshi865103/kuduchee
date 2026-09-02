@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import action
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.tokens import RefreshToken
 from django_filters.rest_framework import DjangoFilterBackend
@@ -21,6 +22,7 @@ class OptionalJWTAuthentication(JWTAuthentication):
 from .models import (
     Address,
     Category,
+    SubCategory,
     Product,
     ProductVariant,
     ProductImage,
@@ -39,6 +41,7 @@ from .serializers import (
     ProfileUpdateSerializer,
     AddressSerializer,
     CategorySerializer,
+    SubCategorySerializer,
     ProductSerializer,
     ProductVariantSerializer,
     ProductImageSerializer,
@@ -269,7 +272,7 @@ class AddressViewSet(viewsets.ModelViewSet):
 
 class CategoryViewSet(viewsets.ModelViewSet):
     authentication_classes = [OptionalJWTAuthentication]
-    queryset = Category.objects.all()
+    queryset = Category.objects.all().prefetch_related('sub_categories')
     serializer_class = CategorySerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['is_featured']
@@ -281,12 +284,26 @@ class CategoryViewSet(viewsets.ModelViewSet):
         return [IsAdminUser()]
 
 
+class SubCategoryViewSet(viewsets.ModelViewSet):
+    authentication_classes = [OptionalJWTAuthentication]
+    queryset = SubCategory.objects.all().select_related('category')
+    serializer_class = SubCategorySerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['category', 'is_active']
+    search_fields = ['name', 'description']
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [AllowAny()]
+        return [IsAdminUser()]
+
+
 class ProductViewSet(viewsets.ModelViewSet):
     authentication_classes = [OptionalJWTAuthentication]
-    queryset = Product.objects.all().select_related('category').prefetch_related('variants', 'images', 'reviews')
+    queryset = Product.objects.all().select_related('category', 'sub_category').prefetch_related('variants', 'images', 'reviews')
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ['category', 'category__slug', 'is_active', 'is_featured', 'badge']
+    filterset_fields = ['category', 'category__slug', 'sub_category', 'sub_category__slug', 'is_active', 'is_featured', 'badge']
     search_fields = ['name', 'description', 'category__name']
     ordering_fields = ['offer_price', 'created_at', 'stock_quantity']
 
@@ -301,6 +318,31 @@ class ProductViewSet(viewsets.ModelViewSet):
             qs = qs.filter(is_active=True)
         return qs
 
+    @action(detail=True, methods=['post'], permission_classes=[IsAdminUser], parser_classes=[MultiPartParser, FormParser], url_path='upload-images')
+    def upload_images(self, request, pk=None):
+        """Upload multiple images directly from device for a product."""
+        product = self.get_object()
+        files = request.FILES.getlist('images') or request.FILES.getlist('image')
+        if not files:
+            return Response({'detail': 'No image files provided under key "images" or "image".'}, status=status.HTTP_400_BAD_REQUEST)
+
+        created_images = []
+        is_first = not product.images.filter(is_primary=True).exists()
+
+        for idx, file_obj in enumerate(files):
+            img_obj = ProductImage.objects.create(
+                product=product,
+                image=file_obj,
+                alt_text=f"{product.name} Image",
+                is_primary=(is_first and idx == 0)
+            )
+            created_images.append(img_obj)
+
+        product.sync_primary_image()
+        serializer = ProductImageSerializer(created_images, many=True, context={'request': request})
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
 
 class ProductVariantViewSet(viewsets.ModelViewSet):
     authentication_classes = [OptionalJWTAuthentication]
@@ -314,14 +356,41 @@ class ProductVariantViewSet(viewsets.ModelViewSet):
 
 
 class ProductImageViewSet(viewsets.ModelViewSet):
+    """Supports both URL-based and file-upload-based image creation.
+    Accepts multipart/form-data for file uploads; converts to WebP via Pillow."""
     authentication_classes = [OptionalJWTAuthentication]
     queryset = ProductImage.objects.all()
     serializer_class = ProductImageSerializer
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
 
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
             return [AllowAny()]
         return [IsAdminUser()]
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['request'] = self.request
+        return context
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        instance = serializer.save()
+        # Re-serialize to return image_src with absolute URL
+        out_serializer = self.get_serializer(instance)
+        return Response(out_serializer.data, status=status.HTTP_201_CREATED)
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAdminUser], url_path='set-primary')
+    def set_primary(self, request, pk=None):
+        """Set this image as the primary image for its product."""
+        image = self.get_object()
+        ProductImage.objects.filter(product=image.product, is_primary=True).update(is_primary=False)
+        image.is_primary = True
+        image.save()
+        # Sync product primary_image_url
+        image.product.sync_primary_image()
+        return Response(self.get_serializer(image).data)
 
 
 # ─── Dynamic Site Content ViewSets ───────────────────────────────────────────
@@ -768,4 +837,3 @@ class AdminUserInfoView(APIView):
                 'default_address': address_str,
             })
         return Response(data)
-

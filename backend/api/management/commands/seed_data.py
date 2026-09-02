@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
-from api.models import Category, Product, SiteSettings, HeroBanner
+from api.models import Category, SubCategory, Product, SiteSettings, HeroBanner
 
 class Command(BaseCommand):
-    help = 'Seeds initial categories, products, and site settings for Kuduchee Studio.'
+    help = 'Seeds initial categories, subcategories, products, and site settings for Kuduchee Studio.'
 
     def handle(self, *args, **options):
         self.stdout.write('Seeding Kuduchee Studio data...')
@@ -11,7 +11,7 @@ class Command(BaseCommand):
         cat_dinner, _ = Category.objects.get_or_create(
             name='Dinner Sets',
             defaults={
-                'description': 'Handcrafted 1280°C High-Fired Stoneware Dinnerware',
+                'description': 'Handcrafted 1280°C High-Fired Porcelain Dinnerware',
                 'is_featured': True
             }
         )
@@ -25,17 +25,45 @@ class Command(BaseCommand):
         cat_mugs, _ = Category.objects.get_or_create(
             name='Mugs & Drinkware',
             defaults={
-                'description': 'Ergonomic matte & glazed stoneware mugs',
+                'description': 'Ergonomic matte & glazed porcelain mugs',
                 'is_featured': True
             }
         )
 
+        # SubCategories
+        sub_full_dinner, _ = SubCategory.objects.get_or_create(
+            category=cat_dinner, name='16-Piece Sets',
+            defaults={'description': 'Complete dinnerware sets for modern dining.'}
+        )
+        sub_plates, _ = SubCategory.objects.get_or_create(
+            category=cat_dinner, name='Quarter & Side Plates',
+            defaults={'description': 'Artisan appetizer & side plates.'}
+        )
+        sub_bowls, _ = SubCategory.objects.get_or_create(
+            category=cat_bowls, name='Serving Bowls',
+            defaults={'description': 'Deep ceramic bowls for soups, pasta, & salads.'}
+        )
+        sub_platters, _ = SubCategory.objects.get_or_create(
+            category=cat_bowls, name='Platters & Trays',
+            defaults={'description': 'Handcrafted stoneware platters.'}
+        )
+        sub_mugs, _ = SubCategory.objects.get_or_create(
+            category=cat_mugs, name='Coffee Mugs',
+            defaults={'description': 'Hand-glazed ceramic coffee mugs.'}
+        )
+        sub_tea, _ = SubCategory.objects.get_or_create(
+            category=cat_mugs, name='Tea Cups & Saucers',
+            defaults={'description': 'Fine porcelain tea cup sets.'}
+        )
+
         # Products
+
         products_data = [
             {
                 'category': cat_dinner,
-                'name': 'Artisan Earth Stoneware Dinner Set (16 Piece)',
-                'description': 'Complete 16-piece high-fired stoneware dinnerware set featuring rustic reactive glazes, scratch-resistant surface, and food-safe finish.',
+                'sub_category': sub_full_dinner,
+                'name': 'Artisan Earth Porcelain Dinner Set (16 Piece)',
+                'description': 'Complete 16-piece high-fired porcelain dinnerware set featuring rustic reactive glazes, scratch-resistant surface, and food-safe finish.',
                 'mrp': 8999.00,
                 'offer_price': 6499.00,
                 'stock_quantity': 25,
@@ -45,6 +73,7 @@ class Command(BaseCommand):
             },
             {
                 'category': cat_dinner,
+                'sub_category': sub_plates,
                 'name': 'Nordic Matte Charcoal Quarter Plates (Set of 4)',
                 'description': 'Minimalist quarter plates with tactile matte charcoal texture, high-fired at 1280°C for exceptional durability.',
                 'mrp': 2499.00,
@@ -56,6 +85,7 @@ class Command(BaseCommand):
             },
             {
                 'category': cat_bowls,
+                'sub_category': sub_bowls,
                 'name': 'Terracotta Speckled Serving Bowl',
                 'description': 'Deep artisan serving bowl with subtle speckles and warm terracotta undertones. Microwave & dishwasher safe.',
                 'mrp': 1999.00,
@@ -67,6 +97,7 @@ class Command(BaseCommand):
             },
             {
                 'category': cat_mugs,
+                'sub_category': sub_mugs,
                 'name': 'Studio Brass Glaze Coffee Mugs (Set of 2)',
                 'description': 'Handcrafted ceramic mugs featuring signature brass rim detail and comfort grip handles.',
                 'mrp': 1499.00,
@@ -79,6 +110,7 @@ class Command(BaseCommand):
             # Exclusive Collection
             {
                 'category': cat_dinner,
+                'sub_category': sub_full_dinner,
                 'name': 'Midnight Gold Signature Dinner Set (12 Piece)',
                 'description': 'Limited-edition 12-piece obsidian black dinner set with hand-painted 24K gold rim accents. Certificate of authenticity included. Collector\'s batch #06.',
                 'mrp': 14999.00,
@@ -91,7 +123,7 @@ class Command(BaseCommand):
             {
                 'category': cat_bowls,
                 'name': 'Wabi-Sabi Heritage Serving Platter',
-                'description': 'One-of-a-kind irregular-edge stoneware platter with natural ash glaze from wood-fired kiln. Each piece is uniquely shaped by nature.',
+                'description': 'One-of-a-kind irregular-edge porcelain platter with natural ash glaze from wood-fired kiln. Each piece is uniquely shaped by nature.',
                 'mrp': 5999.00,
                 'offer_price': 4499.00,
                 'stock_quantity': 12,
@@ -114,7 +146,7 @@ class Command(BaseCommand):
             {
                 'category': cat_bowls,
                 'name': 'Sakura Petal Ramen Bowl Set (Set of 2)',
-                'description': 'Deep-walled ramen bowls with delicate cherry blossom relief pattern. Perfect for noodles, pho, and udon. 1280°C fired stoneware.',
+                'description': 'Deep-walled ramen bowls with delicate cherry blossom relief pattern. Perfect for noodles, pho, and udon. 1280°C fired porcelain.',
                 'mrp': 2999.00,
                 'offer_price': 2299.00,
                 'stock_quantity': 35,
@@ -134,9 +166,9 @@ class Command(BaseCommand):
         SiteSettings.objects.get_or_create(
             id=1,
             defaults={
-                'ticker_text': '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Stoneware · Lead-Free & Food Safe',
-                'support_phone': '+91 9971118219',
-                'support_email': 'anil.panda@kuduchee.com'
+                'ticker_text': '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Porcelain · Lead-Free & Food Safe',
+                'support_phone': '+91 9599652190',
+                'support_email': 'info@kuduchee.in'
             }
         )
 

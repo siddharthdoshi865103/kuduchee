@@ -1,9 +1,15 @@
 """
 Kuduchee 2.0 — Data Models
-Includes Auth (Profile, Address), Catalog (Category, Product, ProductVariant, ProductImage),
+Includes Auth (Profile, Address), Catalog (Category, SubCategory, Product, ProductVariant, ProductImage),
 E-Commerce (Wishlist, Cart, PaymentSettings, Order, OrderItem, Review),
 and Dynamic Site Content (HeroBanner, SiteSettings)
 """
+import os
+import uuid
+from io import BytesIO
+from pathlib import Path
+
+from django.core.files.base import ContentFile
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
@@ -70,8 +76,49 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
 
+class SubCategory(models.Model):
+    """A child category belonging to a parent Category."""
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='sub_categories')
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=140, blank=True)
+    description = models.TextField(blank=True, default='')
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'Sub Categories'
+        ordering = ['name']
+        unique_together = ('category', 'name')
+
+    def __str__(self):
+        return f"{self.category.name} → {self.name}"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(f"{self.category.name}-{self.name}")
+            slug = base_slug
+            counter = 1
+            while SubCategory.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+
+def product_image_upload_path(instance, filename):
+    """Dynamic upload path: media/products/<product_id>/<uuid>.webp"""
+    ext = 'webp'
+    new_filename = f"{uuid.uuid4().hex}.{ext}"
+    product_id = instance.product_id or 'new'
+    return os.path.join('products', str(product_id), new_filename)
+
+
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    sub_category = models.ForeignKey(
+        SubCategory, on_delete=models.SET_NULL,
+        related_name='products', null=True, blank=True
+    )
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=280, unique=True, blank=True)
     description = models.TextField(blank=True, default='')
@@ -110,6 +157,17 @@ class Product(models.Model):
             self.slug = slug
         super().save(*args, **kwargs)
 
+    def sync_primary_image(self):
+        """Sync primary_image_url from the primary ProductImage if one exists."""
+        primary = self.images.filter(is_primary=True).first()
+        if not primary:
+            primary = self.images.first()
+        if primary:
+            new_url = primary.image_src
+            if new_url and self.primary_image_url != new_url:
+                Product.objects.filter(pk=self.pk).update(primary_image_url=new_url)
+                self.primary_image_url = new_url
+
 
 class ProductVariant(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='variants')
@@ -125,13 +183,82 @@ class ProductVariant(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image_url = models.URLField(max_length=500)
+    # Legacy URL field (kept for seed data / external images)
+    image_url = models.URLField(max_length=500, blank=True, default='')
+    # Uploaded file (device upload → stored as WebP)
+    image = models.ImageField(upload_to=product_image_upload_path, blank=True, null=True)
     alt_text = models.CharField(max_length=255, blank=True, default='')
     is_primary = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-is_primary', 'created_at']
+
     def __str__(self):
         return f"Image for {self.product.name}"
+
+    @property
+    def image_src(self):
+        """Returns the best available image URL: uploaded file > image_url."""
+        if self.image and self.image.name:
+            try:
+                return self.image.url
+            except Exception:
+                pass
+        return self.image_url or ''
+
+    def _convert_to_webp(self):
+        """Convert the uploaded image to WebP format using Pillow. Replace in-place."""
+        try:
+            from PIL import Image as PilImage
+        except ImportError:
+            return  # Pillow not installed — skip conversion
+
+        if not self.image or not self.image.name:
+            return
+
+        # Already WebP — skip
+        if self.image.name.lower().endswith('.webp'):
+            return
+
+        try:
+            self.image.seek(0)
+            img = PilImage.open(self.image)
+            img = img.convert('RGBA') if img.mode in ('RGBA', 'LA') else img.convert('RGB')
+
+            output = BytesIO()
+            img.save(output, format='WEBP', quality=85, method=6)
+            output.seek(0)
+
+            # Build new filename with .webp extension
+            old_name = Path(self.image.name).stem
+            new_name = f"{old_name}.webp"
+
+            self.image.save(new_name, ContentFile(output.read()), save=False)
+        except Exception as e:
+            print(f"[ProductImage] WebP conversion failed: {e}")
+
+    def save(self, *args, **kwargs):
+        # If this is set as primary, unset others for the same product
+        if self.is_primary:
+            ProductImage.objects.filter(
+                product=self.product, is_primary=True
+            ).exclude(pk=self.pk).update(is_primary=False)
+
+        is_new = self.pk is None
+        super().save(*args, **kwargs)
+
+        # Convert to WebP after first save (so we have a pk for the path)
+        if is_new and self.image and self.image.name and not self.image.name.endswith('.webp'):
+            self._convert_to_webp()
+            # Save again only to persist the converted file
+            ProductImage.objects.filter(pk=self.pk).update(image=self.image.name)
+
+        # Sync product primary_image_url
+        try:
+            self.product.sync_primary_image()
+        except Exception:
+            pass
 
 
 # ─── E-Commerce Models ────────────────────────────────────────────────────────
@@ -232,8 +359,8 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.order_number:
-            import uuid
-            self.order_number = f"KDC-{uuid.uuid4().hex[:8].upper()}"
+            import uuid as _uuid
+            self.order_number = f"KDC-{_uuid.uuid4().hex[:8].upper()}"
         super().save(*args, **kwargs)
 
 
@@ -271,7 +398,7 @@ class Review(models.Model):
 class HeroBanner(models.Model):
     """Dynamic hero carousel slide managed by Admin."""
     tagline = models.CharField(max_length=255, default='AUTUMN / WINTER STUDIO COLLECTION')
-    title = models.CharField(max_length=255, default='Opulence Fired in Stoneware.')
+    title = models.CharField(max_length=255, default='Opulence Fired in Porcelain.')
     quote = models.TextField(default='Elegance is when the inside is as beautiful as the outside.')
     cta_text = models.CharField(max_length=100, default='Discover Collection')
     cta_link = models.CharField(max_length=255, default='/shop')
@@ -289,11 +416,11 @@ class HeroBanner(models.Model):
 
 class SiteSettings(models.Model):
     """Global storefront text & contact info managed by Admin."""
-    ticker_text = models.TextField(default="100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Stoneware · Lead-Free & Food Safe")
+    ticker_text = models.TextField(default="100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Porcelain · Lead-Free & Food Safe")
     brand_quote = models.TextField(default="Serve What You Deserve.")
     brand_author = models.CharField(max_length=100, default="Kuduchee")
-    contact_email = models.CharField(max_length=100, default="anil.panda@kuduchee.com")
-    contact_phone = models.CharField(max_length=50, default="9971118219")
+    contact_email = models.CharField(max_length=100, default="info@kuduchee.in")
+    contact_phone = models.CharField(max_length=50, default="9599652190")
     company_legal_name = models.CharField(max_length=150, default="Kaviz Creations Private Limited")
     company_location = models.CharField(max_length=255, default="510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009")
     updated_at = models.DateTimeField(auto_now=True)

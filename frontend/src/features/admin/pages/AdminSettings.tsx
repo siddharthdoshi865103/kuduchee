@@ -22,11 +22,11 @@ export const AdminSettings: React.FC = () => {
   // Hero Banners & Site Settings State
   const [heroBanners, setHeroBanners] = useState<HeroBannerData[]>([]);
   const [siteSettings, setSiteSettings] = useState<SiteSettingsData>({
-    ticker_text: '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Stoneware · Lead-Free & Food Safe',
+    ticker_text: '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Porcelain · Lead-Free & Food Safe',
     brand_quote: 'Serve What You Deserve.',
     brand_author: 'Kuduchee',
-    contact_email: 'anil.panda@kuduchee.com',
-    contact_phone: '9971118219',
+    contact_email: 'info@kuduchee.in',
+    contact_phone: '9599652190',
     company_legal_name: 'Kaviz Creations Private Limited',
     company_location: '510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009',
   });
@@ -338,7 +338,7 @@ export const AdminSettings: React.FC = () => {
                       <label className="input-label">Slide Title *</label>
                       <input
                         type="text"
-                        placeholder="e.g. Opulence Fired in Stoneware."
+                        placeholder="e.g. Opulence Fired in Porcelain."
                         value={editingBanner.title || ''}
                         onChange={(e) => setEditingBanner({ ...editingBanner, title: e.target.value })}
                         className="input-field font-brand text-sm"

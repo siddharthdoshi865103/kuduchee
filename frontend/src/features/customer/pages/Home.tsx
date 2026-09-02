@@ -55,8 +55,8 @@ export const Home: React.FC = () => {
       name: 'Ananya Sharma',
       city: 'Mumbai',
       rating: 5,
-      comment: 'The glaze finish on the stoneware dinner set is absolute perfection. Elevates every dinner party!',
-      product_name: 'Stoneware Dinner Set',
+      comment: 'The glaze finish on the porcelain dinner set is absolute perfection. Elevates every dinner party!',
+      product_name: 'Porcelain Dinner Set',
       date: '2 days ago',
     },
     {
@@ -82,7 +82,7 @@ export const Home: React.FC = () => {
   const DEFAULT_MULTIPLE_SLIDES: HeroBannerData[] = [
     {
       tagline: 'AUTUMN / WINTER STUDIO COLLECTION',
-      title: 'Opulence Fired in Stoneware.',
+      title: 'Opulence Fired in Porcelain.',
       quote: 'Elegance is when the inside is as beautiful as the outside.',
       cta_text: 'DISCOVER COLLECTION',
       cta_link: '/shop',
@@ -103,8 +103,8 @@ export const Home: React.FC = () => {
       is_active: true,
     },
     {
-      tagline: 'HERITAGE HOME DECOR',
-      title: 'Hand-Formed Gujarat Stoneware Vases.',
+      tagline: 'HAND-CARVED STUDIO SCULPTURE',
+      title: 'Hand-Formed Gujarat Porcelain Vases.',
       quote: 'Architectural ceramics crafted with organic earthy glazes.',
       cta_text: 'VIEW HOME DECOR',
       cta_link: '/shop?category=home-decor-vases',
@@ -237,7 +237,7 @@ export const Home: React.FC = () => {
           city: reviewerCity || 'Verified Buyer',
           rating: newRating,
           comment: newComment,
-          product_name: 'Studio Stoneware',
+          product_name: 'Studio Porcelain',
           date: 'Just now',
         },
         ...customerReviews,
@@ -265,8 +265,8 @@ export const Home: React.FC = () => {
   return (
     <div className="animate-fadeIn space-y-16 md:space-y-24 font-sans bg-[#FDFCFA] text-charcoal">
       <SEO
-        title="Kuduchee (Kudu Chee) — Handcrafted Stoneware & Ceramic Tableware | Anil Panda"
-        description="Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited — Premium 1280°C high-fired stoneware dinnerware, ceramic dinner sets, serving bowls & artisan mugs. Shop at kuduchee.in"
+        title="Kuduchee (Kudu Chee) — Handcrafted Porcelain & Ceramic Tableware | Anil Panda"
+        description="Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited — Premium 1280°C high-fired porcelain dinnerware, ceramic dinner sets, serving bowls & artisan mugs. Shop at kuduchee.in"
         canonicalUrl="https://kuduchee.in/"
         jsonLd={[
           {
@@ -279,9 +279,9 @@ export const Home: React.FC = () => {
             'founder': { '@type': 'Person', 'name': 'Anil Panda' },
             'contactPoint': {
               '@type': 'ContactPoint',
-              'telephone': '+91-9971118219',
+              'telephone': '+91-9599652190',
               'contactType': 'customer service',
-              'email': 'anil.panda@kuduchee.com',
+              'email': 'info@kuduchee.in',
               'areaServed': 'IN',
               'availableLanguage': ['English', 'Hindi']
             },
@@ -313,8 +313,8 @@ export const Home: React.FC = () => {
             'alternateName': 'Kudu Chee',
             'image': 'https://kuduchee.in/kuduchee-logo.jpg',
             'url': 'https://kuduchee.in/',
-            'telephone': '+91-9971118219',
-            'email': 'anil.panda@kuduchee.com',
+            'telephone': '+91-9599652190',
+            'email': 'info@kuduchee.in',
             'priceRange': '₹999 - ₹14999',
             'address': {
               '@type': 'PostalAddress',
@@ -334,7 +334,7 @@ export const Home: React.FC = () => {
                 'name': 'What is Kuduchee (Kudu Chee)?',
                 'acceptedAnswer': {
                   '@type': 'Answer',
-                  'text': 'Kuduchee (Kudu Chee) is a premium Indian stoneware and ceramic tableware brand founded by Anil Panda under Kaviz Creations Private Limited. We create handcrafted 1280°C high-fired stoneware dinnerware, serving bowls, coffee mugs, and luxury home décor.'
+                  'text': 'Kuduchee (Kudu Chee) is a premium Indian porcelain and ceramic tableware brand founded by Anil Panda under Kaviz Creations Private Limited. We create handcrafted 1280°C high-fired porcelain dinnerware, serving bowls, coffee mugs, and luxury home décor.'
                 }
               },
               {
@@ -347,10 +347,10 @@ export const Home: React.FC = () => {
               },
               {
                 '@type': 'Question',
-                'name': 'Is Kuduchee stoneware safe for daily use?',
+                'name': 'Is Kuduchee porcelain safe for daily use?',
                 'acceptedAnswer': {
                   '@type': 'Answer',
-                  'text': 'Yes! All Kuduchee stoneware is fired at 1280°C in high-temperature kilns, making it dishwasher-safe, microwave-safe, scratch-resistant, and 100% lead-free. Our glazes are non-toxic and food-safe.'
+                  'text': 'Yes! All Kuduchee porcelain is fired at 1280°C in high-temperature kilns, making it dishwasher-safe, microwave-safe, scratch-resistant, and 100% lead-free. Our glazes are non-toxic and food-safe.'
                 }
               },
               {
@@ -403,7 +403,7 @@ export const Home: React.FC = () => {
               </div>
 
               <h1 className="font-brand text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.1] tracking-tight max-w-3xl drop-shadow-xl text-warm-white">
-                {currentBanner?.title || 'Opulence Fired in Stoneware.'}
+                {currentBanner?.title || 'Opulence Fired in Porcelain.'}
               </h1>
 
               <p className="text-xs md:text-lg font-light text-warm-white/80 max-w-lg leading-relaxed font-sans">
@@ -472,7 +472,7 @@ export const Home: React.FC = () => {
                   {/* Product Details */}
                   <div className="space-y-1">
                     <span className="text-[9px] font-bold uppercase tracking-widest text-brass block">
-                      {featuredHeroProduct.category_name || 'STUDIO STONEWARE'}
+                      {featuredHeroProduct.category_name || 'STUDIO PORCELAIN'}
                     </span>
                     <h3 className="font-brand text-lg text-white group-hover:text-brass transition-colors line-clamp-1">
                       {featuredHeroProduct.name}
@@ -583,7 +583,7 @@ export const Home: React.FC = () => {
         <div className="text-center space-y-2">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-brass block">Curated for You</span>
           <h2 className="font-brand text-3xl md:text-5xl text-charcoal font-medium">Shop by Collection</h2>
-          <p className="text-xs md:text-sm text-mid-gray/70 font-light max-w-md mx-auto">Explore our high-fired studio stoneware through distinct seasonal curations.</p>
+          <p className="text-xs md:text-sm text-mid-gray/70 font-light max-w-md mx-auto">Explore our high-fired studio porcelain through distinct seasonal curations.</p>
         </div>
 
         {/* Asymmetric Layout */}
@@ -626,14 +626,14 @@ export const Home: React.FC = () => {
                 alt="New Arrivals"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-103 transition-transform duration-[1200ms]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A15]/95 via-[#0A1A15]/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A15] via-[#0A1A15]/60 to-[#0A1A15]/20" />
               
               <div className="absolute bottom-0 left-0 right-0 p-6 space-y-2 z-10">
                 <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-emerald-500/30">
                   <i className="fa-solid fa-sparkles text-[9px]" /> Just Fired
                 </span>
-                <h3 className="font-brand text-2xl text-white group-hover:text-emerald-300 transition-colors">New Arrivals</h3>
-                <p className="text-[11px] text-white/60 font-light">Fresh stoneware designs straight from the kiln.</p>
+                <h3 className="font-brand text-2xl text-warm-white group-hover:text-emerald-300 transition-colors drop-shadow-lg">New Arrivals</h3>
+                <p className="text-[11px] text-warm-white/75 font-light drop-shadow">Fresh porcelain designs straight from the kiln.</p>
               </div>
             </Link>
 
@@ -647,14 +647,14 @@ export const Home: React.FC = () => {
                 alt="Exclusive Store"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-103 transition-transform duration-[1200ms]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1210] via-[#1A1210]/65 to-[#1A1210]/25" />
               
               <div className="absolute bottom-0 left-0 right-0 p-6 space-y-2 z-10">
                 <span className="inline-flex items-center gap-1.5 bg-brass/25 text-[#FAF8F5] text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-brass/35">
                   <i className="fa-solid fa-crown text-[9px]" /> Limited Batches
                 </span>
-                <h3 className="font-brand text-2xl text-white group-hover:text-[#D4B892] transition-colors">Exclusive Edition</h3>
-                <p className="text-[11px] text-white/60 font-light">Numbered art pieces with signed certificates.</p>
+                <h3 className="font-brand text-2xl text-warm-white group-hover:text-[#D4B892] transition-colors drop-shadow-lg">Exclusive Edition</h3>
+                <p className="text-[11px] text-warm-white/75 font-light drop-shadow">Numbered art pieces with signed certificates.</p>
               </div>
             </Link>
 
@@ -673,7 +673,7 @@ export const Home: React.FC = () => {
               We design memories, not just products.
             </h2>
             <p className="text-xs md:text-sm text-mid-gray/90 leading-relaxed font-light font-sans">
-              At Kuduchee, we bridge ancient stoneware firing practices with contemporary lifestyles. Each ceramic item is carefully shaped from natural raw clays, coated in custom-formulated studio glazes, and vitrified at intense kiln temperatures for unmatched lifetime resilience.
+              At Kuduchee, we bridge ancient porcelain firing practices with contemporary lifestyles. Each ceramic item is carefully shaped from natural raw clays, coated in custom-formulated studio glazes, and vitrified at intense kiln temperatures for unmatched lifetime resilience.
             </p>
 
             <div className="border-l-2 border-brass pl-4 py-1 italic font-brand text-charcoal/80 text-sm md:text-base">
@@ -728,7 +728,7 @@ export const Home: React.FC = () => {
             </div>
             <div>
               <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-brass block">Artisan Guide</span>
-              <h3 className="font-brand text-2xl md:text-4xl text-charcoal font-medium">Find Your Perfect Stoneware</h3>
+              <h3 className="font-brand text-2xl md:text-4xl text-charcoal font-medium">Find Your Perfect Porcelain</h3>
             </div>
           </div>
 
@@ -770,7 +770,7 @@ export const Home: React.FC = () => {
                   {[
                     { id: 'charcoal', label: 'Charcoal & Gold', color: 'bg-[#282624] border-[#B19F53]' },
                     { id: 'porcelain', label: 'Ivory & Cream', color: 'bg-[#FAF8F5] border-warm-gray/40' },
-                    { id: 'sage', label: 'Sage Stoneware', color: 'bg-[#768478] border-[#768478]/40' },
+                    { id: 'sage', label: 'Sage Porcelain', color: 'bg-[#768478] border-[#768478]/40' },
                   ].map((pal) => (
                     <button
                       key={pal.id}
@@ -999,7 +999,7 @@ export const Home: React.FC = () => {
             <span className="text-[9px] font-bold tracking-[0.3em] text-brass uppercase block">Studio Circle</span>
             <h2 className="font-brand text-3xl md:text-5xl text-white font-medium">Join the Batch Releases</h2>
             <p className="text-xs md:text-sm text-warm-white/70 font-light font-sans">
-              Subscribe to receive exclusive access to new kiln batch releases, limited-edition designs, and 10% off your first stoneware order.
+              Subscribe to receive exclusive access to new kiln batch releases, limited-edition designs, and 10% off your first porcelain order.
             </p>
           </div>
 
@@ -1140,14 +1140,14 @@ export const Home: React.FC = () => {
       {/* ─── SEO-RICH CONTENT FOR GOOGLE INDEXING ─── */}
       <section className="bg-porcelain/30 border-t border-warm-gray/30 py-16 px-6 md:px-12" aria-label="About Kuduchee Studio">
         <div className="max-w-screen-xl mx-auto space-y-8">
-          <h2 className="font-brand text-2xl md:text-3xl text-charcoal">Kuduchee (Kudu Chee) — India's Artisan Stoneware Studio by Anil Panda</h2>
+          <h2 className="font-brand text-2xl md:text-3xl text-charcoal">Kuduchee (Kudu Chee) — India's Artisan Porcelain Studio by Anil Panda</h2>
           <div className="grid md:grid-cols-2 gap-8 text-xs md:text-sm text-mid-gray font-light leading-relaxed">
             <div className="space-y-4">
               <p>
-                <strong>Kuduchee</strong> (also known as <strong>Kudu Chee</strong>) is a premium Indian lifestyle and homeware brand founded by <strong>Anil Panda</strong> under <strong>Kaviz Creations Private Limited</strong>. Every piece in our collection is handcrafted from natural clay and fired at <strong>1280°C</strong> in high-temperature kilns, making our stoneware exceptionally durable, scratch-resistant, and 100% food-safe.
+                <strong>Kuduchee</strong> (also known as <strong>Kudu Chee</strong>) is a premium Indian lifestyle and homeware brand founded by <strong>Anil Panda</strong> under <strong>Kaviz Creations Private Limited</strong>. Every piece in our collection is handcrafted from natural clay and fired at <strong>1280°C</strong> in high-temperature kilns, making our porcelain exceptionally durable, scratch-resistant, and 100% food-safe.
               </p>
               <p>
-                At <strong>kuduchee.in</strong>, we offer a curated range of <strong>stoneware dinner sets</strong>, <strong>ceramic quarter plates</strong>, <strong>artisan serving bowls</strong>, <strong>handcrafted coffee mugs</strong>, and <strong>luxury tableware</strong> designed for the modern Indian home. Our designs blend contemporary minimalism with traditional Indian craftsmanship.
+                At <strong>kuduchee.in</strong>, we offer a curated range of <strong>porcelain dinner sets</strong>, <strong>ceramic quarter plates</strong>, <strong>artisan serving bowls</strong>, <strong>handcrafted coffee mugs</strong>, and <strong>luxury tableware</strong> designed for the modern Indian home. Our designs blend contemporary minimalism with traditional Indian craftsmanship.
               </p>
               <p>
                 We believe that every meal deserves a beautiful setting. Our tagline — <em>"Serve What You Deserve"</em> — reflects our commitment to transforming everyday dining into a memorable experience through thoughtfully designed ceramics.
@@ -1158,10 +1158,10 @@ export const Home: React.FC = () => {
                 The name <strong>Kuduchee</strong> is inspired by the grace of the deer and the curiosity of the squirrel — two creatures that embody the brand's philosophy of elegance and attention to detail. Based in <strong>Ahmedabad, Gujarat</strong>, our studio serves customers across India with free shipping, damage replacement guarantee, and certificate of authenticity on exclusive pieces.
               </p>
               <p>
-                Whether you're looking for the perfect <strong>ceramic dinner set</strong> for your home, a unique <strong>stoneware gift set</strong> for a loved one, or collector-grade <strong>exclusive pottery</strong>, Kuduchee offers handcrafted pieces that stand the test of time. All our glazes are <strong>lead-free</strong> and <strong>non-toxic</strong>, ensuring safe and healthy dining.
+                Whether you're looking for the perfect <strong>ceramic dinner set</strong> for your home, a unique <strong>porcelain gift set</strong> for a loved one, or collector-grade <strong>exclusive pottery</strong>, Kuduchee offers handcrafted pieces that stand the test of time. All our glazes are <strong>lead-free</strong> and <strong>non-toxic</strong>, ensuring safe and healthy dining.
               </p>
               <p>
-                Explore our collections: <strong>Best Sellers</strong>, <strong>New Arrivals</strong>, and the <strong>Exclusive Store</strong> — limited-edition masterpieces for the discerning collector. Visit <strong>kuduchee.in</strong> or contact us at <strong>anil.panda@kuduchee.com</strong> | <strong>+91 9971118219</strong>.
+                Explore our collections: <strong>Best Sellers</strong>, <strong>New Arrivals</strong>, and the <strong>Exclusive Store</strong> — limited-edition masterpieces for the discerning collector. Visit <strong>kuduchee.in</strong> or contact us at <strong>info@kuduchee.in</strong> | <strong>+91 9599652190</strong>.
               </p>
             </div>
           </div>
@@ -1169,15 +1169,15 @@ export const Home: React.FC = () => {
           {/* FAQ Schema Content */}
           <details className="border border-warm-gray/40 rounded-2xl p-4 cursor-pointer">
             <summary className="font-semibold text-charcoal text-sm">What is Kuduchee (Kudu Chee)?</summary>
-            <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">Kuduchee (Kudu Chee) is a premium Indian stoneware and ceramic tableware brand founded by Anil Panda under Kaviz Creations Private Limited. We create handcrafted 1280°C high-fired stoneware dinnerware, serving bowls, coffee mugs, and luxury home décor.</p>
+            <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">Kuduchee (Kudu Chee) is a premium Indian porcelain and ceramic tableware brand founded by Anil Panda under Kaviz Creations Private Limited. We create handcrafted 1280°C high-fired porcelain dinnerware, serving bowls, coffee mugs, and luxury home décor.</p>
           </details>
           <details className="border border-warm-gray/40 rounded-2xl p-4 cursor-pointer">
             <summary className="font-semibold text-charcoal text-sm">Who is the founder of Kuduchee?</summary>
             <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">Kuduchee (Kudu Chee) was founded by Anil Panda. The brand operates under Kaviz Creations Private Limited, headquartered at 510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009, India.</p>
           </details>
           <details className="border border-warm-gray/40 rounded-2xl p-4 cursor-pointer">
-            <summary className="font-semibold text-charcoal text-sm">Is Kuduchee stoneware safe for daily use?</summary>
-            <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">Yes! All Kuduchee stoneware is fired at 1280°C in high-temperature kilns, making it dishwasher-safe, microwave-safe, scratch-resistant, and 100% lead-free. Our glazes are non-toxic and food-safe, certified for everyday dining.</p>
+            <summary className="font-semibold text-charcoal text-sm">Is Kuduchee porcelain safe for daily use?</summary>
+            <p className="text-xs text-mid-gray font-light mt-2 leading-relaxed">Yes! All Kuduchee porcelain is fired at 1280°C in high-temperature kilns, making it dishwasher-safe, microwave-safe, scratch-resistant, and 100% lead-free. Our glazes are non-toxic and food-safe, certified for everyday dining.</p>
           </details>
           <details className="border border-warm-gray/40 rounded-2xl p-4 cursor-pointer">
             <summary className="font-semibold text-charcoal text-sm">Where can I buy Kuduchee products?</summary>

@@ -29,7 +29,7 @@ export const StorefrontLayout: React.FC = () => {
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [tickerText, setTickerText] = useState(
-    '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Stoneware · Lead-Free & Food Safe'
+    '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Porcelain · Lead-Free & Food Safe'
   );
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const StorefrontLayout: React.FC = () => {
         }
         setTickerText(text);
       }
-    }).catch(() => {});
+    }).catch(() => { });
   }, []);
 
   // Close dropdown when clicking outside
@@ -76,18 +76,17 @@ export const StorefrontLayout: React.FC = () => {
 
   const getNavLinkClass = (path: string, exact = false, activeColor = 'text-brass') => {
     const isActive = isNavActive(path, exact);
-    return `px-3 py-2.5 transition-all duration-300 text-[10.5px] font-medium uppercase tracking-[0.2em] relative flex flex-col items-center group ${
-      isActive ? `${activeColor} font-semibold` : 'text-charcoal/65 hover:text-charcoal'
-    }`;
+    return `px-3.5 py-2.5 transition-all duration-300 text-[11px] font-space font-medium uppercase tracking-[0.18em] relative flex flex-col items-center group ${isActive ? `${activeColor} font-semibold` : 'text-charcoal/70 hover:text-charcoal'
+      }`;
   };
 
   return (
-    <div className="min-h-screen bg-warm-white flex flex-col font-sans text-charcoal selection:bg-brass selection:text-charcoal">
-      
+    <div className="min-h-screen bg-warm-white flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal">
+
       {/* ─── TOP HEADER INFORMATIONAL TICKER BAR ─── */}
-      <div className="bg-charcoal text-warm-white py-2 px-4 md:px-12 text-[10px] uppercase tracking-widest border-b border-brass/25 relative z-50">
+      <div className="bg-charcoal text-warm-white py-2 px-4 md:px-12 text-[10px] font-space uppercase tracking-[0.2em] border-b border-brass/25 relative z-50">
         <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
-          
+
           {/* Scrolling Ticker Line */}
           <div className="flex items-center gap-2 overflow-hidden w-full sm:w-auto justify-center sm:justify-start">
             <span className="inline-block w-2 h-2 rounded-full bg-brass animate-pulse shrink-0" />
@@ -95,18 +94,18 @@ export const StorefrontLayout: React.FC = () => {
           </div>
 
           {/* Phone Studio Line */}
-          <div className="flex items-center gap-4 shrink-0">
-            <a href="https://wa.me/919971118219" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors flex items-center gap-1">
+          <div className="flex items-center gap-4 shrink-0 font-mono">
+            <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors flex items-center gap-1.5 text-[10px]">
               <Phone className="w-3 h-3 text-brass shrink-0" />
-              <span>+91 9971118219</span>
+              <span>+91 9599652190</span>
             </a>
           </div>
         </div>
       </div>
 
       {/* ─── MAIN STOREFRONT HEADER ─── */}
-      <header className="sticky top-0 z-40 bg-white/75 backdrop-blur-md border-b border-warm-gray/30 shadow-sm transition-all duration-300">
-        <div className="max-w-screen-xl mx-auto px-4 md:px-12 h-14 md:h-20 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-40 bg-warm-white/90 backdrop-blur-md border-b border-warm-gray/40 shadow-sm transition-all duration-300 font-space">
+        <div className="max-w-screen-xl mx-auto px-4 md:px-12 h-16 md:h-20 flex items-center justify-between gap-6">
 
           {/* Left-Aligned Brand Logo */}
           <Link
@@ -124,48 +123,41 @@ export const StorefrontLayout: React.FC = () => {
           <nav className="hidden lg:flex items-center gap-1">
             <Link to="/" className={getNavLinkClass('/', true)}>
               Home
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${
-                isNavActive('/', true) ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-              }`} />
+              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/', true) ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+                }`} />
             </Link>
             <Link to="/shop" className={getNavLinkClass('/shop')}>
               Shop
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${
-                isNavActive('/shop') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-              }`} />
+              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+                }`} />
             </Link>
             <Link to="/shop?section=best-sellers" className={getNavLinkClass('/shop?section=best-sellers', false, 'text-amber-600')}>
               Best Sellers
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${
-                isNavActive('/shop?section=best-sellers') ? 'bg-amber-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-              }`} />
+              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=best-sellers') ? 'bg-amber-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+                }`} />
             </Link>
             <Link to="/shop?section=new-arrivals" className={getNavLinkClass('/shop?section=new-arrivals', false, 'text-emerald-600')}>
               New Arrivals
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${
-                isNavActive('/shop?section=new-arrivals') ? 'bg-emerald-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-              }`} />
+              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=new-arrivals') ? 'bg-emerald-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+                }`} />
             </Link>
             <Link to="/shop?section=exclusive" className={getNavLinkClass('/shop?section=exclusive', false, 'text-[#C2B267] font-black')}>
               <span className="flex items-center gap-1">
                 <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#C2B267] animate-float" />
                 Exclusive
               </span>
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${
-                isNavActive('/shop?section=exclusive') ? 'bg-[#C2B267] scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-              }`} />
+              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=exclusive') ? 'bg-[#C2B267] scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+                }`} />
             </Link>
             <Link to="/contact" className={getNavLinkClass('/contact')}>
               Contact
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${
-                isNavActive('/contact') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-              }`} />
+              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/contact') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+                }`} />
             </Link>
             <Link to="/about" className={getNavLinkClass('/about')}>
               About
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${
-                isNavActive('/about') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-              }`} />
+              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/about') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+                }`} />
             </Link>
           </nav>
 
@@ -270,7 +262,7 @@ export const StorefrontLayout: React.FC = () => {
 
       {/* ─── FLOATING WHATSAPP SUPPORT BUTTON ─── */}
       <a
-        href="https://wa.me/919971118219?text=Hello%20Kuduchee%20Studio!%20I%20have%20a%20question%20about%20your%20stoneware%20collection."
+        href="https://wa.me/919599652190?text=Hello%20Kuduchee%20Studio!%20I%20have%20a%20question%20about%20your%20porcelain%20collection."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-[116px] md:bottom-8 right-4 md:right-8 z-50 bg-[#25D366] text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
@@ -278,7 +270,7 @@ export const StorefrontLayout: React.FC = () => {
       >
         {/* Pulsing ring animation */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-25 animate-ping group-hover:animate-none" />
-        
+
         {/* Centered WhatsApp icon */}
         <i className="fa-brands fa-whatsapp text-2xl md:text-3xl relative z-10" />
 
@@ -292,9 +284,8 @@ export const StorefrontLayout: React.FC = () => {
       <div className="md:hidden fixed bottom-16 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-warm-gray/40 shadow-[0_-2px_10px_rgba(0,0,0,0.03)] h-9 flex items-center justify-around px-2">
         <Link
           to="/shop"
-          className={`text-[8.5px] font-bold uppercase tracking-wider relative py-1 transition-colors ${
-            isNavActive('/shop') && !location.search.includes('section=') ? 'text-brass' : 'text-charcoal/60'
-          }`}
+          className={`text-[8.5px] font-bold uppercase tracking-wider relative py-1 transition-colors ${isNavActive('/shop') && !location.search.includes('section=') ? 'text-brass' : 'text-charcoal/60'
+            }`}
         >
           <span>Shop All</span>
           {isNavActive('/shop') && !location.search.includes('section=') && (
@@ -304,9 +295,8 @@ export const StorefrontLayout: React.FC = () => {
         <div className="w-[1px] h-3 bg-warm-gray/50" />
         <Link
           to="/shop?section=best-sellers"
-          className={`text-[8.5px] font-bold uppercase tracking-wider relative py-1 transition-colors ${
-            isNavActive('/shop?section=best-sellers') ? 'text-amber-600' : 'text-charcoal/60'
-          }`}
+          className={`text-[8.5px] font-bold uppercase tracking-wider relative py-1 transition-colors ${isNavActive('/shop?section=best-sellers') ? 'text-amber-600' : 'text-charcoal/60'
+            }`}
         >
           <span>Best Sellers</span>
           {isNavActive('/shop?section=best-sellers') && (
@@ -316,9 +306,8 @@ export const StorefrontLayout: React.FC = () => {
         <div className="w-[1px] h-3 bg-warm-gray/50" />
         <Link
           to="/shop?section=new-arrivals"
-          className={`text-[8.5px] font-bold uppercase tracking-wider relative py-1 transition-colors ${
-            isNavActive('/shop?section=new-arrivals') ? 'text-emerald-600' : 'text-charcoal/60'
-          }`}
+          className={`text-[8.5px] font-bold uppercase tracking-wider relative py-1 transition-colors ${isNavActive('/shop?section=new-arrivals') ? 'text-emerald-600' : 'text-charcoal/60'
+            }`}
         >
           <span>New Arrivals</span>
           {isNavActive('/shop?section=new-arrivals') && (
@@ -328,9 +317,8 @@ export const StorefrontLayout: React.FC = () => {
         <div className="w-[1px] h-3 bg-warm-gray/50" />
         <Link
           to="/shop?section=exclusive"
-          className={`text-[8.5px] font-bold uppercase tracking-wider relative py-1 transition-colors flex items-center gap-0.5 ${
-            isNavActive('/shop?section=exclusive') ? 'text-[#C2B267]' : 'text-charcoal/60'
-          }`}
+          className={`text-[8.5px] font-bold uppercase tracking-wider relative py-1 transition-colors flex items-center gap-0.5 ${isNavActive('/shop?section=exclusive') ? 'text-[#C2B267]' : 'text-charcoal/60'
+            }`}
         >
           <Sparkles className="w-2.5 h-2.5 text-[#C2B267]" />
           <span>Exclusive</span>
@@ -398,7 +386,7 @@ export const StorefrontLayout: React.FC = () => {
                 className="w-9 h-9 rounded-full bg-warm-white/10 hover:bg-brass hover:text-charcoal flex items-center justify-center transition-all text-sm" title="Instagram">
                 <i className="fa-brands fa-instagram" />
               </a>
-              <a href="https://wa.me/919971118219" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-warm-white/10 hover:bg-brass hover:text-charcoal flex items-center justify-center transition-all text-sm" title="WhatsApp">
                 <i className="fa-brands fa-whatsapp" />
               </a>
@@ -433,7 +421,7 @@ export const StorefrontLayout: React.FC = () => {
               <li><Link to="/orders" className="hover:text-warm-white transition-colors">Track Order Status</Link></li>
               <li><Link to="/cart" className="hover:text-warm-white transition-colors">Insured Shipping &amp; Delivery</Link></li>
               <li>
-                <a href="https://wa.me/919971118219" target="_blank" rel="noopener noreferrer"
+                <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer"
                   className="hover:text-warm-white transition-colors">WhatsApp Studio Representative</a>
               </li>
             </ul>
@@ -450,10 +438,10 @@ export const StorefrontLayout: React.FC = () => {
               </p>
               <p className="text-[10px] font-mono font-bold text-brass pt-0.5">GSTIN: 24AAICK1328G1ZT</p>
               <p className="flex items-center gap-1.5 pt-1">
-                <Phone className="w-3 h-3 text-brass shrink-0" /><span>+91 9971118219</span>
+                <Phone className="w-3 h-3 text-brass shrink-0" /><span>+91 9599652190</span>
               </p>
               <p className="flex items-center gap-1.5">
-                <Mail className="w-3 h-3 text-brass shrink-0" /><span>anil.panda@kuduchee.com</span>
+                <Mail className="w-3 h-3 text-brass shrink-0" /><span>info@kuduchee.in</span>
               </p>
             </div>
           </div>
@@ -472,3 +460,4 @@ export const StorefrontLayout: React.FC = () => {
   );
 };
 export default StorefrontLayout;
+

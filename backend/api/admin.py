@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
     Profile, Address,
-    Category, Product, ProductVariant, ProductImage,
+    Category, SubCategory, Product, ProductVariant, ProductImage,
     WishlistItem, CartItem,
     PaymentSettings, Order, OrderItem,
     Review, HeroBanner, SiteSettings,
@@ -34,13 +34,36 @@ class AddressAdmin(admin.ModelAdmin):
 
 # ─── Catalog ──────────────────────────────────────────────────────────────────
 
+class SubCategoryInline(admin.TabularInline):
+    model  = SubCategory
+    extra  = 1
+    fields = ('name', 'description', 'is_active')
+
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display        = ('name', 'slug', 'is_featured', 'created_at')
+    list_display        = ('name', 'slug', 'is_featured', 'sub_category_count', 'created_at')
     list_filter         = ('is_featured',)
     search_fields       = ('name', 'description')
     prepopulated_fields = {'slug': ('name',)}
     readonly_fields     = ('created_at',)
+    inlines             = [SubCategoryInline]
+
+    def sub_category_count(self, obj):
+        return obj.sub_categories.count()
+    sub_category_count.short_description = 'Sub-Categories'
+
+
+@admin.register(SubCategory)
+class SubCategoryAdmin(admin.ModelAdmin):
+    list_display  = ('name', 'category', 'slug', 'is_active', 'product_count', 'created_at')
+    list_filter   = ('category', 'is_active')
+    search_fields = ('name', 'description', 'category__name')
+    readonly_fields = ('slug', 'created_at')
+
+    def product_count(self, obj):
+        return obj.products.count()
+    product_count.short_description = 'Products'
 
 
 class ProductVariantInline(admin.TabularInline):
@@ -52,14 +75,14 @@ class ProductVariantInline(admin.TabularInline):
 class ProductImageInline(admin.TabularInline):
     model  = ProductImage
     extra  = 1
-    fields = ('image_url', 'alt_text', 'is_primary')
+    fields = ('image', 'image_url', 'alt_text', 'is_primary')
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display        = ('name', 'category', 'badge', 'mrp', 'offer_price',
+    list_display        = ('thumbnail', 'name', 'category', 'sub_category', 'badge', 'mrp', 'offer_price',
                            'stock_quantity', 'is_active', 'is_featured', 'created_at')
-    list_filter         = ('category', 'is_active', 'is_featured', 'badge')
+    list_filter         = ('category', 'sub_category', 'is_active', 'is_featured', 'badge')
     list_editable       = ('is_active', 'is_featured', 'badge')
     search_fields       = ('name', 'description', 'category__name')
     prepopulated_fields = {'slug': ('name',)}
@@ -82,9 +105,16 @@ class ProductVariantAdmin(admin.ModelAdmin):
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
-    list_display  = ('product', 'alt_text', 'is_primary', 'created_at')
+    list_display  = ('product', 'image_preview', 'alt_text', 'is_primary', 'created_at')
     list_filter   = ('is_primary',)
     search_fields = ('product__name', 'alt_text')
+
+    def image_preview(self, obj):
+        src = obj.image_src
+        if src:
+            return format_html('<img src="{}" style="height:40px;border-radius:4px;" />', src)
+        return '—'
+    image_preview.short_description = 'Preview'
 
 
 # ─── E-Commerce ───────────────────────────────────────────────────────────────

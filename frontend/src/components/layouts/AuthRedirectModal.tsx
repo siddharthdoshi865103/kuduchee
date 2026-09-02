@@ -29,7 +29,7 @@ export const AuthRedirectModal: React.FC<AuthRedirectModalProps> = ({ onClose })
         <div className="relative h-32 bg-[#1C1A17] flex flex-col justify-end p-6 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" 
-            alt="Stoneware studio" 
+            alt="Porcelain studio" 
             className="absolute inset-0 w-full h-full object-cover filter brightness-[0.45] contrast-[1.05]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1C1A17] via-[#1C1A17]/40 to-transparent" />
@@ -55,7 +55,7 @@ export const AuthRedirectModal: React.FC<AuthRedirectModalProps> = ({ onClose })
               Curate Your Collection
             </h2>
             <p className="text-xs text-mid-gray leading-relaxed font-light">
-              To start adding these handcrafted stoneware vessels to your cart, please sign in. Membership offers pre-access to limited run batches, saved addresses, and insured studio tracking.
+              To start adding these handcrafted porcelain vessels to your cart, please sign in. Membership offers pre-access to limited run batches, saved addresses, and insured studio tracking.
             </p>
           </div>
 

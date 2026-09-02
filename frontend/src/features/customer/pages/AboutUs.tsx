@@ -8,7 +8,7 @@ export const AboutUs: React.FC = () => {
     <div className="animate-fadeIn font-sans text-charcoal space-y-16 pb-20">
       <SEO
         title="About Kuduchee (Kudu Chee) — Brand Story & Anil Panda"
-        description="Learn the origin story of Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited. Crafting 1280°C high-fired stoneware dinnerware inspired by nature."
+        description="Learn the origin story of Kuduchee (Kudu Chee) by Anil Panda & Kaviz Creations Private Limited. Crafting 1280°C high-fired porcelain dinnerware inspired by nature."
         canonicalUrl="https://kuduchee.in/about"
       />
       
@@ -17,7 +17,7 @@ export const AboutUs: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#171511] via-[#171511]/80 to-transparent z-10" />
         <img
           src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=1600&q=85"
-          alt="Kuduchee Stoneware Studio Craft"
+          alt="Kuduchee Porcelain Studio Craft"
           className="absolute inset-0 w-full h-full object-cover filter brightness-[0.6] contrast-[1.05] z-0"
         />
 
@@ -162,7 +162,7 @@ export const AboutUs: React.FC = () => {
           <div className="bg-warm-white p-7 rounded-3xl border border-warm-gray/60 space-y-3 shadow-xs">
             <h3 className="font-brand text-xl text-brass">Honest</h3>
             <p className="text-xs text-mid-gray font-light leading-relaxed">
-              Natural materials, 1280°C kiln-fired stoneware, lead-free non-toxic glazes, and honest craftsmanship define every piece.
+              Natural materials, 1280°C kiln-fired porcelain, lead-free non-toxic glazes, and honest craftsmanship define every piece.
             </p>
           </div>
 
@@ -211,7 +211,7 @@ export const AboutUs: React.FC = () => {
 
             <div className="p-6 bg-warm-white/5 border border-warm-white/10 rounded-2xl space-y-2">
               <span className="text-brass font-brand text-lg block">The Everyday Feast</span>
-              <p className="text-xs text-warm-white/70 font-light">Durable stoneware tableware bringing celebration to weekday dinners.</p>
+              <p className="text-xs text-warm-white/70 font-light">Durable porcelain tableware bringing celebration to weekday dinners.</p>
             </div>
           </div>
         </div>

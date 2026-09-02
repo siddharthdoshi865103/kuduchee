@@ -279,7 +279,7 @@ export const OrderHistory: React.FC = () => {
           <ClipboardList className="w-12 h-12 text-mid-gray/30 mx-auto mb-4" />
           <h3 className="font-brand text-2xl text-charcoal mb-2">No Orders Yet</h3>
           <p className="text-[13px] text-mid-gray font-light max-w-sm mx-auto mb-6">
-            You haven't placed any orders yet. Explore our handcrafted stoneware collections.
+            You haven't placed any orders yet. Explore our handcrafted porcelain collections.
           </p>
           <Link to="/shop" className="btn-primary inline-flex items-center gap-2">
             <span>Explore Shop</span>
@@ -416,7 +416,7 @@ export const OrderHistory: React.FC = () => {
                               <p className="text-[11px] text-mid-gray font-light mt-0.5">
                                 {ord.status === 'PENDING_VERIFICATION' && 'Our team is reviewing your payment. This usually takes 2–4 hours.'}
                                 {ord.status === 'APPROVED' && 'Your payment has been verified! Studio artisans are preparing your order.'}
-                                {ord.status === 'PROCESSING' && 'Your stoneware pieces are being carefully hand-packed in our Gujarat studio.'}
+                                {ord.status === 'PROCESSING' && 'Your porcelain pieces are being carefully hand-packed in our Gujarat studio.'}
                                 {ord.status === 'SHIPPED' && `Your parcel is on its way!${ord.courier_partner ? ` Shipped via ${ord.courier_partner}.` : ''}`}
                                 {ord.status === 'OUT_FOR_DELIVERY' && 'Your package is out for delivery with the courier today.'}
                                 {ord.status === 'DELIVERED' && 'Your studio pieces have been delivered.'}
@@ -609,7 +609,7 @@ export const OrderHistory: React.FC = () => {
                   <label className="block text-[10px] font-bold uppercase tracking-wider text-mid-gray mb-1">UPI ID (Optional for fast refund)</label>
                   <input
                     type="text"
-                    placeholder="name@upi / 9971118219@paytm"
+                    placeholder="name@upi / 9599652190@paytm"
                     value={bankUpiId}
                     onChange={(e) => setBankUpiId(e.target.value)}
                     className="input-field bg-warm-white font-mono"

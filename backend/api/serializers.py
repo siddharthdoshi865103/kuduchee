@@ -5,6 +5,7 @@ from .models import (
     Profile,
     Address,
     Category,
+    SubCategory,
     Product,
     ProductVariant,
     ProductImage,
@@ -106,12 +107,26 @@ class AddressSerializer(serializers.ModelSerializer):
 
 # ─── Catalog Serializers ──────────────────────────────────────────────────────
 
+class SubCategorySerializer(serializers.ModelSerializer):
+    product_count = serializers.SerializerMethodField()
+    category_name = serializers.ReadOnlyField(source='category.name')
+
+    class Meta:
+        model = SubCategory
+        fields = ['id', 'category', 'category_name', 'name', 'slug', 'description', 'is_active', 'product_count', 'created_at']
+        read_only_fields = ['id', 'slug', 'product_count', 'category_name', 'created_at']
+
+    def get_product_count(self, obj):
+        return obj.products.count()
+
+
 class CategorySerializer(serializers.ModelSerializer):
     product_count = serializers.SerializerMethodField()
+    sub_categories = SubCategorySerializer(many=True, read_only=True)
 
     class Meta:
         model = Category
-        fields = ['id', 'name', 'slug', 'description', 'image_url', 'is_featured', 'product_count', 'created_at']
+        fields = ['id', 'name', 'slug', 'description', 'image_url', 'is_featured', 'product_count', 'sub_categories', 'created_at']
         read_only_fields = ['id', 'slug', 'product_count', 'created_at']
 
     def get_product_count(self, obj):
@@ -126,10 +141,23 @@ class ProductVariantSerializer(serializers.ModelSerializer):
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
+    # Write-only field for file upload
+    image = serializers.ImageField(write_only=True, required=False, allow_null=True)
+    # Read-only computed URL (served file URL or legacy image_url)
+    image_src = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = ProductImage
-        fields = ['id', 'product', 'image_url', 'alt_text', 'is_primary']
-        read_only_fields = ['id']
+        fields = ['id', 'product', 'image', 'image_url', 'image_src', 'alt_text', 'is_primary']
+        read_only_fields = ['id', 'image_src']
+
+    def get_image_src(self, obj):
+        request = self.context.get('request')
+        src = obj.image_src
+        # Make absolute URL if request context is available
+        if src and request and src.startswith('/'):
+            return request.build_absolute_uri(src)
+        return src
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -151,6 +179,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     category_name = serializers.ReadOnlyField(source='category.name')
     category_slug = serializers.ReadOnlyField(source='category.slug')
+    sub_category_name = serializers.ReadOnlyField(source='sub_category.name', default=None)
     variants = ProductVariantSerializer(many=True, read_only=True)
     images = ProductImageSerializer(many=True, read_only=True)
     reviews_count = serializers.SerializerMethodField()
@@ -159,7 +188,9 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = [
-            'id', 'category', 'category_name', 'category_slug', 'name', 'slug',
+            'id', 'category', 'category_name', 'category_slug',
+            'sub_category', 'sub_category_name',
+            'name', 'slug',
             'description', 'mrp', 'offer_price', 'stock_quantity', 'is_active',
             'is_featured', 'badge', 'primary_image_url', 'is_in_stock',
             'is_low_stock', 'variants', 'images', 'reviews_count', 'avg_rating',
