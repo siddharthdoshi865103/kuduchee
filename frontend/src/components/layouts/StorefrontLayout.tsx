@@ -75,8 +75,8 @@ export const StorefrontLayout: React.FC = () => {
     <div className={`min-h-screen ${hasTopHero ? 'bg-[#171513]' : 'bg-warm-white'} flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal relative`}>
 
       {/* ─── 3 FLOATING ISLANDS NAVBAR ─── */}
-      <header className={`sticky top-0 z-40 w-full px-3 md:px-8 py-3 md:py-4 pointer-events-none transition-all duration-300 font-space ${
-        hasTopHero ? 'mb-[-80px] md:mb-[-90px]' : ''
+      <header className={`z-40 w-full px-3 md:px-8 py-3 md:py-4 pointer-events-none transition-all duration-300 font-space ${
+        hasTopHero ? 'absolute top-0 left-0 right-0' : 'sticky top-0'
       }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4 pointer-events-none">
 
@@ -231,7 +231,7 @@ export const StorefrontLayout: React.FC = () => {
       </header>
 
       {/* ─── MAIN PAGE OUTLET ─── */}
-      <main className="flex-1 pb-[100px] md:pb-0 bg-warm-white">
+      <main className={`flex-1 pb-[100px] md:pb-0 ${hasTopHero ? 'bg-transparent' : 'bg-warm-white'}`}>
         <Outlet />
       </main>
 
