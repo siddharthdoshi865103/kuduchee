@@ -390,7 +390,7 @@ export const Home: React.FC = () => {
           </div>
         ))}
 
-        <div className="relative z-20 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 w-full mt-8 md:mt-0">
+        <div className="relative z-20 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 w-full pt-20 md:pt-24">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Content Column */}

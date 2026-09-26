@@ -67,11 +67,15 @@ export const StorefrontLayout: React.FC = () => {
     }`;
   };
 
+  const isHome = location.pathname === '/';
+
   return (
-    <div className="min-h-screen bg-warm-white flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal relative">
+    <div className={`min-h-screen ${isHome ? 'bg-[#171513]' : 'bg-warm-white'} flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal relative`}>
 
       {/* ─── 3 FLOATING ISLANDS NAVBAR ─── */}
-      <header className="sticky top-0 z-40 w-full px-3 md:px-8 py-3 md:py-4 pointer-events-none transition-all duration-300 font-space">
+      <header className={`sticky top-0 z-40 w-full px-3 md:px-8 py-3 md:py-4 pointer-events-none transition-all duration-300 font-space ${
+        isHome ? 'mb-[-80px] md:mb-[-90px]' : ''
+      }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4 pointer-events-none">
 
             {/* 1. Left Island: Brand Logo */}
