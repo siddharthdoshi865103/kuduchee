@@ -71,7 +71,7 @@ export const StorefrontLayout: React.FC = () => {
     <div className="min-h-screen bg-warm-white flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal relative">
 
       {/* ─── 3 FLOATING ISLANDS NAVBAR ─── */}
-      <header className="sticky top-4 md:top-6 z-40 w-full px-3 md:px-8 pointer-events-none transition-all duration-300 font-space mb-[-72px]">
+      <header className="sticky top-0 z-40 w-full px-3 md:px-8 py-3 md:py-4 pointer-events-none transition-all duration-300 font-space">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4 pointer-events-none">
 
             {/* 1. Left Island: Brand Logo */}
