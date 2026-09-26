@@ -1,1259 +1,1259 @@
-[
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$SQ9zqPPkxraselBQtBDTU1$2wDrhsUhKYaLWIj35vwtEM7uAp/Zi+ZhJh0m5+2vXsE=",
-    "last_login": "2026-08-29T15:35:59.382Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "Admin",
-    "last_name": "",
-    "email": "admin@kuduchee.in",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2026-07-21T06:50:29.339Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$RRoTLcyFX70slQyKAaBvrE$WlZXTJPDBTTvGPxDXhd1UNThHR1Wg3mlf71gzjKVn1U=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "doshisiddharth",
-    "first_name": "Siddharth",
-    "last_name": "Doshi",
-    "email": "doshisiddharth530@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2026-07-21T07:28:31.740Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$qm0jQByfvkl9PwgjOLhUOs$Vk3xTYcB2M8Cu3F57OYgrDmyR4xUyXcQUg2/R7+03I4=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "doshisiddharth2",
-    "first_name": "Siddharth",
-    "last_name": "Doshi",
-    "email": "doshisiddharth218@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2026-07-21T08:28:16.020Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$NgHk8eXkO5BIZO7Q8Brhrl$DCkzpevBnwY5s/H9jjSoXsGhr0Td8Da2C2ZcOdIocdM=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "sd1",
-    "first_name": "Siddharth",
-    "last_name": "Doshi",
-    "email": "doshisiddharth53@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2026-07-24T12:05:52.049Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$vHsI5wTMtemfROcAM9hwwj$a6xuq2A9ys1G74OIpCvL/1ji1xGPITS/IANksCkPv0Q=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "admi",
-    "first_name": "Anil",
-    "last_name": "Panda",
-    "email": "anil.kuduchee@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2026-07-24T17:42:00.225Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$Zl2PlNVEZ9wJPDqn7HI6Ux$YqZ3Rbl+7KyMBlQNnhoMaxt30p2NgPSjCASIhwgoBcE=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "adm",
-    "first_name": "Siddharth",
-    "last_name": "Doshi",
-    "email": "doshisiddharth30@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2026-07-28T20:03:37.403Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$1200000$eJOSGDAbMTdjs9ipD5ReNH$RqmN6N2af8gUriPSJSu3TJaYkS9y3B1E4YHsTltfAvo=",
-    "last_login": null,
-    "is_superuser": true,
-    "username": "kuduchee_admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "anil.panda@kuduchee.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2026-08-01T19:21:19.559Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "api.profile",
-  "pk": 1,
-  "fields": {
-    "user": [
-      "admin"
-    ],
-    "phone_number": null,
-    "created_at": "2026-07-21T06:50:29.839Z"
-  }
-},
-{
-  "model": "api.profile",
-  "pk": 2,
-  "fields": {
-    "user": [
-      "doshisiddharth"
-    ],
-    "phone_number": "7984087691",
-    "created_at": "2026-07-21T07:28:32.546Z"
-  }
-},
-{
-  "model": "api.profile",
-  "pk": 3,
-  "fields": {
-    "user": [
-      "doshisiddharth2"
-    ],
-    "phone_number": "7984087691",
-    "created_at": "2026-07-21T08:28:16.851Z"
-  }
-},
-{
-  "model": "api.profile",
-  "pk": 4,
-  "fields": {
-    "user": [
-      "sd1"
-    ],
-    "phone_number": null,
-    "created_at": "2026-07-24T12:05:52.975Z"
-  }
-},
-{
-  "model": "api.profile",
-  "pk": 5,
-  "fields": {
-    "user": [
-      "admi"
-    ],
-    "phone_number": null,
-    "created_at": "2026-07-24T17:42:01.869Z"
-  }
-},
-{
-  "model": "api.profile",
-  "pk": 6,
-  "fields": {
-    "user": [
-      "adm"
-    ],
-    "phone_number": null,
-    "created_at": "2026-07-28T20:03:38.101Z"
-  }
-},
-{
-  "model": "api.profile",
-  "pk": 7,
-  "fields": {
-    "user": [
-      "kuduchee_admin"
-    ],
-    "phone_number": null,
-    "created_at": "2026-08-01T19:21:20.918Z"
-  }
-},
-{
-  "model": "api.category",
-  "pk": 5,
-  "fields": {
-    "name": "Crockery",
-    "slug": "crockery",
-    "description": "Fine stoneware dinnerware, ceremony mugs, artisanal bowls & banquet platters high-fired at 1280°C.",
-    "image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80",
-    "is_featured": true,
-    "created_at": "2026-07-24T17:01:11.809Z"
-  }
-},
-{
-  "model": "api.category",
-  "pk": 6,
-  "fields": {
-    "name": "Kitchenware",
-    "slug": "kitchenware",
-    "description": "Thoughtful kitchen essentials, ceramic spice jars, oil pourers, mortar & pestle, and handcrafted serving tools.",
-    "image_url": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80",
-    "is_featured": true,
-    "created_at": "2026-07-24T17:01:11.821Z"
-  }
-},
-{
-  "model": "api.category",
-  "pk": 7,
-  "fields": {
-    "name": "Home Decor",
-    "slug": "home-decor",
-    "description": "Artisanal stoneware vases, sculptural ceramics, candle holders, and luxury living accents.",
-    "image_url": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&q=80",
-    "is_featured": true,
-    "created_at": "2026-07-24T17:01:11.829Z"
-  }
-},
-{
-  "model": "api.category",
-  "pk": 8,
-  "fields": {
-    "name": "Dinner Sets",
-    "slug": "dinner-sets",
-    "description": "Handcrafted 1280°C High-Fired Stoneware Dinnerware",
-    "image_url": "",
-    "is_featured": true,
-    "created_at": "2026-08-01T18:39:14.221Z"
-  }
-},
-{
-  "model": "api.category",
-  "pk": 9,
-  "fields": {
-    "name": "Serveware & Bowls",
-    "slug": "serveware-bowls",
-    "description": "Elegant artisan serving bowls & platters",
-    "image_url": "",
-    "is_featured": true,
-    "created_at": "2026-08-01T18:39:14.235Z"
-  }
-},
-{
-  "model": "api.category",
-  "pk": 10,
-  "fields": {
-    "name": "Mugs & Drinkware",
-    "slug": "mugs-drinkware",
-    "description": "Ergonomic matte & glazed stoneware mugs",
-    "image_url": "",
-    "is_featured": true,
-    "created_at": "2026-08-01T18:39:14.246Z"
-  }
-},
-{
-  "model": "api.category",
-  "pk": 11,
-  "fields": {
-    "name": "jjj",
-    "slug": "jjj",
-    "description": "",
-    "image_url": "",
-    "is_featured": true,
-    "created_at": "2026-08-29T15:36:53.104Z"
-  }
-},
-{
-  "model": "api.subcategory",
-  "pk": 1,
-  "fields": {
-    "category": 8,
-    "name": "16-Piece Sets",
-    "slug": "dinner-sets-16-piece-sets",
-    "description": "Complete dinnerware sets for modern dining.",
-    "is_active": true,
-    "created_at": "2026-08-29T15:46:33.236Z"
-  }
-},
-{
-  "model": "api.subcategory",
-  "pk": 2,
-  "fields": {
-    "category": 8,
-    "name": "Quarter & Side Plates",
-    "slug": "dinner-sets-quarter-side-plates",
-    "description": "Artisan appetizer & side plates.",
-    "is_active": true,
-    "created_at": "2026-08-29T15:46:33.244Z"
-  }
-},
-{
-  "model": "api.subcategory",
-  "pk": 3,
-  "fields": {
-    "category": 9,
-    "name": "Serving Bowls",
-    "slug": "serveware-bowls-serving-bowls",
-    "description": "Deep ceramic bowls for soups, pasta, & salads.",
-    "is_active": true,
-    "created_at": "2026-08-29T15:46:33.246Z"
-  }
-},
-{
-  "model": "api.subcategory",
-  "pk": 4,
-  "fields": {
-    "category": 9,
-    "name": "Platters & Trays",
-    "slug": "serveware-bowls-platters-trays",
-    "description": "Handcrafted stoneware platters.",
-    "is_active": true,
-    "created_at": "2026-08-29T15:46:33.256Z"
-  }
-},
-{
-  "model": "api.subcategory",
-  "pk": 5,
-  "fields": {
-    "category": 10,
-    "name": "Coffee Mugs",
-    "slug": "mugs-drinkware-coffee-mugs",
-    "description": "Hand-glazed ceramic coffee mugs.",
-    "is_active": true,
-    "created_at": "2026-08-29T15:46:33.262Z"
-  }
-},
-{
-  "model": "api.subcategory",
-  "pk": 6,
-  "fields": {
-    "category": 10,
-    "name": "Tea Cups & Saucers",
-    "slug": "mugs-drinkware-tea-cups-saucers",
-    "description": "Fine porcelain tea cup sets.",
-    "is_active": true,
-    "created_at": "2026-08-29T15:46:33.262Z"
-  }
-},
-{
-  "model": "api.subcategory",
-  "pk": 7,
-  "fields": {
-    "category": 5,
-    "name": "jji",
-    "slug": "crockery-jji",
-    "description": "",
-    "is_active": true,
-    "created_at": "2026-08-29T16:06:49.515Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 8,
-  "fields": {
-    "category": 5,
-    "sub_category": null,
-    "name": "Opulence Stoneware Dinner Set (16-Piece)",
-    "slug": "opulence-stoneware-dinner-set-16-piece",
-    "description": "Complete 16-piece handcrafted stoneware dining set high-fired at 1280°C for superior chip resistance. Non-toxic, 100% vegetarian porcelain lead-free glaze.",
-    "mrp": "8999.00",
-    "offer_price": "6499.00",
-    "stock_quantity": 25,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Best Seller",
-    "primary_image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80",
-    "created_at": "2026-07-24T17:01:11.843Z",
-    "updated_at": "2026-07-24T17:01:11.843Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 9,
-  "fields": {
-    "category": 5,
-    "sub_category": null,
-    "name": "Monsoon Chai & Snack Platter Set",
-    "slug": "monsoon-chai-snack-platter-set",
-    "description": "Organic stoneware serving platter with paired tactile dip bowl, designed for evening tea & snacks.",
-    "mrp": "3499.00",
-    "offer_price": "2299.00",
-    "stock_quantity": 40,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Handcrafted",
-    "primary_image_url": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=80",
-    "created_at": "2026-07-24T17:01:11.852Z",
-    "updated_at": "2026-07-24T17:01:11.852Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 10,
-  "fields": {
-    "category": 5,
-    "sub_category": null,
-    "name": "Sunday Gatherings Communal Serving Bowl",
-    "slug": "sunday-gatherings-communal-serving-bowl",
-    "description": "Deep stoneware communal serving bowl with rich tactile matte glaze. Perfect for family lunches and celebratory feasting.",
-    "mrp": "2999.00",
-    "offer_price": "1899.00",
-    "stock_quantity": 18,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Studio Limited",
-    "primary_image_url": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&q=80",
-    "created_at": "2026-07-24T17:01:11.862Z",
-    "updated_at": "2026-07-24T17:01:11.862Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 11,
-  "fields": {
-    "category": 6,
-    "sub_category": null,
-    "name": "Ceremony Porcelain Mugs (Set of 2)",
-    "slug": "ceremony-porcelain-mugs-set-of-2",
-    "description": "Ergonomically crafted ceramic mugs designed for morning tea & coffee rituals. Smooth interior with textured matte exterior.",
-    "mrp": "1999.00",
-    "offer_price": "1299.00",
-    "stock_quantity": 50,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "New Arrival",
-    "primary_image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80",
-    "created_at": "2026-07-24T17:01:11.873Z",
-    "updated_at": "2026-07-24T17:01:11.873Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 12,
-  "fields": {
-    "category": 6,
-    "sub_category": null,
-    "name": "Morning Ritual Pour-Over Coffee Dripper Set",
-    "slug": "morning-ritual-pour-over-coffee-dripper-set",
-    "description": "Ceramic pour-over cone & carafe set for slow coffee brewing. Retains heat perfectly.",
-    "mrp": "2899.00",
-    "offer_price": "1999.00",
-    "stock_quantity": 20,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Artisan Classic",
-    "primary_image_url": "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=800&q=80",
-    "created_at": "2026-07-24T17:01:11.878Z",
-    "updated_at": "2026-07-24T17:01:11.878Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 13,
-  "fields": {
-    "category": 7,
-    "sub_category": null,
-    "name": "Sculptural Organic Clay Vase",
-    "slug": "sculptural-organic-clay-vase",
-    "description": "Hand-shaped sculptural stoneware vase with earthy textured finish. Designed as a standalone art piece or floral vessel.",
-    "mrp": "4999.00",
-    "offer_price": "3299.00",
-    "stock_quantity": 12,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Limited Run",
-    "primary_image_url": "https://images.unsplash.com/photo-1581783342308-f792dbdd77c5?w=800&q=80",
-    "created_at": "2026-07-24T17:01:11.891Z",
-    "updated_at": "2026-07-24T17:01:11.891Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 14,
-  "fields": {
-    "category": 7,
-    "sub_category": null,
-    "name": "Minimalist Fluted Terracotta Vessel",
-    "slug": "minimalist-fluted-terracotta-vessel",
-    "description": "Architectural fluted ceramic vessel inspired by traditional Indian temple pillars.",
-    "mrp": "3799.00",
-    "offer_price": "2499.00",
-    "stock_quantity": 22,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Studio Special",
-    "primary_image_url": "https://images.unsplash.com/photo-1612196808214-b7e239e5f6b7?w=800&q=80",
-    "created_at": "2026-07-24T17:01:11.901Z",
-    "updated_at": "2026-07-24T17:01:11.901Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 15,
-  "fields": {
-    "category": 5,
-    "sub_category": null,
-    "name": "Monsoon Chai Ceremony Mug Set (Set of 4)",
-    "slug": "monsoon-chai-ceremony-mug-set-set-of-4",
-    "description": "Hand-thrown stoneware ceremony mugs with tactile organic texture. Holds heat exceptionally well, high-fired at 1280°C.",
-    "mrp": "2499.00",
-    "offer_price": "1899.00",
-    "stock_quantity": 24,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Best Seller",
-    "primary_image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.049Z",
-    "updated_at": "2026-07-24T17:15:07.049Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 16,
-  "fields": {
-    "category": 5,
-    "sub_category": null,
-    "name": "Sunday Gatherings Stoneware Banquet Dinner Set (16 Pcs)",
-    "slug": "sunday-gatherings-stoneware-banquet-dinner-set-16-pcs",
-    "description": "Complete 16-piece high-fired stoneware dinnerware set including dinner plates, side plates, ramen bowls, and dip saucers in matte gold cream glaze.",
-    "mrp": "8999.00",
-    "offer_price": "6999.00",
-    "stock_quantity": 15,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Limited Run",
-    "primary_image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.064Z",
-    "updated_at": "2026-07-24T17:15:07.064Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 17,
-  "fields": {
-    "category": 5,
-    "sub_category": null,
-    "name": "Morning Ritual Ceramic Breakfast Bowls (Set of 2)",
-    "slug": "morning-ritual-ceramic-breakfast-bowls-set-of-2",
-    "description": "Ergonomic rounded stoneware bowls designed for morning oatmeal, soups, and grain bowls. Non-toxic lead-free glaze.",
-    "mrp": "1799.00",
-    "offer_price": "1299.00",
-    "stock_quantity": 30,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Limited Run",
-    "primary_image_url": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.079Z",
-    "updated_at": "2026-07-24T17:15:07.079Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 18,
-  "fields": {
-    "category": 6,
-    "sub_category": null,
-    "name": "Artisanal Ceramic Spice Jar Set with Bamboo Spoons",
-    "slug": "artisanal-ceramic-spice-jar-set-with-bamboo-spoons",
-    "description": "Airtight stoneware spice canisters with natural bamboo lids and silicone sealing rings. Perfect for keeping spices fresh.",
-    "mrp": "2199.00",
-    "offer_price": "1599.00",
-    "stock_quantity": 20,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "New Arrival",
-    "primary_image_url": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.092Z",
-    "updated_at": "2026-07-24T17:15:07.092Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 19,
-  "fields": {
-    "category": 6,
-    "sub_category": null,
-    "name": "Handcrafted Stoneware Mortar & Pestle Set",
-    "slug": "handcrafted-stoneware-mortar-pestle-set",
-    "description": "Heavyweight stoneware mortar and pestle for crushing fresh spices and garlic. Textured inner surface for efficient grinding.",
-    "mrp": "1999.00",
-    "offer_price": "1499.00",
-    "stock_quantity": 18,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Best Seller",
-    "primary_image_url": "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.105Z",
-    "updated_at": "2026-07-24T17:15:07.105Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 20,
-  "fields": {
-    "category": 6,
-    "sub_category": null,
-    "name": "Drip-Free Stoneware Oil & Vinegar Bottle (500ml)",
-    "slug": "drip-free-stoneware-oil-vinegar-bottle-500ml",
-    "description": "Elegantly sculpted stoneware oil dispenser with stainless steel pour spout and cork stopper.",
-    "mrp": "1499.00",
-    "offer_price": "1099.00",
-    "stock_quantity": 25,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "New Arrival",
-    "primary_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.119Z",
-    "updated_at": "2026-07-24T17:15:07.119Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 21,
-  "fields": {
-    "category": 7,
-    "sub_category": null,
-    "name": "Sculptural Terra Stoneware Floor Vase",
-    "slug": "sculptural-terra-stoneware-floor-vase",
-    "description": "Dramatic organic ceramic vase with speckled earth-inspired glaze. Statement centerpiece for living room & entryways.",
-    "mrp": "4999.00",
-    "offer_price": "3499.00",
-    "stock_quantity": 10,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Limited Run",
-    "primary_image_url": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.132Z",
-    "updated_at": "2026-07-24T17:15:07.132Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 22,
-  "fields": {
-    "category": 7,
-    "sub_category": null,
-    "name": "Minimalist Taper Candle Holder Pair",
-    "slug": "minimalist-taper-candle-holder-pair",
-    "description": "Hand-formed ceramic taper candle holders in raw sand stoneware finish.",
-    "mrp": "1299.00",
-    "offer_price": "899.00",
-    "stock_quantity": 40,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Best Seller",
-    "primary_image_url": "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.143Z",
-    "updated_at": "2026-07-24T17:15:07.143Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 23,
-  "fields": {
-    "category": 7,
-    "sub_category": null,
-    "name": "Botanical Ceramic Incense & Palo Santo Burner",
-    "slug": "botanical-ceramic-incense-palo-santo-burner",
-    "description": "Multi-purpose stoneware incense burner dish with brass Palo Santo holder.",
-    "mrp": "999.00",
-    "offer_price": "699.00",
-    "stock_quantity": 34,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "New Arrival",
-    "primary_image_url": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=80",
-    "created_at": "2026-07-24T17:15:07.156Z",
-    "updated_at": "2026-07-24T17:43:28.359Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 24,
-  "fields": {
-    "category": 8,
-    "sub_category": null,
-    "name": "Artisan Earth Stoneware Dinner Set (16 Piece)",
-    "slug": "artisan-earth-stoneware-dinner-set-16-piece",
-    "description": "Complete 16-piece high-fired stoneware dinnerware set featuring rustic reactive glazes, scratch-resistant surface, and food-safe finish.",
-    "mrp": "8999.00",
-    "offer_price": "6499.00",
-    "stock_quantity": 25,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Best Seller",
-    "primary_image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-01T18:39:14.259Z",
-    "updated_at": "2026-08-01T18:39:14.259Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 25,
-  "fields": {
-    "category": 8,
-    "sub_category": null,
-    "name": "Nordic Matte Charcoal Quarter Plates (Set of 4)",
-    "slug": "nordic-matte-charcoal-quarter-plates-set-of-4",
-    "description": "Minimalist quarter plates with tactile matte charcoal texture, high-fired at 1280°C for exceptional durability.",
-    "mrp": "2499.00",
-    "offer_price": "1899.00",
-    "stock_quantity": 40,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "New Arrival",
-    "primary_image_url": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-01T18:39:14.273Z",
-    "updated_at": "2026-08-01T18:39:14.273Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 26,
-  "fields": {
-    "category": 9,
-    "sub_category": null,
-    "name": "Terracotta Speckled Serving Bowl",
-    "slug": "terracotta-speckled-serving-bowl",
-    "description": "Deep artisan serving bowl with subtle speckles and warm terracotta undertones. Microwave & dishwasher safe.",
-    "mrp": "1999.00",
-    "offer_price": "1399.00",
-    "stock_quantity": 30,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Exclusive",
-    "primary_image_url": "https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-01T18:39:14.284Z",
-    "updated_at": "2026-08-01T18:39:14.284Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 27,
-  "fields": {
-    "category": 10,
-    "sub_category": null,
-    "name": "Studio Brass Glaze Coffee Mugs (Set of 2)",
-    "slug": "studio-brass-glaze-coffee-mugs-set-of-2",
-    "description": "Handcrafted ceramic mugs featuring signature brass rim detail and comfort grip handles.",
-    "mrp": "1499.00",
-    "offer_price": "999.00",
-    "stock_quantity": 50,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Best Seller",
-    "primary_image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-01T18:39:14.297Z",
-    "updated_at": "2026-08-01T18:39:14.297Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 28,
-  "fields": {
-    "category": 8,
-    "sub_category": null,
-    "name": "Artisan Earth Porcelain Dinner Set (16 Piece)",
-    "slug": "artisan-earth-porcelain-dinner-set-16-piece",
-    "description": "Complete 16-piece high-fired porcelain dinnerware set featuring rustic reactive glazes, scratch-resistant surface, and food-safe finish.",
-    "mrp": "8999.00",
-    "offer_price": "6499.00",
-    "stock_quantity": 25,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Best Seller",
-    "primary_image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-28T11:57:33.339Z",
-    "updated_at": "2026-08-28T11:57:33.339Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 29,
-  "fields": {
-    "category": 8,
-    "sub_category": null,
-    "name": "Midnight Gold Signature Dinner Set (12 Piece)",
-    "slug": "midnight-gold-signature-dinner-set-12-piece",
-    "description": "Limited-edition 12-piece obsidian black dinner set with hand-painted 24K gold rim accents. Certificate of authenticity included. Collector's batch #06.",
-    "mrp": "14999.00",
-    "offer_price": "11999.00",
-    "stock_quantity": 8,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Exclusive",
-    "primary_image_url": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-28T11:57:33.350Z",
-    "updated_at": "2026-08-28T11:57:33.350Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 30,
-  "fields": {
-    "category": 9,
-    "sub_category": null,
-    "name": "Wabi-Sabi Heritage Serving Platter",
-    "slug": "wabi-sabi-heritage-serving-platter",
-    "description": "One-of-a-kind irregular-edge porcelain platter with natural ash glaze from wood-fired kiln. Each piece is uniquely shaped by nature.",
-    "mrp": "5999.00",
-    "offer_price": "4499.00",
-    "stock_quantity": 12,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Exclusive",
-    "primary_image_url": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-28T11:57:33.350Z",
-    "updated_at": "2026-08-28T11:57:33.350Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 31,
-  "fields": {
-    "category": 10,
-    "sub_category": null,
-    "name": "Artisan Celadon Tea Cup & Saucer Set",
-    "slug": "artisan-celadon-tea-cup-saucer-set",
-    "description": "Studio-exclusive celadon jade green tea cups with matching saucers. Inspired by ancient Chinese Song dynasty pottery. Limited batch of 50.",
-    "mrp": "3499.00",
-    "offer_price": "2799.00",
-    "stock_quantity": 15,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "Exclusive",
-    "primary_image_url": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-28T11:57:33.359Z",
-    "updated_at": "2026-08-28T11:57:33.359Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 32,
-  "fields": {
-    "category": 9,
-    "sub_category": null,
-    "name": "Sakura Petal Ramen Bowl Set (Set of 2)",
-    "slug": "sakura-petal-ramen-bowl-set-set-of-2",
-    "description": "Deep-walled ramen bowls with delicate cherry blossom relief pattern. Perfect for noodles, pho, and udon. 1280°C fired porcelain.",
-    "mrp": "2999.00",
-    "offer_price": "2299.00",
-    "stock_quantity": 35,
-    "is_active": true,
-    "is_featured": true,
-    "badge": "New Arrival",
-    "primary_image_url": "https://images.unsplash.com/photo-1590794056226-79ef1f5044d6?q=80&w=800&auto=format&fit=crop",
-    "created_at": "2026-08-28T11:57:33.372Z",
-    "updated_at": "2026-08-28T11:57:33.372Z"
-  }
-},
-{
-  "model": "api.product",
-  "pk": 33,
-  "fields": {
-    "category": 8,
-    "sub_category": 1,
-    "name": "kkk",
-    "slug": "kkk",
-    "description": "",
-    "mrp": "22.00",
-    "offer_price": "88.00",
-    "stock_quantity": 10,
-    "is_active": true,
-    "is_featured": false,
-    "badge": "",
-    "primary_image_url": "",
-    "created_at": "2026-08-29T16:07:41.282Z",
-    "updated_at": "2026-08-29T16:08:35.134Z"
-  }
-},
-{
-  "model": "api.productimage",
-  "pk": 1,
-  "fields": {
-    "product": 33,
-    "image_url": "",
-    "image": "products/33/2d899bae2d78442b8bf80610de90f698.webp",
-    "alt_text": "kkk Image",
-    "is_primary": true,
-    "created_at": "2026-08-29T16:08:24.902Z"
-  }
-},
-{
-  "model": "api.productimage",
-  "pk": 2,
-  "fields": {
-    "product": 33,
-    "image_url": "",
-    "image": "products/33/c0e7fe3e4dab49b0a273be49ca2a2b5f.webp",
-    "alt_text": "kkk Image",
-    "is_primary": false,
-    "created_at": "2026-08-29T16:08:24.941Z"
-  }
-},
-{
-  "model": "api.productimage",
-  "pk": 3,
-  "fields": {
-    "product": 33,
-    "image_url": "",
-    "image": "products/33/118a3cd16b4740b5aa8efeb21bc0e380.webp",
-    "alt_text": "kkk Image",
-    "is_primary": false,
-    "created_at": "2026-08-29T16:08:24.961Z"
-  }
-},
-{
-  "model": "api.productimage",
-  "pk": 4,
-  "fields": {
-    "product": 33,
-    "image_url": "",
-    "image": "products/33/bc2f3db1a7d54ccd8823451cf63a2fff.webp",
-    "alt_text": "kkk Image",
-    "is_primary": false,
-    "created_at": "2026-08-29T16:08:24.977Z"
-  }
-},
-{
-  "model": "api.productimage",
-  "pk": 5,
-  "fields": {
-    "product": 33,
-    "image_url": "",
-    "image": "products/33/05f58869814b4507b385b29dc815e06b.webp",
-    "alt_text": "kkk Image",
-    "is_primary": false,
-    "created_at": "2026-08-29T16:08:24.994Z"
-  }
-},
-{
-  "model": "api.cartitem",
-  "pk": 8,
-  "fields": {
-    "user": [
-      "adm"
-    ],
-    "product": 22,
-    "variant": null,
-    "quantity": 3,
-    "created_at": "2026-07-28T20:26:46.211Z"
-  }
-},
-{
-  "model": "api.cartitem",
-  "pk": 9,
-  "fields": {
-    "user": [
-      "admin"
-    ],
-    "product": 23,
-    "variant": null,
-    "quantity": 3,
-    "created_at": "2026-07-28T20:27:18.014Z"
-  }
-},
-{
-  "model": "api.cartitem",
-  "pk": 10,
-  "fields": {
-    "user": [
-      "adm"
-    ],
-    "product": 23,
-    "variant": null,
-    "quantity": 1,
-    "created_at": "2026-07-28T20:48:41.834Z"
-  }
-},
-{
-  "model": "api.paymentsettings",
-  "pk": 1,
-  "fields": {
-    "upi_id": "kuduchee@upi",
-    "payee_name": "Kaviz Creations Pvt Ltd",
-    "qr_code_url": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=kuduchee@upi%26pn=Kaviz%20Creations%20Pvt%20Ltd%26cu=INR",
-    "is_qr_enabled": true,
-    "is_razorpay_enabled": false,
-    "razorpay_key_id": "",
-    "razorpay_key_secret": "",
-    "updated_at": "2026-07-21T07:45:15.922Z"
-  }
-},
-{
-  "model": "api.order",
-  "pk": 1,
-  "fields": {
-    "user": [
-      "doshisiddharth"
-    ],
-    "order_number": "KDC-068A79A8",
-    "status": "PENDING_VERIFICATION",
-    "total_amount": "7800.00",
-    "shipping_address_snapshot": {
-      "full_name": "Siddharth Doshi",
-      "phone": "7984087691",
-      "street_address": "AHMEDABAD CANTONMENT (CB) LR JAIN HOSTEL DRIVE IN ROAD THALTEJ",
-      "apartment": "",
-      "city": "Ahmedabad Cantonment (CB)",
-      "state": "Gujarat",
-      "postal_code": "380059"
-    },
-    "payment_method": "UPI_QR",
-    "utr_number": "123456789012",
-    "payment_proof_url": "",
-    "rejection_reason": "",
-    "cancellation_reason": "",
-    "refund_bank_details": null,
-    "refund_transaction_ref": "",
-    "refund_notes": "",
-    "tracking_notes": "",
-    "tracking_number": "",
-    "courier_partner": "",
-    "created_at": "2026-07-21T08:36:22.164Z",
-    "updated_at": "2026-07-21T08:36:22.164Z"
-  }
-},
-{
-  "model": "api.order",
-  "pk": 2,
-  "fields": {
-    "user": [
-      "doshisiddharth2"
-    ],
-    "order_number": "KDC-910A51EE",
-    "status": "APPROVED",
-    "total_amount": "1130.00",
-    "shipping_address_snapshot": {
-      "full_name": "Siddharth Doshi",
-      "phone": "7984087691",
-      "street_address": "mahavir streer",
-      "apartment": "",
-      "city": "vadali",
-      "state": "Gujarat",
-      "postal_code": "383235"
-    },
-    "payment_method": "UPI_QR",
-    "utr_number": "123456789012",
-    "payment_proof_url": "",
-    "rejection_reason": "",
-    "cancellation_reason": "",
-    "refund_bank_details": null,
-    "refund_transaction_ref": "",
-    "refund_notes": "",
-    "tracking_notes": "MAST MAAL",
-    "tracking_number": "",
-    "courier_partner": "RAJU",
-    "created_at": "2026-07-21T09:24:03.256Z",
-    "updated_at": "2026-07-21T09:29:51.267Z"
-  }
-},
-{
-  "model": "api.order",
-  "pk": 3,
-  "fields": {
-    "user": [
-      "doshisiddharth2"
-    ],
-    "order_number": "KDC-3B21962E",
-    "status": "DELIVERED",
-    "total_amount": "9500.00",
-    "shipping_address_snapshot": {
-      "full_name": "Siddharth Doshi",
-      "phone": "7984087691",
-      "street_address": "mahavir streer",
-      "apartment": "",
-      "city": "vadali",
-      "state": "Gujarat",
-      "postal_code": "383235"
-    },
-    "payment_method": "UPI_QR",
-    "utr_number": "1234567890",
-    "payment_proof_url": "",
-    "rejection_reason": "",
-    "cancellation_reason": "",
-    "refund_bank_details": null,
-    "refund_transaction_ref": "",
-    "refund_notes": "",
-    "tracking_notes": "",
-    "tracking_number": "",
-    "courier_partner": "jjj",
-    "created_at": "2026-07-21T09:27:38.989Z",
-    "updated_at": "2026-07-21T09:31:21.431Z"
-  }
-},
-{
-  "model": "api.order",
-  "pk": 4,
-  "fields": {
-    "user": [
-      "admi"
-    ],
-    "order_number": "KDC-CCC4B361",
-    "status": "PENDING_VERIFICATION",
-    "total_amount": "699.00",
-    "shipping_address_snapshot": {
-      "full_name": "Anil Panda",
-      "phone": "1234567890",
-      "street_address": "YFYUFG",
-      "apartment": "",
-      "city": "UGUGUU",
-      "state": "UGUGU",
-      "postal_code": "123456"
-    },
-    "payment_method": "UPI_QR",
-    "utr_number": "123456789012",
-    "payment_proof_url": "",
-    "rejection_reason": "",
-    "cancellation_reason": "",
-    "refund_bank_details": null,
-    "refund_transaction_ref": "",
-    "refund_notes": "",
-    "tracking_notes": "",
-    "tracking_number": "",
-    "courier_partner": "",
-    "created_at": "2026-07-24T17:43:28.351Z",
-    "updated_at": "2026-07-24T17:43:28.351Z"
-  }
-},
-{
-  "model": "api.orderitem",
-  "pk": 1,
-  "fields": {
-    "order": 1,
-    "product": null,
-    "product_name": "Charcoal Studio Matte Dinner Plate Set (4pc)",
-    "variant_name": "",
-    "unit_price": "3900.00",
-    "quantity": 2,
-    "total_price": "7800.00"
-  }
-},
-{
-  "model": "api.orderitem",
-  "pk": 2,
-  "fields": {
-    "order": 2,
-    "product": null,
-    "product_name": "Ribbed Ivory & Umber Tea Chalice",
-    "variant_name": "",
-    "unit_price": "680.00",
-    "quantity": 1,
-    "total_price": "680.00"
-  }
-},
-{
-  "model": "api.orderitem",
-  "pk": 3,
-  "fields": {
-    "order": 2,
-    "product": null,
-    "product_name": "Minimalist Raw Umber Espresso Cup",
-    "variant_name": "",
-    "unit_price": "450.00",
-    "quantity": 1,
-    "total_price": "450.00"
-  }
-},
-{
-  "model": "api.orderitem",
-  "pk": 4,
-  "fields": {
-    "order": 3,
-    "product": null,
-    "product_name": "Raju rastogi",
-    "variant_name": "",
-    "unit_price": "1900.00",
-    "quantity": 5,
-    "total_price": "9500.00"
-  }
-},
-{
-  "model": "api.orderitem",
-  "pk": 5,
-  "fields": {
-    "order": 4,
-    "product": 23,
-    "product_name": "Botanical Ceramic Incense & Palo Santo Burner",
-    "variant_name": "",
-    "unit_price": "699.00",
-    "quantity": 1,
-    "total_price": "699.00"
-  }
-},
-{
-  "model": "api.herobanner",
-  "pk": 5,
-  "fields": {
-    "tagline": "CROCKERY COLLECTION",
-    "title": "Opulence Fired in Stoneware.",
-    "quote": "Designing Experiences Around Every Meal.",
-    "cta_text": "Discover Crockery",
-    "cta_link": "/shop?category=crockery",
-    "image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=1600&q=85",
-    "accent_badge": "Handcrafted Batch 06 · 1280°C Fired",
-    "order": 1,
-    "is_active": true
-  }
-},
-{
-  "model": "api.herobanner",
-  "pk": 6,
-  "fields": {
-    "tagline": "KITCHENWARE & CEREMONY MUGS",
-    "title": "Morning Rituals Reimagined.",
-    "quote": "Serve What You Deserve.",
-    "cta_text": "Explore Kitchenware",
-    "cta_link": "/shop?category=kitchenware",
-    "image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=1600&q=85",
-    "accent_badge": "Tactile Porcelain · Non-Toxic Glaze",
-    "order": 2,
-    "is_active": true
-  }
-},
-{
-  "model": "api.herobanner",
-  "pk": 7,
-  "fields": {
-    "tagline": "HOME DECOR & VASES",
-    "title": "Sculptural Objects of Quiet Luxury.",
-    "quote": "Elegance is when the inside is as beautiful as the outside.",
-    "cta_text": "View Home Decor",
-    "cta_link": "/shop?category=home-decor",
-    "image_url": "https://images.unsplash.com/photo-1581783342308-f792dbdd77c5?w=1600&q=85",
-    "accent_badge": "Organic Clay · Limited Edition Vessels",
-    "order": 3,
-    "is_active": true
-  }
-},
-{
-  "model": "api.sitesettings",
-  "pk": 1,
-  "fields": {
-    "ticker_text": "100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Porcelain · Lead-Free & Food Safe",
-    "brand_quote": "Elegance is when the inside is as beautiful as the outside.",
-    "brand_author": "Kuduchee",
-    "contact_email": "info@kuduchee.in",
-    "contact_phone": "9599652190",
-    "company_legal_name": "Kaviz Creations Private Limited",
-    "company_location": "Ahmedabad, Gujarat",
-    "updated_at": "2026-08-28T12:17:40.805Z"
-  }
-}
-]
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$SQ9zqPPkxraselBQtBDTU1$2wDrhsUhKYaLWIj35vwtEM7uAp/Zi+ZhJh0m5+2vXsE=",
+    "last_login": "2026-08-29T15:35:59.382Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Admin",
+    "last_name": "",
+    "email": "admin@kuduchee.in",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-21T06:50:29.339Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$RRoTLcyFX70slQyKAaBvrE$WlZXTJPDBTTvGPxDXhd1UNThHR1Wg3mlf71gzjKVn1U=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "doshisiddharth",
+    "first_name": "Siddharth",
+    "last_name": "Doshi",
+    "email": "doshisiddharth530@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-21T07:28:31.740Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$qm0jQByfvkl9PwgjOLhUOs$Vk3xTYcB2M8Cu3F57OYgrDmyR4xUyXcQUg2/R7+03I4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "doshisiddharth2",
+    "first_name": "Siddharth",
+    "last_name": "Doshi",
+    "email": "doshisiddharth218@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-21T08:28:16.020Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$NgHk8eXkO5BIZO7Q8Brhrl$DCkzpevBnwY5s/H9jjSoXsGhr0Td8Da2C2ZcOdIocdM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sd1",
+    "first_name": "Siddharth",
+    "last_name": "Doshi",
+    "email": "doshisiddharth53@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-24T12:05:52.049Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$vHsI5wTMtemfROcAM9hwwj$a6xuq2A9ys1G74OIpCvL/1ji1xGPITS/IANksCkPv0Q=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "admi",
+    "first_name": "Anil",
+    "last_name": "Panda",
+    "email": "anil.kuduchee@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-24T17:42:00.225Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Zl2PlNVEZ9wJPDqn7HI6Ux$YqZ3Rbl+7KyMBlQNnhoMaxt30p2NgPSjCASIhwgoBcE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "adm",
+    "first_name": "Siddharth",
+    "last_name": "Doshi",
+    "email": "doshisiddharth30@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-28T20:03:37.403Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$eJOSGDAbMTdjs9ipD5ReNH$RqmN6N2af8gUriPSJSu3TJaYkS9y3B1E4YHsTltfAvo=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "kuduchee_admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "anil.panda@kuduchee.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-01T19:21:19.559Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "api.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "phone_number": null,
+    "created_at": "2026-07-21T06:50:29.839Z"
+  }
+},
+{
+  "model": "api.profile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "doshisiddharth"
+    ],
+    "phone_number": "7984087691",
+    "created_at": "2026-07-21T07:28:32.546Z"
+  }
+},
+{
+  "model": "api.profile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "doshisiddharth2"
+    ],
+    "phone_number": "7984087691",
+    "created_at": "2026-07-21T08:28:16.851Z"
+  }
+},
+{
+  "model": "api.profile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "sd1"
+    ],
+    "phone_number": null,
+    "created_at": "2026-07-24T12:05:52.975Z"
+  }
+},
+{
+  "model": "api.profile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "admi"
+    ],
+    "phone_number": null,
+    "created_at": "2026-07-24T17:42:01.869Z"
+  }
+},
+{
+  "model": "api.profile",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "adm"
+    ],
+    "phone_number": null,
+    "created_at": "2026-07-28T20:03:38.101Z"
+  }
+},
+{
+  "model": "api.profile",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "kuduchee_admin"
+    ],
+    "phone_number": null,
+    "created_at": "2026-08-01T19:21:20.918Z"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 5,
+  "fields": {
+    "name": "Crockery",
+    "slug": "crockery",
+    "description": "Fine stoneware dinnerware, ceremony mugs, artisanal bowls & banquet platters high-fired at 1280ï¿½C.",
+    "image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80",
+    "is_featured": true,
+    "created_at": "2026-07-24T17:01:11.809Z"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 6,
+  "fields": {
+    "name": "Kitchenware",
+    "slug": "kitchenware",
+    "description": "Thoughtful kitchen essentials, ceramic spice jars, oil pourers, mortar & pestle, and handcrafted serving tools.",
+    "image_url": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80",
+    "is_featured": true,
+    "created_at": "2026-07-24T17:01:11.821Z"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 7,
+  "fields": {
+    "name": "Home Decor",
+    "slug": "home-decor",
+    "description": "Artisanal stoneware vases, sculptural ceramics, candle holders, and luxury living accents.",
+    "image_url": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&q=80",
+    "is_featured": true,
+    "created_at": "2026-07-24T17:01:11.829Z"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 8,
+  "fields": {
+    "name": "Dinner Sets",
+    "slug": "dinner-sets",
+    "description": "Handcrafted 1280ï¿½C High-Fired Stoneware Dinnerware",
+    "image_url": "",
+    "is_featured": true,
+    "created_at": "2026-08-01T18:39:14.221Z"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 9,
+  "fields": {
+    "name": "Serveware & Bowls",
+    "slug": "serveware-bowls",
+    "description": "Elegant artisan serving bowls & platters",
+    "image_url": "",
+    "is_featured": true,
+    "created_at": "2026-08-01T18:39:14.235Z"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 10,
+  "fields": {
+    "name": "Mugs & Drinkware",
+    "slug": "mugs-drinkware",
+    "description": "Ergonomic matte & glazed stoneware mugs",
+    "image_url": "",
+    "is_featured": true,
+    "created_at": "2026-08-01T18:39:14.246Z"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 11,
+  "fields": {
+    "name": "jjj",
+    "slug": "jjj",
+    "description": "",
+    "image_url": "",
+    "is_featured": true,
+    "created_at": "2026-08-29T15:36:53.104Z"
+  }
+},
+{
+  "model": "api.subcategory",
+  "pk": 1,
+  "fields": {
+    "category": 8,
+    "name": "16-Piece Sets",
+    "slug": "dinner-sets-16-piece-sets",
+    "description": "Complete dinnerware sets for modern dining.",
+    "is_active": true,
+    "created_at": "2026-08-29T15:46:33.236Z"
+  }
+},
+{
+  "model": "api.subcategory",
+  "pk": 2,
+  "fields": {
+    "category": 8,
+    "name": "Quarter & Side Plates",
+    "slug": "dinner-sets-quarter-side-plates",
+    "description": "Artisan appetizer & side plates.",
+    "is_active": true,
+    "created_at": "2026-08-29T15:46:33.244Z"
+  }
+},
+{
+  "model": "api.subcategory",
+  "pk": 3,
+  "fields": {
+    "category": 9,
+    "name": "Serving Bowls",
+    "slug": "serveware-bowls-serving-bowls",
+    "description": "Deep ceramic bowls for soups, pasta, & salads.",
+    "is_active": true,
+    "created_at": "2026-08-29T15:46:33.246Z"
+  }
+},
+{
+  "model": "api.subcategory",
+  "pk": 4,
+  "fields": {
+    "category": 9,
+    "name": "Platters & Trays",
+    "slug": "serveware-bowls-platters-trays",
+    "description": "Handcrafted stoneware platters.",
+    "is_active": true,
+    "created_at": "2026-08-29T15:46:33.256Z"
+  }
+},
+{
+  "model": "api.subcategory",
+  "pk": 5,
+  "fields": {
+    "category": 10,
+    "name": "Coffee Mugs",
+    "slug": "mugs-drinkware-coffee-mugs",
+    "description": "Hand-glazed ceramic coffee mugs.",
+    "is_active": true,
+    "created_at": "2026-08-29T15:46:33.262Z"
+  }
+},
+{
+  "model": "api.subcategory",
+  "pk": 6,
+  "fields": {
+    "category": 10,
+    "name": "Tea Cups & Saucers",
+    "slug": "mugs-drinkware-tea-cups-saucers",
+    "description": "Fine porcelain tea cup sets.",
+    "is_active": true,
+    "created_at": "2026-08-29T15:46:33.262Z"
+  }
+},
+{
+  "model": "api.subcategory",
+  "pk": 7,
+  "fields": {
+    "category": 5,
+    "name": "jji",
+    "slug": "crockery-jji",
+    "description": "",
+    "is_active": true,
+    "created_at": "2026-08-29T16:06:49.515Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 8,
+  "fields": {
+    "category": 5,
+    "sub_category": null,
+    "name": "Opulence Stoneware Dinner Set (16-Piece)",
+    "slug": "opulence-stoneware-dinner-set-16-piece",
+    "description": "Complete 16-piece handcrafted stoneware dining set high-fired at 1280ï¿½C for superior chip resistance. Non-toxic, 100% vegetarian porcelain lead-free glaze.",
+    "mrp": "8999.00",
+    "offer_price": "6499.00",
+    "stock_quantity": 25,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Best Seller",
+    "primary_image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80",
+    "created_at": "2026-07-24T17:01:11.843Z",
+    "updated_at": "2026-07-24T17:01:11.843Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 9,
+  "fields": {
+    "category": 5,
+    "sub_category": null,
+    "name": "Monsoon Chai & Snack Platter Set",
+    "slug": "monsoon-chai-snack-platter-set",
+    "description": "Organic stoneware serving platter with paired tactile dip bowl, designed for evening tea & snacks.",
+    "mrp": "3499.00",
+    "offer_price": "2299.00",
+    "stock_quantity": 40,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Handcrafted",
+    "primary_image_url": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=80",
+    "created_at": "2026-07-24T17:01:11.852Z",
+    "updated_at": "2026-07-24T17:01:11.852Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 10,
+  "fields": {
+    "category": 5,
+    "sub_category": null,
+    "name": "Sunday Gatherings Communal Serving Bowl",
+    "slug": "sunday-gatherings-communal-serving-bowl",
+    "description": "Deep stoneware communal serving bowl with rich tactile matte glaze. Perfect for family lunches and celebratory feasting.",
+    "mrp": "2999.00",
+    "offer_price": "1899.00",
+    "stock_quantity": 18,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Studio Limited",
+    "primary_image_url": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&q=80",
+    "created_at": "2026-07-24T17:01:11.862Z",
+    "updated_at": "2026-07-24T17:01:11.862Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 11,
+  "fields": {
+    "category": 6,
+    "sub_category": null,
+    "name": "Ceremony Porcelain Mugs (Set of 2)",
+    "slug": "ceremony-porcelain-mugs-set-of-2",
+    "description": "Ergonomically crafted ceramic mugs designed for morning tea & coffee rituals. Smooth interior with textured matte exterior.",
+    "mrp": "1999.00",
+    "offer_price": "1299.00",
+    "stock_quantity": 50,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "New Arrival",
+    "primary_image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80",
+    "created_at": "2026-07-24T17:01:11.873Z",
+    "updated_at": "2026-07-24T17:01:11.873Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 12,
+  "fields": {
+    "category": 6,
+    "sub_category": null,
+    "name": "Morning Ritual Pour-Over Coffee Dripper Set",
+    "slug": "morning-ritual-pour-over-coffee-dripper-set",
+    "description": "Ceramic pour-over cone & carafe set for slow coffee brewing. Retains heat perfectly.",
+    "mrp": "2899.00",
+    "offer_price": "1999.00",
+    "stock_quantity": 20,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Artisan Classic",
+    "primary_image_url": "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=800&q=80",
+    "created_at": "2026-07-24T17:01:11.878Z",
+    "updated_at": "2026-07-24T17:01:11.878Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 13,
+  "fields": {
+    "category": 7,
+    "sub_category": null,
+    "name": "Sculptural Organic Clay Vase",
+    "slug": "sculptural-organic-clay-vase",
+    "description": "Hand-shaped sculptural stoneware vase with earthy textured finish. Designed as a standalone art piece or floral vessel.",
+    "mrp": "4999.00",
+    "offer_price": "3299.00",
+    "stock_quantity": 12,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Limited Run",
+    "primary_image_url": "https://images.unsplash.com/photo-1581783342308-f792dbdd77c5?w=800&q=80",
+    "created_at": "2026-07-24T17:01:11.891Z",
+    "updated_at": "2026-07-24T17:01:11.891Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 14,
+  "fields": {
+    "category": 7,
+    "sub_category": null,
+    "name": "Minimalist Fluted Terracotta Vessel",
+    "slug": "minimalist-fluted-terracotta-vessel",
+    "description": "Architectural fluted ceramic vessel inspired by traditional Indian temple pillars.",
+    "mrp": "3799.00",
+    "offer_price": "2499.00",
+    "stock_quantity": 22,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Studio Special",
+    "primary_image_url": "https://images.unsplash.com/photo-1612196808214-b7e239e5f6b7?w=800&q=80",
+    "created_at": "2026-07-24T17:01:11.901Z",
+    "updated_at": "2026-07-24T17:01:11.901Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 15,
+  "fields": {
+    "category": 5,
+    "sub_category": null,
+    "name": "Monsoon Chai Ceremony Mug Set (Set of 4)",
+    "slug": "monsoon-chai-ceremony-mug-set-set-of-4",
+    "description": "Hand-thrown stoneware ceremony mugs with tactile organic texture. Holds heat exceptionally well, high-fired at 1280ï¿½C.",
+    "mrp": "2499.00",
+    "offer_price": "1899.00",
+    "stock_quantity": 24,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Best Seller",
+    "primary_image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.049Z",
+    "updated_at": "2026-07-24T17:15:07.049Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 16,
+  "fields": {
+    "category": 5,
+    "sub_category": null,
+    "name": "Sunday Gatherings Stoneware Banquet Dinner Set (16 Pcs)",
+    "slug": "sunday-gatherings-stoneware-banquet-dinner-set-16-pcs",
+    "description": "Complete 16-piece high-fired stoneware dinnerware set including dinner plates, side plates, ramen bowls, and dip saucers in matte gold cream glaze.",
+    "mrp": "8999.00",
+    "offer_price": "6999.00",
+    "stock_quantity": 15,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Limited Run",
+    "primary_image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.064Z",
+    "updated_at": "2026-07-24T17:15:07.064Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 17,
+  "fields": {
+    "category": 5,
+    "sub_category": null,
+    "name": "Morning Ritual Ceramic Breakfast Bowls (Set of 2)",
+    "slug": "morning-ritual-ceramic-breakfast-bowls-set-of-2",
+    "description": "Ergonomic rounded stoneware bowls designed for morning oatmeal, soups, and grain bowls. Non-toxic lead-free glaze.",
+    "mrp": "1799.00",
+    "offer_price": "1299.00",
+    "stock_quantity": 30,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Limited Run",
+    "primary_image_url": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.079Z",
+    "updated_at": "2026-07-24T17:15:07.079Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 18,
+  "fields": {
+    "category": 6,
+    "sub_category": null,
+    "name": "Artisanal Ceramic Spice Jar Set with Bamboo Spoons",
+    "slug": "artisanal-ceramic-spice-jar-set-with-bamboo-spoons",
+    "description": "Airtight stoneware spice canisters with natural bamboo lids and silicone sealing rings. Perfect for keeping spices fresh.",
+    "mrp": "2199.00",
+    "offer_price": "1599.00",
+    "stock_quantity": 20,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "New Arrival",
+    "primary_image_url": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.092Z",
+    "updated_at": "2026-07-24T17:15:07.092Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 19,
+  "fields": {
+    "category": 6,
+    "sub_category": null,
+    "name": "Handcrafted Stoneware Mortar & Pestle Set",
+    "slug": "handcrafted-stoneware-mortar-pestle-set",
+    "description": "Heavyweight stoneware mortar and pestle for crushing fresh spices and garlic. Textured inner surface for efficient grinding.",
+    "mrp": "1999.00",
+    "offer_price": "1499.00",
+    "stock_quantity": 18,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Best Seller",
+    "primary_image_url": "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.105Z",
+    "updated_at": "2026-07-24T17:15:07.105Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 20,
+  "fields": {
+    "category": 6,
+    "sub_category": null,
+    "name": "Drip-Free Stoneware Oil & Vinegar Bottle (500ml)",
+    "slug": "drip-free-stoneware-oil-vinegar-bottle-500ml",
+    "description": "Elegantly sculpted stoneware oil dispenser with stainless steel pour spout and cork stopper.",
+    "mrp": "1499.00",
+    "offer_price": "1099.00",
+    "stock_quantity": 25,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "New Arrival",
+    "primary_image_url": "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.119Z",
+    "updated_at": "2026-07-24T17:15:07.119Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 21,
+  "fields": {
+    "category": 7,
+    "sub_category": null,
+    "name": "Sculptural Terra Stoneware Floor Vase",
+    "slug": "sculptural-terra-stoneware-floor-vase",
+    "description": "Dramatic organic ceramic vase with speckled earth-inspired glaze. Statement centerpiece for living room & entryways.",
+    "mrp": "4999.00",
+    "offer_price": "3499.00",
+    "stock_quantity": 10,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Limited Run",
+    "primary_image_url": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.132Z",
+    "updated_at": "2026-07-24T17:15:07.132Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 22,
+  "fields": {
+    "category": 7,
+    "sub_category": null,
+    "name": "Minimalist Taper Candle Holder Pair",
+    "slug": "minimalist-taper-candle-holder-pair",
+    "description": "Hand-formed ceramic taper candle holders in raw sand stoneware finish.",
+    "mrp": "1299.00",
+    "offer_price": "899.00",
+    "stock_quantity": 40,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Best Seller",
+    "primary_image_url": "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.143Z",
+    "updated_at": "2026-07-24T17:15:07.143Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 23,
+  "fields": {
+    "category": 7,
+    "sub_category": null,
+    "name": "Botanical Ceramic Incense & Palo Santo Burner",
+    "slug": "botanical-ceramic-incense-palo-santo-burner",
+    "description": "Multi-purpose stoneware incense burner dish with brass Palo Santo holder.",
+    "mrp": "999.00",
+    "offer_price": "699.00",
+    "stock_quantity": 34,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "New Arrival",
+    "primary_image_url": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=80",
+    "created_at": "2026-07-24T17:15:07.156Z",
+    "updated_at": "2026-07-24T17:43:28.359Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 24,
+  "fields": {
+    "category": 8,
+    "sub_category": null,
+    "name": "Artisan Earth Stoneware Dinner Set (16 Piece)",
+    "slug": "artisan-earth-stoneware-dinner-set-16-piece",
+    "description": "Complete 16-piece high-fired stoneware dinnerware set featuring rustic reactive glazes, scratch-resistant surface, and food-safe finish.",
+    "mrp": "8999.00",
+    "offer_price": "6499.00",
+    "stock_quantity": 25,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Best Seller",
+    "primary_image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-01T18:39:14.259Z",
+    "updated_at": "2026-08-01T18:39:14.259Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 25,
+  "fields": {
+    "category": 8,
+    "sub_category": null,
+    "name": "Nordic Matte Charcoal Quarter Plates (Set of 4)",
+    "slug": "nordic-matte-charcoal-quarter-plates-set-of-4",
+    "description": "Minimalist quarter plates with tactile matte charcoal texture, high-fired at 1280ï¿½C for exceptional durability.",
+    "mrp": "2499.00",
+    "offer_price": "1899.00",
+    "stock_quantity": 40,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "New Arrival",
+    "primary_image_url": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-01T18:39:14.273Z",
+    "updated_at": "2026-08-01T18:39:14.273Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 26,
+  "fields": {
+    "category": 9,
+    "sub_category": null,
+    "name": "Terracotta Speckled Serving Bowl",
+    "slug": "terracotta-speckled-serving-bowl",
+    "description": "Deep artisan serving bowl with subtle speckles and warm terracotta undertones. Microwave & dishwasher safe.",
+    "mrp": "1999.00",
+    "offer_price": "1399.00",
+    "stock_quantity": 30,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Exclusive",
+    "primary_image_url": "https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-01T18:39:14.284Z",
+    "updated_at": "2026-08-01T18:39:14.284Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 27,
+  "fields": {
+    "category": 10,
+    "sub_category": null,
+    "name": "Studio Brass Glaze Coffee Mugs (Set of 2)",
+    "slug": "studio-brass-glaze-coffee-mugs-set-of-2",
+    "description": "Handcrafted ceramic mugs featuring signature brass rim detail and comfort grip handles.",
+    "mrp": "1499.00",
+    "offer_price": "999.00",
+    "stock_quantity": 50,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Best Seller",
+    "primary_image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-01T18:39:14.297Z",
+    "updated_at": "2026-08-01T18:39:14.297Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 28,
+  "fields": {
+    "category": 8,
+    "sub_category": null,
+    "name": "Artisan Earth Porcelain Dinner Set (16 Piece)",
+    "slug": "artisan-earth-porcelain-dinner-set-16-piece",
+    "description": "Complete 16-piece high-fired porcelain dinnerware set featuring rustic reactive glazes, scratch-resistant surface, and food-safe finish.",
+    "mrp": "8999.00",
+    "offer_price": "6499.00",
+    "stock_quantity": 25,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Best Seller",
+    "primary_image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-28T11:57:33.339Z",
+    "updated_at": "2026-08-28T11:57:33.339Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 29,
+  "fields": {
+    "category": 8,
+    "sub_category": null,
+    "name": "Midnight Gold Signature Dinner Set (12 Piece)",
+    "slug": "midnight-gold-signature-dinner-set-12-piece",
+    "description": "Limited-edition 12-piece obsidian black dinner set with hand-painted 24K gold rim accents. Certificate of authenticity included. Collector's batch #06.",
+    "mrp": "14999.00",
+    "offer_price": "11999.00",
+    "stock_quantity": 8,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Exclusive",
+    "primary_image_url": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-28T11:57:33.350Z",
+    "updated_at": "2026-08-28T11:57:33.350Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 30,
+  "fields": {
+    "category": 9,
+    "sub_category": null,
+    "name": "Wabi-Sabi Heritage Serving Platter",
+    "slug": "wabi-sabi-heritage-serving-platter",
+    "description": "One-of-a-kind irregular-edge porcelain platter with natural ash glaze from wood-fired kiln. Each piece is uniquely shaped by nature.",
+    "mrp": "5999.00",
+    "offer_price": "4499.00",
+    "stock_quantity": 12,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Exclusive",
+    "primary_image_url": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-28T11:57:33.350Z",
+    "updated_at": "2026-08-28T11:57:33.350Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 31,
+  "fields": {
+    "category": 10,
+    "sub_category": null,
+    "name": "Artisan Celadon Tea Cup & Saucer Set",
+    "slug": "artisan-celadon-tea-cup-saucer-set",
+    "description": "Studio-exclusive celadon jade green tea cups with matching saucers. Inspired by ancient Chinese Song dynasty pottery. Limited batch of 50.",
+    "mrp": "3499.00",
+    "offer_price": "2799.00",
+    "stock_quantity": 15,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "Exclusive",
+    "primary_image_url": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-28T11:57:33.359Z",
+    "updated_at": "2026-08-28T11:57:33.359Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 32,
+  "fields": {
+    "category": 9,
+    "sub_category": null,
+    "name": "Sakura Petal Ramen Bowl Set (Set of 2)",
+    "slug": "sakura-petal-ramen-bowl-set-set-of-2",
+    "description": "Deep-walled ramen bowls with delicate cherry blossom relief pattern. Perfect for noodles, pho, and udon. 1280ï¿½C fired porcelain.",
+    "mrp": "2999.00",
+    "offer_price": "2299.00",
+    "stock_quantity": 35,
+    "is_active": true,
+    "is_featured": true,
+    "badge": "New Arrival",
+    "primary_image_url": "https://images.unsplash.com/photo-1590794056226-79ef1f5044d6?q=80&w=800&auto=format&fit=crop",
+    "created_at": "2026-08-28T11:57:33.372Z",
+    "updated_at": "2026-08-28T11:57:33.372Z"
+  }
+},
+{
+  "model": "api.product",
+  "pk": 33,
+  "fields": {
+    "category": 8,
+    "sub_category": 1,
+    "name": "kkk",
+    "slug": "kkk",
+    "description": "",
+    "mrp": "22.00",
+    "offer_price": "88.00",
+    "stock_quantity": 10,
+    "is_active": true,
+    "is_featured": false,
+    "badge": "",
+    "primary_image_url": "",
+    "created_at": "2026-08-29T16:07:41.282Z",
+    "updated_at": "2026-08-29T16:08:35.134Z"
+  }
+},
+{
+  "model": "api.productimage",
+  "pk": 1,
+  "fields": {
+    "product": 33,
+    "image_url": "",
+    "image": "products/33/2d899bae2d78442b8bf80610de90f698.webp",
+    "alt_text": "kkk Image",
+    "is_primary": true,
+    "created_at": "2026-08-29T16:08:24.902Z"
+  }
+},
+{
+  "model": "api.productimage",
+  "pk": 2,
+  "fields": {
+    "product": 33,
+    "image_url": "",
+    "image": "products/33/c0e7fe3e4dab49b0a273be49ca2a2b5f.webp",
+    "alt_text": "kkk Image",
+    "is_primary": false,
+    "created_at": "2026-08-29T16:08:24.941Z"
+  }
+},
+{
+  "model": "api.productimage",
+  "pk": 3,
+  "fields": {
+    "product": 33,
+    "image_url": "",
+    "image": "products/33/118a3cd16b4740b5aa8efeb21bc0e380.webp",
+    "alt_text": "kkk Image",
+    "is_primary": false,
+    "created_at": "2026-08-29T16:08:24.961Z"
+  }
+},
+{
+  "model": "api.productimage",
+  "pk": 4,
+  "fields": {
+    "product": 33,
+    "image_url": "",
+    "image": "products/33/bc2f3db1a7d54ccd8823451cf63a2fff.webp",
+    "alt_text": "kkk Image",
+    "is_primary": false,
+    "created_at": "2026-08-29T16:08:24.977Z"
+  }
+},
+{
+  "model": "api.productimage",
+  "pk": 5,
+  "fields": {
+    "product": 33,
+    "image_url": "",
+    "image": "products/33/05f58869814b4507b385b29dc815e06b.webp",
+    "alt_text": "kkk Image",
+    "is_primary": false,
+    "created_at": "2026-08-29T16:08:24.994Z"
+  }
+},
+{
+  "model": "api.cartitem",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "adm"
+    ],
+    "product": 22,
+    "variant": null,
+    "quantity": 3,
+    "created_at": "2026-07-28T20:26:46.211Z"
+  }
+},
+{
+  "model": "api.cartitem",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "product": 23,
+    "variant": null,
+    "quantity": 3,
+    "created_at": "2026-07-28T20:27:18.014Z"
+  }
+},
+{
+  "model": "api.cartitem",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "adm"
+    ],
+    "product": 23,
+    "variant": null,
+    "quantity": 1,
+    "created_at": "2026-07-28T20:48:41.834Z"
+  }
+},
+{
+  "model": "api.paymentsettings",
+  "pk": 1,
+  "fields": {
+    "upi_id": "kuduchee@upi",
+    "payee_name": "Kaviz Creations Pvt Ltd",
+    "qr_code_url": "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=kuduchee@upi%26pn=Kaviz%20Creations%20Pvt%20Ltd%26cu=INR",
+    "is_qr_enabled": true,
+    "is_razorpay_enabled": false,
+    "razorpay_key_id": "",
+    "razorpay_key_secret": "",
+    "updated_at": "2026-07-21T07:45:15.922Z"
+  }
+},
+{
+  "model": "api.order",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "doshisiddharth"
+    ],
+    "order_number": "KDC-068A79A8",
+    "status": "PENDING_VERIFICATION",
+    "total_amount": "7800.00",
+    "shipping_address_snapshot": {
+      "full_name": "Siddharth Doshi",
+      "phone": "7984087691",
+      "street_address": "AHMEDABAD CANTONMENT (CB) LR JAIN HOSTEL DRIVE IN ROAD THALTEJ",
+      "apartment": "",
+      "city": "Ahmedabad Cantonment (CB)",
+      "state": "Gujarat",
+      "postal_code": "380059"
+    },
+    "payment_method": "UPI_QR",
+    "utr_number": "123456789012",
+    "payment_proof_url": "",
+    "rejection_reason": "",
+    "cancellation_reason": "",
+    "refund_bank_details": null,
+    "refund_transaction_ref": "",
+    "refund_notes": "",
+    "tracking_notes": "",
+    "tracking_number": "",
+    "courier_partner": "",
+    "created_at": "2026-07-21T08:36:22.164Z",
+    "updated_at": "2026-07-21T08:36:22.164Z"
+  }
+},
+{
+  "model": "api.order",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "doshisiddharth2"
+    ],
+    "order_number": "KDC-910A51EE",
+    "status": "APPROVED",
+    "total_amount": "1130.00",
+    "shipping_address_snapshot": {
+      "full_name": "Siddharth Doshi",
+      "phone": "7984087691",
+      "street_address": "mahavir streer",
+      "apartment": "",
+      "city": "vadali",
+      "state": "Gujarat",
+      "postal_code": "383235"
+    },
+    "payment_method": "UPI_QR",
+    "utr_number": "123456789012",
+    "payment_proof_url": "",
+    "rejection_reason": "",
+    "cancellation_reason": "",
+    "refund_bank_details": null,
+    "refund_transaction_ref": "",
+    "refund_notes": "",
+    "tracking_notes": "MAST MAAL",
+    "tracking_number": "",
+    "courier_partner": "RAJU",
+    "created_at": "2026-07-21T09:24:03.256Z",
+    "updated_at": "2026-07-21T09:29:51.267Z"
+  }
+},
+{
+  "model": "api.order",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "doshisiddharth2"
+    ],
+    "order_number": "KDC-3B21962E",
+    "status": "DELIVERED",
+    "total_amount": "9500.00",
+    "shipping_address_snapshot": {
+      "full_name": "Siddharth Doshi",
+      "phone": "7984087691",
+      "street_address": "mahavir streer",
+      "apartment": "",
+      "city": "vadali",
+      "state": "Gujarat",
+      "postal_code": "383235"
+    },
+    "payment_method": "UPI_QR",
+    "utr_number": "1234567890",
+    "payment_proof_url": "",
+    "rejection_reason": "",
+    "cancellation_reason": "",
+    "refund_bank_details": null,
+    "refund_transaction_ref": "",
+    "refund_notes": "",
+    "tracking_notes": "",
+    "tracking_number": "",
+    "courier_partner": "jjj",
+    "created_at": "2026-07-21T09:27:38.989Z",
+    "updated_at": "2026-07-21T09:31:21.431Z"
+  }
+},
+{
+  "model": "api.order",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "admi"
+    ],
+    "order_number": "KDC-CCC4B361",
+    "status": "PENDING_VERIFICATION",
+    "total_amount": "699.00",
+    "shipping_address_snapshot": {
+      "full_name": "Anil Panda",
+      "phone": "1234567890",
+      "street_address": "YFYUFG",
+      "apartment": "",
+      "city": "UGUGUU",
+      "state": "UGUGU",
+      "postal_code": "123456"
+    },
+    "payment_method": "UPI_QR",
+    "utr_number": "123456789012",
+    "payment_proof_url": "",
+    "rejection_reason": "",
+    "cancellation_reason": "",
+    "refund_bank_details": null,
+    "refund_transaction_ref": "",
+    "refund_notes": "",
+    "tracking_notes": "",
+    "tracking_number": "",
+    "courier_partner": "",
+    "created_at": "2026-07-24T17:43:28.351Z",
+    "updated_at": "2026-07-24T17:43:28.351Z"
+  }
+},
+{
+  "model": "api.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": null,
+    "product_name": "Charcoal Studio Matte Dinner Plate Set (4pc)",
+    "variant_name": "",
+    "unit_price": "3900.00",
+    "quantity": 2,
+    "total_price": "7800.00"
+  }
+},
+{
+  "model": "api.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "product": null,
+    "product_name": "Ribbed Ivory & Umber Tea Chalice",
+    "variant_name": "",
+    "unit_price": "680.00",
+    "quantity": 1,
+    "total_price": "680.00"
+  }
+},
+{
+  "model": "api.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 2,
+    "product": null,
+    "product_name": "Minimalist Raw Umber Espresso Cup",
+    "variant_name": "",
+    "unit_price": "450.00",
+    "quantity": 1,
+    "total_price": "450.00"
+  }
+},
+{
+  "model": "api.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 3,
+    "product": null,
+    "product_name": "Raju rastogi",
+    "variant_name": "",
+    "unit_price": "1900.00",
+    "quantity": 5,
+    "total_price": "9500.00"
+  }
+},
+{
+  "model": "api.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 4,
+    "product": 23,
+    "product_name": "Botanical Ceramic Incense & Palo Santo Burner",
+    "variant_name": "",
+    "unit_price": "699.00",
+    "quantity": 1,
+    "total_price": "699.00"
+  }
+},
+{
+  "model": "api.herobanner",
+  "pk": 5,
+  "fields": {
+    "tagline": "CROCKERY COLLECTION",
+    "title": "Opulence Fired in Stoneware.",
+    "quote": "Designing Experiences Around Every Meal.",
+    "cta_text": "Discover Crockery",
+    "cta_link": "/shop?category=crockery",
+    "image_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=1600&q=85",
+    "accent_badge": "Handcrafted Batch 06 ï¿½ 1280ï¿½C Fired",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "api.herobanner",
+  "pk": 6,
+  "fields": {
+    "tagline": "KITCHENWARE & CEREMONY MUGS",
+    "title": "Morning Rituals Reimagined.",
+    "quote": "Serve What You Deserve.",
+    "cta_text": "Explore Kitchenware",
+    "cta_link": "/shop?category=kitchenware",
+    "image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=1600&q=85",
+    "accent_badge": "Tactile Porcelain ï¿½ Non-Toxic Glaze",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "api.herobanner",
+  "pk": 7,
+  "fields": {
+    "tagline": "HOME DECOR & VASES",
+    "title": "Sculptural Objects of Quiet Luxury.",
+    "quote": "Elegance is when the inside is as beautiful as the outside.",
+    "cta_text": "View Home Decor",
+    "cta_link": "/shop?category=home-decor",
+    "image_url": "https://images.unsplash.com/photo-1581783342308-f792dbdd77c5?w=1600&q=85",
+    "accent_badge": "Organic Clay ï¿½ Limited Edition Vessels",
+    "order": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "api.sitesettings",
+  "pk": 1,
+  "fields": {
+    "ticker_text": "100% Damage Replacement Guarantee ï¿½ Handcrafted in Small Batches ï¿½ 1280ï¿½C High-Fired Porcelain ï¿½ Lead-Free & Food Safe",
+    "brand_quote": "Elegance is when the inside is as beautiful as the outside.",
+    "brand_author": "Kuduchee",
+    "contact_email": "info@kuduchee.in",
+    "contact_phone": "9599652190",
+    "company_legal_name": "Kaviz Creations Private Limited",
+    "company_location": "Ahmedabad, Gujarat",
+    "updated_at": "2026-08-28T12:17:40.805Z"
+  }
+}
+]
