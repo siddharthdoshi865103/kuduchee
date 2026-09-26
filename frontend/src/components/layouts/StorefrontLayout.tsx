@@ -104,8 +104,8 @@ export const StorefrontLayout: React.FC = () => {
       </div>
 
       {/* ─── MAIN STOREFRONT FLOATING NAVBAR (3 INDIVIDUAL PILLS) ─── */}
-      <header className="sticky top-2 md:top-4 z-40 w-full px-3 md:px-8 pointer-events-none transition-all duration-300 font-space">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4">
+      <div className="sticky top-2 md:top-4 z-40 w-full px-3 md:px-8 pointer-events-none transition-all duration-300 font-space -mb-16 md:-mb-20">
+        <header className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-3 md:gap-4">
 
           {/* 1. Left Island: Brand Logo */}
           <div className="pointer-events-auto shrink-0 bg-warm-white/90 backdrop-blur-md border border-warm-gray/60 shadow-lg rounded-full px-3.5 md:px-5 py-2 md:py-2.5 flex items-center transition-all duration-300 hover:shadow-xl hover:border-brass/50">
@@ -254,9 +254,8 @@ export const StorefrontLayout: React.FC = () => {
             </div>
 
           </div>
-
-        </div>
-      </header>
+        </header>
+      </div>
 
       {/* ─── MAIN PAGE OUTLET ─── */}
       <main className="flex-1 pb-[100px] md:pb-0">
