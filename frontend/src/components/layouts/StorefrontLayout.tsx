@@ -103,42 +103,44 @@ export const StorefrontLayout: React.FC = () => {
         </div>
       </div>
 
-      {/* ─── MAIN STOREFRONT HEADER ─── */}
-      <header className="sticky top-0 z-40 bg-warm-white/90 backdrop-blur-md border-b border-warm-gray/40 shadow-sm transition-all duration-300 font-space">
-        <div className="max-w-screen-xl mx-auto px-4 md:px-12 h-16 md:h-20 flex items-center justify-between gap-6">
+      {/* ─── MAIN STOREFRONT FLOATING NAVBAR (3 INDIVIDUAL PILLS) ─── */}
+      <header className="sticky top-2 md:top-4 z-40 w-full px-3 md:px-8 pointer-events-none transition-all duration-300 font-space">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4">
 
-          {/* Left-Aligned Brand Logo */}
-          <Link
-            to="/"
-            className="group shrink-0 mr-4"
-          >
-            <img
-              src="/kuduchee-logo-dark.png"
-              alt="Kuduchee"
-              className="h-9 md:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
-            />
-          </Link>
+          {/* 1. Left Island: Brand Logo */}
+          <div className="pointer-events-auto shrink-0 bg-warm-white/90 backdrop-blur-md border border-warm-gray/60 shadow-lg rounded-full px-3.5 md:px-5 py-2 md:py-2.5 flex items-center transition-all duration-300 hover:shadow-xl hover:border-brass/50">
+            <Link
+              to="/"
+              className="group flex items-center"
+            >
+              <img
+                src="/kuduchee-logo-dark.png"
+                alt="Kuduchee"
+                className="h-7 md:h-10 w-auto object-contain group-hover:scale-[1.03] transition-transform duration-300"
+              />
+            </Link>
+          </div>
 
-          {/* Center Navigation (Desktop Only) */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* 2. Middle Island: Navigation Links (Desktop) */}
+          <nav className="hidden lg:flex pointer-events-auto items-center gap-1 bg-warm-white/90 backdrop-blur-md border border-warm-gray/60 shadow-lg rounded-full px-4 py-1.5 transition-all duration-300 hover:shadow-xl hover:border-brass/50">
             <Link to="/" className={getNavLinkClass('/', true)}>
               Home
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/', true) ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/', true) ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
                 }`} />
             </Link>
             <Link to="/shop" className={getNavLinkClass('/shop')}>
               Shop
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
                 }`} />
             </Link>
             <Link to="/shop?section=best-sellers" className={getNavLinkClass('/shop?section=best-sellers', false, 'text-amber-600')}>
               Best Sellers
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=best-sellers') ? 'bg-amber-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=best-sellers') ? 'bg-amber-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
                 }`} />
             </Link>
             <Link to="/shop?section=new-arrivals" className={getNavLinkClass('/shop?section=new-arrivals', false, 'text-emerald-600')}>
               New Arrivals
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=new-arrivals') ? 'bg-emerald-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=new-arrivals') ? 'bg-emerald-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
                 }`} />
             </Link>
             <Link to="/shop?section=exclusive" className={getNavLinkClass('/shop?section=exclusive', false, 'text-[#C2B267] font-black')}>
@@ -146,35 +148,32 @@ export const StorefrontLayout: React.FC = () => {
                 <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#C2B267] animate-float" />
                 Exclusive
               </span>
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=exclusive') ? 'bg-[#C2B267] scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=exclusive') ? 'bg-[#C2B267] scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
                 }`} />
             </Link>
             <Link to="/contact" className={getNavLinkClass('/contact')}>
               Contact
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/contact') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/contact') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
                 }`} />
             </Link>
             <Link to="/about" className={getNavLinkClass('/about')}>
               About
-              <span className={`absolute bottom-0 left-3 right-3 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/about') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
+              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/about') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
                 }`} />
             </Link>
           </nav>
 
-          {/* Spacer for layout distribution */}
-          <div className="hidden lg:block flex-1" />
+          {/* 3. Right Island: Actions (Search, Wishlist, Cart, Sign In / Profile) */}
+          <div className="pointer-events-auto shrink-0 bg-warm-white/90 backdrop-blur-md border border-warm-gray/60 shadow-lg rounded-full px-2.5 md:px-4 py-1.5 md:py-2 flex items-center gap-1 md:gap-2.5 transition-all duration-300 hover:shadow-xl hover:border-brass/50">
 
-          {/* Right Header Actions */}
-          <div className="flex items-center gap-1 md:gap-3 shrink-0">
-
-            {/* Search — Always visible */}
-            <Link to="/shop" className="p-2 text-charcoal/80 hover:text-brass hover:bg-charcoal/5 rounded-xl transition-all" title="Search catalog">
-              <Search className="w-5 h-5" />
+            {/* Search */}
+            <Link to="/shop" className="p-2 text-charcoal/80 hover:text-brass hover:bg-charcoal/5 rounded-full transition-all" title="Search catalog">
+              <Search className="w-4 h-4 md:w-5 md:h-5" />
             </Link>
 
             {/* Wishlist Counter (Desktop only) */}
-            <Link to="/wishlist" className="hidden md:flex relative p-2 text-charcoal/80 hover:text-brass hover:bg-charcoal/5 rounded-xl transition-all" title="Saved Wishlist">
-              <Heart className="w-5 h-5" />
+            <Link to="/wishlist" className="hidden md:flex relative p-2 text-charcoal/80 hover:text-brass hover:bg-charcoal/5 rounded-full transition-all" title="Saved Wishlist">
+              <Heart className="w-4 h-4 md:w-5 md:h-5" />
               {wishlistCount > 0 && (
                 <span className="absolute top-1 right-1 w-4 h-4 bg-brass text-charcoal text-[9px] font-extrabold rounded-full flex items-center justify-center border border-warm-white shadow-sm animate-scaleIn">
                   {wishlistCount}
@@ -182,9 +181,9 @@ export const StorefrontLayout: React.FC = () => {
               )}
             </Link>
 
-            {/* Shopping Cart Counter (Desktop only) */}
-            <Link to="/cart" className="hidden md:flex relative p-2 text-charcoal/80 hover:text-brass hover:bg-charcoal/5 rounded-xl transition-all" title="Shopping Cart">
-              <ShoppingBag className="w-5 h-5" />
+            {/* Shopping Cart Counter (Desktop) */}
+            <Link to="/cart" className="hidden md:flex relative p-2 text-charcoal/80 hover:text-brass hover:bg-charcoal/5 rounded-full transition-all" title="Shopping Cart">
+              <ShoppingBag className="w-4 h-4 md:w-5 md:h-5" />
               {cartCount > 0 && (
                 <span className="absolute top-1 right-1 w-4 h-4 bg-brass text-charcoal text-[9px] font-extrabold rounded-full flex items-center justify-center border border-warm-white shadow-sm animate-scaleIn">
                   {cartCount}
@@ -192,12 +191,22 @@ export const StorefrontLayout: React.FC = () => {
               )}
             </Link>
 
-            {/* Profile Dropdown (Mobile & Desktop) */}
-            <div className="relative">
+            {/* Mobile: Cart icon with badge */}
+            <Link to="/cart" className="md:hidden relative p-1.5 text-charcoal hover:text-brass transition-colors" title="Cart">
+              <ShoppingBag className="w-4 h-4" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-brass text-charcoal text-[8px] font-bold rounded-full flex items-center justify-center border border-warm-white shadow-sm">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+
+            {/* Profile Dropdown / Sign In */}
+            <div className="relative pl-1">
               {isAuthenticated ? (
                 <button
                   onClick={(e) => { e.stopPropagation(); setProfileDropdownOpen(!profileDropdownOpen); }}
-                  className="flex items-center gap-1 p-1 rounded-full hover:bg-charcoal/5 transition-colors text-xs font-semibold text-charcoal"
+                  className="flex items-center gap-1 p-0.5 rounded-full hover:bg-charcoal/5 transition-colors text-xs font-semibold text-charcoal"
                 >
                   <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-charcoal text-warm-white border border-brass/45 flex items-center justify-center font-bold text-xs shadow-md">
                     {user?.username?.[0]?.toUpperCase()}
@@ -205,12 +214,14 @@ export const StorefrontLayout: React.FC = () => {
                   <ChevronDown className={`w-3.5 h-3.5 text-charcoal/60 transition-transform duration-200 ${profileDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
               ) : (
-                <Link to="/login" className="text-[9px] md:text-[10px] py-1.5 md:py-2.5 px-2.5 md:px-4 bg-charcoal text-warm-white font-extrabold uppercase tracking-widest rounded-lg md:rounded-xl hover:bg-brass hover:text-charcoal transition-all shadow-sm active:scale-95 block">Sign In</Link>
+                <Link to="/login" className="text-[9px] md:text-[10px] py-1.5 md:py-2 px-3 md:px-4 bg-charcoal text-warm-white font-extrabold uppercase tracking-widest rounded-full hover:bg-brass hover:text-charcoal transition-all shadow-sm active:scale-95 block">
+                  Sign In
+                </Link>
               )}
 
               {profileDropdownOpen && isAuthenticated && (
                 <div
-                  className="absolute right-0 mt-2 w-52 bg-warm-white border border-warm-gray/60 rounded-2xl shadow-2xl py-2 z-50 text-xs animate-fadeIn"
+                  className="absolute right-0 mt-3 w-52 bg-warm-white border border-warm-gray/60 rounded-2xl shadow-2xl py-2 z-50 text-xs animate-fadeIn"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="px-4 py-3 border-b border-warm-gray/30">
@@ -242,16 +253,8 @@ export const StorefrontLayout: React.FC = () => {
               )}
             </div>
 
-            {/* Mobile: Cart icon with badge (quick access alongside bottom nav) */}
-            <Link to="/cart" className="md:hidden relative p-2 text-charcoal hover:text-brass transition-colors" title="Cart">
-              <ShoppingBag className="w-5 h-5" />
-              {cartCount > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-brass text-charcoal text-[9px] font-bold rounded-full flex items-center justify-center border border-warm-white shadow-sm">
-                  {cartCount}
-                </span>
-              )}
-            </Link>
           </div>
+
         </div>
       </header>
 
