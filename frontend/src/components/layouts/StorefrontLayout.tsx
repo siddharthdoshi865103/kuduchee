@@ -86,32 +86,29 @@ export const StorefrontLayout: React.FC = () => {
   return (
     <div className="min-h-screen bg-warm-white flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal relative">
 
-      {/* ─── UNIFIED STICKY HEADER WRAPPER (TICKER + 3 FLOATING ISLANDS) ─── */}
-      <div className="sticky top-0 z-40 w-full pointer-events-none">
-        
-        {/* Top Header Ticker Bar */}
-        <div className="pointer-events-auto bg-charcoal text-warm-white py-2 px-4 md:px-12 text-[10px] font-space uppercase tracking-[0.2em] border-b border-brass/25">
-          <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
+      {/* ─── TOP HEADER TICKER BAR ─── */}
+      <div className="bg-charcoal text-warm-white py-2 px-4 md:px-12 text-[10px] font-space uppercase tracking-[0.2em] border-b border-brass/25 relative z-50">
+        <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
 
-            {/* Scrolling Ticker Line */}
-            <div className="flex items-center gap-2 overflow-hidden w-full sm:w-auto justify-center sm:justify-start">
-              <span className="inline-block w-2 h-2 rounded-full bg-brass animate-pulse shrink-0" />
-              <span className="truncate">{tickerText}</span>
-            </div>
+          {/* Scrolling Ticker Line */}
+          <div className="flex items-center gap-2 overflow-hidden w-full sm:w-auto justify-center sm:justify-start">
+            <span className="inline-block w-2 h-2 rounded-full bg-brass animate-pulse shrink-0" />
+            <span className="truncate">{tickerText}</span>
+          </div>
 
-            {/* Phone Studio Line */}
-            <div className="flex items-center gap-4 shrink-0 font-mono">
-              <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors flex items-center gap-1.5 text-[10px]">
-                <Phone className="w-3 h-3 text-brass shrink-0" />
-                <span>+91 9599652190</span>
-              </a>
-            </div>
+          {/* Phone Studio Line */}
+          <div className="flex items-center gap-4 shrink-0 font-mono">
+            <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors flex items-center gap-1.5 text-[10px]">
+              <Phone className="w-3 h-3 text-brass shrink-0" />
+              <span>+91 9599652190</span>
+            </a>
           </div>
         </div>
+      </div>
 
-        {/* 3 Individual Floating Pills Navbar */}
-        <header className="w-full px-3 md:px-8 pt-2.5 pb-2 transition-all duration-300 font-space">
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4 pointer-events-none">
+      {/* ─── 3 FLOATING ISLANDS NAVBAR (HOVERING OVER THE HERO / PAGE WITH ZERO GAP) ─── */}
+      <header className="sticky top-3 z-40 w-full px-3 md:px-8 pointer-events-none transition-all duration-300 font-space h-0 overflow-visible">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4 pointer-events-none">
 
             {/* 1. Left Island: Brand Logo */}
             <div className="pointer-events-auto shrink-0 bg-warm-white/95 backdrop-blur-xl border border-warm-gray/60 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full px-4 md:px-6 py-2 md:py-2.5 flex items-center transition-all duration-300 hover:shadow-[0_12px_40px_rgb(0,0,0,0.18)] hover:border-brass/60 hover:-translate-y-0.5">
@@ -262,7 +259,6 @@ export const StorefrontLayout: React.FC = () => {
 
         </div>
       </header>
-      </div>
 
       {/* ─── MAIN PAGE OUTLET ─── */}
       <main className="flex-1 pb-[100px] md:pb-0 bg-warm-white">
