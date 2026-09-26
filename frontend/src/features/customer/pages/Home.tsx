@@ -367,7 +367,7 @@ export const Home: React.FC = () => {
       />
       
       {/* ─── EDITORIAL CINEMATIC HERO SLIDER ─── */}
-      <section className="relative h-[95vh] md:h-[90vh] bg-[#171513] text-warm-white overflow-hidden flex items-center shadow-2xl">
+      <section className="relative h-screen min-h-[700px] md:min-h-[820px] bg-[#171513] text-warm-white overflow-hidden flex items-center shadow-2xl -mt-[72px] md:-mt-[84px] pt-[72px] md:pt-[84px]">
         {/* Soft Left Ambient Spotlight */}
         <div className="absolute top-0 left-0 w-2/3 h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-brass/15 via-transparent to-transparent pointer-events-none z-10" />
 
@@ -390,7 +390,7 @@ export const Home: React.FC = () => {
           </div>
         ))}
 
-        <div className="relative z-20 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 w-full pt-20 md:pt-24">
+        <div className="relative z-20 max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 w-full">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Content Column */}
