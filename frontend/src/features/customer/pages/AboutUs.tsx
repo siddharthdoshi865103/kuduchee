@@ -13,7 +13,7 @@ export const AboutUs: React.FC = () => {
       />
       
       {/* ─── HERO SECTION ─── */}
-      <section className="relative bg-[#171511] text-warm-white pt-32 md:pt-40 pb-20 md:pb-28 px-6 md:px-12 border-b border-brass/20 shadow-2xl overflow-hidden">
+      <section className="relative bg-[#171511] text-warm-white py-16 md:py-24 px-6 md:px-12 border-b border-brass/20 shadow-2xl overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#171511] via-[#171511]/80 to-transparent z-10" />
         <img
           src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=1600&q=85"

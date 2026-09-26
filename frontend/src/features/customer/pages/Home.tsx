@@ -367,7 +367,7 @@ export const Home: React.FC = () => {
       />
       
       {/* ─── EDITORIAL CINEMATIC HERO SLIDER ─── */}
-      <section className="relative h-screen min-h-[700px] md:min-h-[820px] bg-[#171513] text-warm-white overflow-hidden flex items-center shadow-2xl pt-24 md:pt-28">
+      <section className="relative h-[88vh] min-h-[620px] md:min-h-[720px] bg-[#171513] text-warm-white overflow-hidden flex items-center shadow-2xl">
         {/* Soft Left Ambient Spotlight */}
         <div className="absolute top-0 left-0 w-2/3 h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-brass/15 via-transparent to-transparent pointer-events-none z-10" />
 

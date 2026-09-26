@@ -281,7 +281,7 @@ export const Shop: React.FC = () => {
             </>
           )}
 
-          <div className="relative z-10 max-w-screen-xl mx-auto px-4 md:px-8 lg:px-16 pt-24 md:pt-32 pb-12 md:pb-20">
+          <div className="relative z-10 max-w-screen-xl mx-auto px-4 md:px-8 lg:px-16 py-12 md:py-16">
             <div className="max-w-2xl space-y-5">
               {/* Section Badge */}
               <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[9px] font-extrabold uppercase tracking-[0.2em] border ${theme.heroBadgeClass}`}>
