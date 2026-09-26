@@ -74,97 +74,102 @@ export const StorefrontLayout: React.FC = () => {
     return currentPath === path && (path === '/shop' ? currentSearch === '' : true);
   };
 
-  const getNavLinkClass = (path: string, exact = false, activeColor = 'text-brass') => {
+  const getNavLinkClass = (path: string, exact = false, activeStyle = 'bg-charcoal text-warm-white shadow-md shadow-charcoal/20') => {
     const isActive = isNavActive(path, exact);
-    return `px-3.5 py-2.5 transition-all duration-300 text-[11px] font-space font-medium uppercase tracking-[0.18em] relative flex flex-col items-center group ${isActive ? `${activeColor} font-semibold` : 'text-charcoal/70 hover:text-charcoal'
-      }`;
+    return `relative px-3.5 py-1.5 rounded-full text-[11px] font-space uppercase tracking-[0.16em] transition-all duration-300 flex items-center gap-1.5 font-semibold ${
+      isActive
+        ? `${activeStyle} scale-[1.02]`
+        : 'text-charcoal/70 hover:text-charcoal hover:bg-charcoal/5 hover:scale-[1.02]'
+    }`;
   };
 
   return (
-    <div className="min-h-screen bg-warm-white flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal">
+    <div className="min-h-screen bg-warm-white flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal relative">
 
-      {/* ─── TOP HEADER INFORMATIONAL TICKER BAR ─── */}
-      <div className="bg-charcoal text-warm-white py-2 px-4 md:px-12 text-[10px] font-space uppercase tracking-[0.2em] border-b border-brass/25 relative z-50">
-        <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
+      {/* ─── UNIFIED STICKY HEADER WRAPPER (TICKER + 3 FLOATING ISLANDS) ─── */}
+      <div className="sticky top-0 z-40 w-full pointer-events-none">
+        
+        {/* Top Header Ticker Bar */}
+        <div className="pointer-events-auto bg-charcoal text-warm-white py-2 px-4 md:px-12 text-[10px] font-space uppercase tracking-[0.2em] border-b border-brass/25">
+          <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
 
-          {/* Scrolling Ticker Line */}
-          <div className="flex items-center gap-2 overflow-hidden w-full sm:w-auto justify-center sm:justify-start">
-            <span className="inline-block w-2 h-2 rounded-full bg-brass animate-pulse shrink-0" />
-            <span className="truncate">{tickerText}</span>
-          </div>
+            {/* Scrolling Ticker Line */}
+            <div className="flex items-center gap-2 overflow-hidden w-full sm:w-auto justify-center sm:justify-start">
+              <span className="inline-block w-2 h-2 rounded-full bg-brass animate-pulse shrink-0" />
+              <span className="truncate">{tickerText}</span>
+            </div>
 
-          {/* Phone Studio Line */}
-          <div className="flex items-center gap-4 shrink-0 font-mono">
-            <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors flex items-center gap-1.5 text-[10px]">
-              <Phone className="w-3 h-3 text-brass shrink-0" />
-              <span>+91 9599652190</span>
-            </a>
+            {/* Phone Studio Line */}
+            <div className="flex items-center gap-4 shrink-0 font-mono">
+              <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors flex items-center gap-1.5 text-[10px]">
+                <Phone className="w-3 h-3 text-brass shrink-0" />
+                <span>+91 9599652190</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* ─── MAIN STOREFRONT FLOATING NAVBAR (3 INDIVIDUAL PILLS) ─── */}
-      <div className="sticky top-2 md:top-4 z-40 w-full px-3 md:px-8 pointer-events-none transition-all duration-300 font-space -mb-16 md:-mb-20">
-        <header className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-3 md:gap-4">
+        {/* 3 Individual Floating Pills Navbar */}
+        <header className="w-full px-3 md:px-8 pt-2.5 pb-2 transition-all duration-300 font-space">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4 pointer-events-none">
 
-          {/* 1. Left Island: Brand Logo */}
-          <div className="pointer-events-auto shrink-0 bg-warm-white/90 backdrop-blur-md border border-warm-gray/60 shadow-lg rounded-full px-3.5 md:px-5 py-2 md:py-2.5 flex items-center transition-all duration-300 hover:shadow-xl hover:border-brass/50">
-            <Link
-              to="/"
-              className="group flex items-center"
-            >
-              <img
-                src="/kuduchee-logo-dark.png"
-                alt="Kuduchee"
-                className="h-7 md:h-10 w-auto object-contain group-hover:scale-[1.03] transition-transform duration-300"
-              />
-            </Link>
-          </div>
+            {/* 1. Left Island: Brand Logo */}
+            <div className="pointer-events-auto shrink-0 bg-warm-white/95 backdrop-blur-xl border border-warm-gray/60 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full px-4 md:px-6 py-2 md:py-2.5 flex items-center transition-all duration-300 hover:shadow-[0_12px_40px_rgb(0,0,0,0.18)] hover:border-brass/60 hover:-translate-y-0.5">
+              <Link
+                to="/"
+                className="group flex items-center"
+              >
+                <img
+                  src="/kuduchee-logo-dark.png"
+                  alt="Kuduchee"
+                  className="h-7 md:h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </Link>
+            </div>
 
-          {/* 2. Middle Island: Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex pointer-events-auto items-center gap-1 bg-warm-white/90 backdrop-blur-md border border-warm-gray/60 shadow-lg rounded-full px-4 py-1.5 transition-all duration-300 hover:shadow-xl hover:border-brass/50">
-            <Link to="/" className={getNavLinkClass('/', true)}>
-              Home
-              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/', true) ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-                }`} />
-            </Link>
-            <Link to="/shop" className={getNavLinkClass('/shop')}>
-              Shop
-              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-                }`} />
-            </Link>
-            <Link to="/shop?section=best-sellers" className={getNavLinkClass('/shop?section=best-sellers', false, 'text-amber-600')}>
-              Best Sellers
-              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=best-sellers') ? 'bg-amber-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-                }`} />
-            </Link>
-            <Link to="/shop?section=new-arrivals" className={getNavLinkClass('/shop?section=new-arrivals', false, 'text-emerald-600')}>
-              New Arrivals
-              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=new-arrivals') ? 'bg-emerald-600 scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-                }`} />
-            </Link>
-            <Link to="/shop?section=exclusive" className={getNavLinkClass('/shop?section=exclusive', false, 'text-[#C2B267] font-black')}>
-              <span className="flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#C2B267] animate-float" />
-                Exclusive
-              </span>
-              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/shop?section=exclusive') ? 'bg-[#C2B267] scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-                }`} />
-            </Link>
-            <Link to="/contact" className={getNavLinkClass('/contact')}>
-              Contact
-              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/contact') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-                }`} />
-            </Link>
-            <Link to="/about" className={getNavLinkClass('/about')}>
-              About
-              <span className={`absolute bottom-1 left-3.5 right-3.5 h-[2px] transition-all duration-300 rounded-full ${isNavActive('/about') ? 'bg-brass scale-x-100' : 'bg-charcoal/20 scale-x-0 group-hover:scale-x-50'
-                }`} />
-            </Link>
-          </nav>
+            {/* 2. Middle Island: Enhanced Navigation Links (Desktop) */}
+            <nav className="hidden lg:flex pointer-events-auto items-center gap-1 bg-warm-white/95 backdrop-blur-xl border border-warm-gray/60 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-1.5 transition-all duration-300 hover:shadow-[0_12px_40px_rgb(0,0,0,0.18)] hover:border-brass/60">
+              <Link to="/" className={getNavLinkClass('/', true)}>
+                <span>Home</span>
+              </Link>
 
-          {/* 3. Right Island: Actions (Search, Wishlist, Cart, Sign In / Profile) */}
-          <div className="pointer-events-auto shrink-0 bg-warm-white/90 backdrop-blur-md border border-warm-gray/60 shadow-lg rounded-full px-2.5 md:px-4 py-1.5 md:py-2 flex items-center gap-1 md:gap-2.5 transition-all duration-300 hover:shadow-xl hover:border-brass/50">
+              <Link to="/shop" className={getNavLinkClass('/shop')}>
+                <span>Shop</span>
+              </Link>
+
+              <Link
+                to="/shop?section=best-sellers"
+                className={getNavLinkClass('/shop?section=best-sellers', false, 'bg-amber-600 text-white shadow-md shadow-amber-600/30')}
+              >
+                <span>Best Sellers</span>
+              </Link>
+
+              <Link
+                to="/shop?section=new-arrivals"
+                className={getNavLinkClass('/shop?section=new-arrivals', false, 'bg-emerald-700 text-white shadow-md shadow-emerald-700/30')}
+              >
+                <span>New Arrivals</span>
+              </Link>
+
+              <Link
+                to="/shop?section=exclusive"
+                className={getNavLinkClass('/shop?section=exclusive', false, 'bg-gradient-to-r from-[#2D2D2D] to-[#1a1a1a] text-[#E5D79B] border border-[#C2B267]/40 shadow-md shadow-black/40')}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#C2B267] animate-pulse" />
+                <span>Exclusive</span>
+              </Link>
+
+              <Link to="/contact" className={getNavLinkClass('/contact')}>
+                <span>Contact</span>
+              </Link>
+
+              <Link to="/about" className={getNavLinkClass('/about')}>
+                <span>About</span>
+              </Link>
+            </nav>
+
+            {/* 3. Right Island: Actions (Search, Wishlist, Cart, Sign In / Profile) */}
+            <div className="pointer-events-auto shrink-0 bg-warm-white/95 backdrop-blur-xl border border-warm-gray/60 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full px-3 md:px-4 py-1.5 md:py-2 flex items-center gap-1.5 md:gap-2.5 transition-all duration-300 hover:shadow-[0_12px_40px_rgb(0,0,0,0.18)] hover:border-brass/60 hover:-translate-y-0.5">
 
             {/* Search */}
             <Link to="/shop" className="p-2 text-charcoal/80 hover:text-brass hover:bg-charcoal/5 rounded-full transition-all" title="Search catalog">
@@ -254,11 +259,13 @@ export const StorefrontLayout: React.FC = () => {
             </div>
 
           </div>
-        </header>
+
+        </div>
+      </header>
       </div>
 
       {/* ─── MAIN PAGE OUTLET ─── */}
-      <main className="flex-1 pb-[100px] md:pb-0">
+      <main className="flex-1 pb-[100px] md:pb-0 bg-warm-white">
         <Outlet />
       </main>
 
