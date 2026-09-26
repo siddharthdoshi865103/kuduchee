@@ -118,9 +118,40 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOWED_ORIGINS = [
+    'https://kuduchee.in',
+    'https://www.kuduchee.in',
+    'https://kuduchee-q61rntfk2-kuduchee.vercel.app',
+    'https://frontend-eight-lime-37.vercel.app',
+    'https://siddharth200306.pythonanywhere.com',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
 CSRF_TRUSTED_ORIGINS_ENV = os.environ.get(
     'CSRF_TRUSTED_ORIGINS',
-    'https://kuduchee.in,https://www.kuduchee.in,https://frontend-eight-lime-37.vercel.app,https://siddharth200306.pythonanywhere.com'
+    'https://kuduchee.in,https://www.kuduchee.in,https://kuduchee-q61rntfk2-kuduchee.vercel.app,https://frontend-eight-lime-37.vercel.app,https://siddharth200306.pythonanywhere.com'
 )
 CSRF_TRUSTED_ORIGINS = [o.strip() for o in CSRF_TRUSTED_ORIGINS_ENV.split(',')]
 
