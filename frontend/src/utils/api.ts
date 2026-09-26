@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
   (import.meta.env.PROD
-    ? 'https://siddharth200306.pythonanywhere.com/api'
+    ? 'https://siddharth.eu.pythonanywhere.com/api'
     : 'http://localhost:8000/api');
 
 export const api = axios.create({

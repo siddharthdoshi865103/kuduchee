@@ -124,6 +124,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://kuduchee-q61rntfk2-kuduchee.vercel.app',
     'https://frontend-eight-lime-37.vercel.app',
     'https://siddharth200306.pythonanywhere.com',
+    'https://siddharth.eu.pythonanywhere.com',
     'http://localhost:5173',
     'http://127.0.0.1:5173',
 ]
@@ -151,7 +152,7 @@ CORS_ALLOW_HEADERS = [
 
 CSRF_TRUSTED_ORIGINS_ENV = os.environ.get(
     'CSRF_TRUSTED_ORIGINS',
-    'https://kuduchee.in,https://www.kuduchee.in,https://kuduchee-q61rntfk2-kuduchee.vercel.app,https://frontend-eight-lime-37.vercel.app,https://siddharth200306.pythonanywhere.com'
+    'https://kuduchee.in,https://www.kuduchee.in,https://kuduchee-q61rntfk2-kuduchee.vercel.app,https://frontend-eight-lime-37.vercel.app,https://siddharth200306.pythonanywhere.com,https://siddharth.eu.pythonanywhere.com'
 )
 CSRF_TRUSTED_ORIGINS = [o.strip() for o in CSRF_TRUSTED_ORIGINS_ENV.split(',')]
 
