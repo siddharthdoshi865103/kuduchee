@@ -3,7 +3,6 @@ import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
-import { siteService } from '../../services/siteService';
 import { AuthRedirectModal } from './AuthRedirectModal';
 import {
   ShoppingBag,
@@ -28,21 +27,6 @@ export const StorefrontLayout: React.FC = () => {
   const location = useLocation();
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
-  const [tickerText, setTickerText] = useState(
-    '100% Damage Replacement Guarantee · Handcrafted in Small Batches · 1280°C High-Fired Porcelain · Lead-Free & Food Safe'
-  );
-
-  useEffect(() => {
-    siteService.getSiteSettings().then((res) => {
-      if (res?.ticker_text) {
-        let text = res.ticker_text;
-        if (text.includes('Free shipping on orders above ₹999')) {
-          text = text.replace(/Free shipping on orders above ₹999\s*·?\s*/gi, '100% Damage Replacement Guarantee · ');
-        }
-        setTickerText(text);
-      }
-    }).catch(() => { });
-  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -86,28 +70,8 @@ export const StorefrontLayout: React.FC = () => {
   return (
     <div className="min-h-screen bg-warm-white flex flex-col font-space text-charcoal selection:bg-brass selection:text-charcoal relative">
 
-      {/* ─── TOP HEADER TICKER BAR ─── */}
-      <div className="bg-charcoal text-warm-white py-2 px-4 md:px-12 text-[10px] font-space uppercase tracking-[0.2em] border-b border-brass/25 relative z-50">
-        <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
-
-          {/* Scrolling Ticker Line */}
-          <div className="flex items-center gap-2 overflow-hidden w-full sm:w-auto justify-center sm:justify-start">
-            <span className="inline-block w-2 h-2 rounded-full bg-brass animate-pulse shrink-0" />
-            <span className="truncate">{tickerText}</span>
-          </div>
-
-          {/* Phone Studio Line */}
-          <div className="flex items-center gap-4 shrink-0 font-mono">
-            <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors flex items-center gap-1.5 text-[10px]">
-              <Phone className="w-3 h-3 text-brass shrink-0" />
-              <span>+91 9599652190</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* ─── 3 FLOATING ISLANDS NAVBAR (HOVERING OVER THE HERO / PAGE WITH ZERO GAP) ─── */}
-      <header className="sticky top-3 z-40 w-full px-3 md:px-8 pointer-events-none transition-all duration-300 font-space h-0 overflow-visible">
+      {/* ─── 3 FLOATING ISLANDS NAVBAR ─── */}
+      <header className="sticky top-4 md:top-6 z-40 w-full px-3 md:px-8 pointer-events-none transition-all duration-300 font-space mb-[-72px]">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 md:gap-4 pointer-events-none">
 
             {/* 1. Left Island: Brand Logo */}
