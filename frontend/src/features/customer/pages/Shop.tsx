@@ -346,9 +346,9 @@ export const Shop: React.FC = () => {
           </div>
 
           {/* Bottom edge fade */}
-          <div className={`absolute bottom-0 left-0 right-0 h-16 ${
-            isExclusive ? 'bg-gradient-to-t from-[#0A0907]' :
-            'bg-gradient-to-t from-[#FAF8F5]'
+          <div className={`absolute bottom-0 left-0 right-0 h-16 pointer-events-none ${
+            isExclusive ? 'bg-gradient-to-t from-[#0A0907] to-transparent' :
+            'bg-gradient-to-t from-warm-white to-transparent'
           }`} />
         </div>
       ) : (
