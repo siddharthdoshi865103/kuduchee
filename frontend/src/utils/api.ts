@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-const API_BASE_URL =
+const RAW_API_URL =
   import.meta.env.VITE_API_URL ||
   (import.meta.env.PROD
     ? 'https://siddharth.eu.pythonanywhere.com/api'
     : 'http://localhost:8000/api');
+
+const API_BASE_URL = String(RAW_API_URL).trim().replace(/\/+$/, '');
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
