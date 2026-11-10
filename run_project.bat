@@ -14,3 +14,4 @@ echo Both servers started in separate terminal windows!
 echo Backend URL : http://127.0.0.1:8000/api/
 echo Frontend URL: http://localhost:5173/
 echo.
+

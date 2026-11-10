@@ -1,0 +1,27 @@
+server {
+    listen 80;
+    server_name api.kuduchee.in 13.236.161.236 _;
+
+    client_max_body_size 50M;
+
+    location /static/ {
+        alias /home/ubuntu/kuduchee/backend/staticfiles/;
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    location /media/ {
+        alias /home/ubuntu/kuduchee/backend/media/;
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
