@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { DJANGO_ADMIN_URL } from '../../utils/api';
 
-const DJANGO_ADMIN_URL = 'https://siddharth.eu.pythonanywhere.com/admin/';
+
 
 export const AdminLayout: React.FC = () => {
   const { user, logout, loading } = useAuth();

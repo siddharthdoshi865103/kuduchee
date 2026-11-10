@@ -7,6 +7,7 @@ from rest_framework.decorators import action
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.tokens import RefreshToken
+from decimal import Decimal
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db import transaction
 from django.db.models import Sum, Count
@@ -34,6 +35,7 @@ from .models import (
     Review,
     HeroBanner,
     SiteSettings,
+    ContactInquiry,
 )
 from .serializers import (
     RegisterSerializer,
@@ -52,6 +54,7 @@ from .serializers import (
     ReviewSerializer,
     HeroBannerSerializer,
     SiteSettingsSerializer,
+    ContactInquirySerializer,
 )
 from .permissions import IsAdminUser
 
@@ -200,7 +203,6 @@ class AdminSendOTPView(APIView):
             'detail': 'OTP sent to your registered Gmail inbox. Check your email.',
             'phone_number': phone_number,
             'user_id': user.id,
-            'otp_demo': otp_code,
             'email_sent': email_success
         })
 
@@ -303,7 +305,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().select_related('category', 'sub_category').prefetch_related('variants', 'images', 'reviews')
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ['category', 'category__slug', 'sub_category', 'sub_category__slug', 'is_active', 'is_featured', 'badge']
+    filterset_fields = ['category', 'category__slug', 'sub_category', 'sub_category__slug', 'is_active', 'is_featured', 'badge', 'slug']
     search_fields = ['name', 'description', 'category__name']
     ordering_fields = ['offer_price', 'created_at', 'stock_quantity']
 
@@ -561,7 +563,15 @@ class OrderViewSet(viewsets.ModelViewSet):
         utr_number = request.data.get('utr_number', '')
         payment_proof_url = request.data.get('payment_proof_url', '')
 
-        total_amount = sum(item.total_price for item in cart_items)
+        subtotal = sum(item.total_price for item in cart_items)
+        discount_raw = request.data.get('discount_amount', 0)
+        try:
+            discount_amount = Decimal(str(discount_raw))
+        except Exception:
+            discount_amount = Decimal('0')
+
+        shipping_fee = Decimal('0') if subtotal >= Decimal('999') else Decimal('99')
+        total_amount = max(Decimal('0'), subtotal - discount_amount + shipping_fee)
         initial_status = 'APPROVED' if payment_method == 'RAZORPAY' else 'PENDING_VERIFICATION'
 
         order = Order.objects.create(
@@ -592,6 +602,12 @@ class OrderViewSet(viewsets.ModelViewSet):
             if product.stock_quantity >= item.quantity:
                 product.stock_quantity -= item.quantity
                 product.save()
+
+            if item.variant:
+                variant = item.variant
+                if variant.stock_quantity >= item.quantity:
+                    variant.stock_quantity -= item.quantity
+                    variant.save()
 
         cart_items.delete()
         serializer = OrderSerializer(order)
@@ -693,11 +709,18 @@ class OrderViewSet(viewsets.ModelViewSet):
         added_count = 0
         for item in order.items.all():
             if item.product:
-                CartItem.objects.create(
+                variant_obj = None
+                if item.variant_name:
+                    variant_obj = item.product.variants.filter(name=item.variant_name).first()
+                cart_item, created = CartItem.objects.get_or_create(
                     user=request.user,
                     product=item.product,
-                    quantity=item.quantity
+                    variant=variant_obj,
+                    defaults={'quantity': item.quantity}
                 )
+                if not created:
+                    cart_item.quantity += item.quantity
+                    cart_item.save()
                 added_count += 1
 
         return Response({'detail': f'Reordered {added_count} items into your cart.'})
@@ -784,7 +807,19 @@ class ReviewViewSet(viewsets.ModelViewSet):
         return [IsAuthenticated()]
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        product = serializer.validated_data.get('product')
+        has_purchased = False
+        if self.request.user and self.request.user.is_authenticated:
+            has_purchased = OrderItem.objects.filter(
+                order__user=self.request.user,
+                order__status__in=['DELIVERED', 'SHIPPED', 'PROCESSING', 'APPROVED'],
+                product=product
+            ).exists()
+        serializer.save(
+            user=self.request.user,
+            is_verified_buyer=has_purchased,
+            is_approved=False
+        )
 
     @action(detail=True, methods=['post'], permission_classes=[IsAdminUser])
     def approve(self, request, pk=None):
@@ -837,3 +872,35 @@ class AdminUserInfoView(APIView):
                 'default_address': address_str,
             })
         return Response(data)
+
+
+class ContactInquiryView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = ContactInquirySerializer(data=request.data)
+        if serializer.is_valid():
+            inquiry = serializer.save()
+
+            # Send email notification to studio
+            try:
+                send_mail(
+                    subject=f"[Kuduchee Inquiry] New message from {inquiry.name}",
+                    message=(
+                        f"Name: {inquiry.name}\n"
+                        f"Email: {inquiry.email}\n"
+                        f"Phone: {inquiry.phone or 'Not provided'}\n\n"
+                        f"Message:\n{inquiry.message}\n"
+                    ),
+                    from_email=django_settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[django_settings.ADMIN_OTP_EMAIL],
+                    fail_silently=True,
+                )
+            except Exception:
+                pass
+
+            return Response({
+                'detail': 'Your message has been sent to Kuduchee Studio. We will get back to you shortly.',
+                'inquiry': serializer.data
+            }, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

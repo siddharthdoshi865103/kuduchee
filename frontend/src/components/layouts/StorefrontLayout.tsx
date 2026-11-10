@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { AuthRedirectModal } from './AuthRedirectModal';
+import { siteService, type SiteSettingsData } from '../../services/siteService';
 import {
   ShoppingBag,
   Heart,
@@ -27,6 +28,11 @@ export const StorefrontLayout: React.FC = () => {
   const location = useLocation();
 
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [siteSettings, setSiteSettings] = useState<SiteSettingsData | null>(null);
+
+  useEffect(() => {
+    siteService.getSiteSettings().then(setSiteSettings).catch(() => {});
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -225,16 +231,16 @@ export const StorefrontLayout: React.FC = () => {
       </header>
 
       {/* ─── MAIN PAGE OUTLET ─── */}
-      <main className="flex-1 pb-[100px] md:pb-0 bg-warm-white">
+      <main className="flex-1 pb-32 md:pb-0 bg-warm-white">
         <Outlet />
       </main>
 
       {/* ─── FLOATING WHATSAPP SUPPORT BUTTON ─── */}
       <a
-        href="https://wa.me/919599652190?text=Hello%20Kuduchee%20Studio!%20I%20have%20a%20question%20about%20your%20porcelain%20collection."
+        href={`https://wa.me/91${siteSettings?.contact_phone || '9599652190'}?text=Hello%20Kuduchee%20Studio!%20I%20have%20a%20question%20about%20your%20porcelain%20collection.`}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-[116px] md:bottom-8 right-4 md:right-8 z-50 bg-[#25D366] text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
+        className="fixed bottom-[110px] md:bottom-8 right-4 md:right-8 z-50 bg-[#25D366] text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
         title="Chat on WhatsApp with Kuduchee Studio"
       >
         {/* Pulsing ring animation */}
@@ -348,14 +354,14 @@ export const StorefrontLayout: React.FC = () => {
               Designing Experiences Around Every Meal. Thoughtful homeware inspired by Indian traditions &amp; contemporary living.
             </p>
             <span className="text-[11px] text-brass italic font-brand block">
-              "Serve What You Deserve."
+              "{siteSettings?.brand_quote || 'Serve What You Deserve.'}"
             </span>
             <div className="flex items-center gap-3 pt-1">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-warm-white/10 hover:bg-brass hover:text-charcoal flex items-center justify-center transition-all text-sm" title="Instagram">
                 <i className="fa-brands fa-instagram" />
               </a>
-              <a href="https://wa.me/919599652190" target="_blank" rel="noopener noreferrer"
+              <a href={`https://wa.me/91${siteSettings?.contact_phone || '9599652190'}`} target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-warm-white/10 hover:bg-brass hover:text-charcoal flex items-center justify-center transition-all text-sm" title="WhatsApp">
                 <i className="fa-brands fa-whatsapp" />
               </a>
@@ -400,17 +406,17 @@ export const StorefrontLayout: React.FC = () => {
           <div className="col-span-2 md:col-span-1 space-y-3 text-xs">
             <h4 className="font-bold uppercase tracking-wider text-brass text-[11px]">Corporate Headquarters</h4>
             <div className="text-warm-white/70 leading-relaxed font-light space-y-1">
-              <p className="font-medium text-warm-white">Kaviz Creations Private Limited</p>
+              <p className="font-medium text-warm-white">{siteSettings?.company_legal_name || 'Kaviz Creations Private Limited'}</p>
               <p className="flex items-start gap-1.5 pt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-brass shrink-0 mt-0.5" />
-                <span>510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009</span>
+                <span>{siteSettings?.company_location || '510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009'}</span>
               </p>
               <p className="text-[10px] font-mono font-bold text-brass pt-0.5">GSTIN: 24AAICK1328G1ZT</p>
               <p className="flex items-center gap-1.5 pt-1">
-                <Phone className="w-3 h-3 text-brass shrink-0" /><span>+91 9599652190</span>
+                <Phone className="w-3 h-3 text-brass shrink-0" /><span>+91 {siteSettings?.contact_phone || '9599652190'}</span>
               </p>
               <p className="flex items-center gap-1.5">
-                <Mail className="w-3 h-3 text-brass shrink-0" /><span>info@kuduchee.in</span>
+                <Mail className="w-3 h-3 text-brass shrink-0" /><span>{siteSettings?.contact_email || 'info@kuduchee.in'}</span>
               </p>
             </div>
           </div>

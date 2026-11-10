@@ -6,7 +6,7 @@ Write-Host ""
 
 $scriptDir = $PSScriptRoot
 
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$scriptDir\backend'; python manage.py runserver 8000"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$scriptDir\backend'; if (Test-Path 'venv\Scripts\Activate.ps1') { . .\venv\Scripts\Activate.ps1 }; python manage.py runserver 8000"
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$scriptDir\frontend'; npm run dev"
 
 Write-Host "Both servers launched!" -ForegroundColor Green

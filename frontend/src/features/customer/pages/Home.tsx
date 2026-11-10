@@ -136,7 +136,7 @@ export const Home: React.FC = () => {
           catalogService.getProducts({ is_featured: true }),
         ]);
 
-        if (banners && banners.length >= 2) {
+        if (banners && banners.length >= 1) {
           setHeroSlides(banners);
         } else {
           setHeroSlides(DEFAULT_MULTIPLE_SLIDES);
@@ -506,41 +506,43 @@ export const Home: React.FC = () => {
         </div>
 
         {/* Minimalist Centered Slide Indicators */}
-        <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center">
-          <div className="bg-[#1C1A17]/90 backdrop-blur-md border border-white/10 px-5 py-2.5 rounded-full flex items-center gap-4 text-warm-white shadow-2xl">
-            <button
-              onClick={handlePrevSlide}
-              className="text-warm-white/60 hover:text-brass transition-colors p-1"
-              title="Previous"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
+        {heroSlides.length > 1 && (
+          <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center">
+            <div className="bg-[#1C1A17]/90 backdrop-blur-md border border-white/10 px-5 py-2.5 rounded-full flex items-center gap-4 text-warm-white shadow-2xl">
+              <button
+                onClick={handlePrevSlide}
+                className="text-warm-white/60 hover:text-brass transition-colors p-1"
+                title="Previous"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
 
-            <div className="flex items-center gap-2 text-[10px] font-mono">
-              <span className="text-brass font-bold">0{currentSlide + 1}</span>
-              <div className="flex gap-1.5">
-                {heroSlides.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentSlide(i)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === currentSlide ? 'w-4 bg-brass' : 'w-1.5 bg-white/25 hover:bg-white/55'
-                    }`}
-                  />
-                ))}
+              <div className="flex items-center gap-2 text-[10px] font-mono">
+                <span className="text-brass font-bold">0{currentSlide + 1}</span>
+                <div className="flex gap-1.5">
+                  {heroSlides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === currentSlide ? 'w-4 bg-brass' : 'w-1.5 bg-white/25 hover:bg-white/55'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-white/40">0{heroSlides.length}</span>
               </div>
-              <span className="text-white/40">0{heroSlides.length}</span>
-            </div>
 
-            <button
-              onClick={handleNextSlide}
-              className="text-warm-white/60 hover:text-brass transition-colors p-1"
-              title="Next"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+              <button
+                onClick={handleNextSlide}
+                className="text-warm-white/60 hover:text-brass transition-colors p-1"
+                title="Next"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* ─── TRUST PILLARS STRIP ─── */}

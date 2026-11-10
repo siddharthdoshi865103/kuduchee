@@ -55,6 +55,19 @@ export const Checkout: React.FC = () => {
   const [paymentProofUrl, setPaymentProofUrl] = useState('');
   const [copiedUpi, setCopiedUpi] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [appliedDiscount, setAppliedDiscount] = useState(0);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('kuduchee_applied_promo');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed?.discount) {
+          setAppliedDiscount(Number(parsed.discount));
+        }
+      }
+    } catch {}
+  }, []);
 
   useEffect(() => {
     const loadCheckoutData = async () => {
@@ -90,7 +103,9 @@ export const Checkout: React.FC = () => {
     }
   };
 
-  const grandTotal = subtotal >= 999 ? subtotal : subtotal + 99;
+  const discountedSubtotal = Math.max(0, subtotal - appliedDiscount);
+  const shippingFee = subtotal >= 999 ? 0 : 99;
+  const grandTotal = discountedSubtotal + shippingFee;
 
   const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -122,9 +137,11 @@ export const Checkout: React.FC = () => {
           payment_method: 'UPI_QR',
           utr_number: utrNumber.trim(),
           payment_proof_url: paymentProofUrl.trim(),
+          discount_amount: appliedDiscount,
         });
 
         toast.success('Order placed successfully! Pending Verification.');
+        try { localStorage.removeItem('kuduchee_applied_promo'); } catch {}
         await clearCart();
         navigate(`/order-success/${order.order_number}`);
       } catch (err: any) {

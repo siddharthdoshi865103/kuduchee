@@ -17,6 +17,7 @@ from .models import (
     Review,
     HeroBanner,
     SiteSettings,
+    ContactInquiry,
 )
 
 
@@ -163,11 +164,12 @@ class ProductImageSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     username = serializers.SerializerMethodField()
     user_first_name = serializers.SerializerMethodField()
+    product_name = serializers.ReadOnlyField(source='product.name')
 
     class Meta:
         model = Review
-        fields = ['id', 'product', 'user', 'username', 'user_first_name', 'rating', 'comment', 'is_verified_buyer', 'is_approved', 'created_at']
-        read_only_fields = ['id', 'user', 'username', 'user_first_name', 'is_verified_buyer', 'is_approved', 'created_at']
+        fields = ['id', 'product', 'product_name', 'user', 'username', 'user_first_name', 'rating', 'comment', 'is_verified_buyer', 'is_approved', 'created_at']
+        read_only_fields = ['id', 'product_name', 'user', 'username', 'user_first_name', 'is_verified_buyer', 'is_approved', 'created_at']
 
     def get_username(self, obj):
         return obj.user.username if obj.user else 'Verified Buyer'
@@ -182,6 +184,7 @@ class ProductSerializer(serializers.ModelSerializer):
     sub_category_name = serializers.ReadOnlyField(source='sub_category.name', default=None)
     variants = ProductVariantSerializer(many=True, read_only=True)
     images = ProductImageSerializer(many=True, read_only=True)
+    primary_image_url = serializers.SerializerMethodField()
     reviews_count = serializers.SerializerMethodField()
     avg_rating = serializers.SerializerMethodField()
 
@@ -196,13 +199,21 @@ class ProductSerializer(serializers.ModelSerializer):
             'is_low_stock', 'variants', 'images', 'reviews_count', 'avg_rating',
             'created_at', 'updated_at'
         ]
-        read_only_fields = ['id', 'slug', 'is_in_stock', 'is_low_stock', 'reviews_count', 'avg_rating', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'slug', 'is_in_stock', 'is_low_stock', 'primary_image_url', 'reviews_count', 'avg_rating', 'created_at', 'updated_at']
+
+    def get_primary_image_url(self, obj):
+        url = obj.primary_image_url
+        if url and url.startswith('/'):
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(url)
+        return url
 
     def get_reviews_count(self, obj):
-        return obj.reviews.count()
+        return obj.reviews.filter(is_approved=True).count()
 
     def get_avg_rating(self, obj):
-        reviews = obj.reviews.all()
+        reviews = obj.reviews.filter(is_approved=True)
         if not reviews:
             return 5.0
         return round(sum(r.rating for r in reviews) / len(reviews), 1)
@@ -296,3 +307,10 @@ class SiteSettingsSerializer(serializers.ModelSerializer):
             'company_location', 'updated_at'
         ]
         read_only_fields = ['id', 'updated_at']
+
+
+class ContactInquirySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactInquiry
+        fields = ['id', 'name', 'email', 'phone', 'message', 'created_at']
+        read_only_fields = ['id', 'created_at']

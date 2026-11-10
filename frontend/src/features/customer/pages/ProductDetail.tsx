@@ -128,7 +128,7 @@ export const ProductDetail: React.FC = () => {
         rating: newRating,
         comment: newComment,
       });
-      toast.success('Thank you! Your review has been published.');
+      toast.success('Thank you! Your review has been submitted for studio verification.');
       setIsReviewModalOpen(false);
       setNewComment('');
       // Reload reviews

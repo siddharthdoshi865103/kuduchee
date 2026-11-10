@@ -37,31 +37,10 @@ export const AdminReviews: React.FC = () => {
   const loadReviews = useCallback(async () => {
     try {
       setLoading(true);
-      // Admin gets all reviews (approved + pending) — no is_approved filter means admin sees all
+      // Admin gets all reviews (approved + pending)
       const res = await api.get('/reviews/');
       const data: ReviewData[] = res.data.results || res.data;
-
-      // Also fetch product names for each review
-      const productIds = [...new Set(data.map((r) => r.product))];
-      const productMap: Record<number, string> = {};
-
-      await Promise.all(
-        productIds.map(async (pid) => {
-          try {
-            const pRes = await api.get(`/products/${pid}/`);
-            productMap[pid] = pRes.data.name;
-          } catch {
-            productMap[pid] = `Product #${pid}`;
-          }
-        })
-      );
-
-      const enriched = data.map((r) => ({
-        ...r,
-        product_name: productMap[r.product] || `Product #${r.product}`,
-      }));
-
-      setReviews(enriched);
+      setReviews(data);
     } catch {
       toast.error('Failed to load reviews');
     } finally {

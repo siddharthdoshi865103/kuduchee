@@ -1,31 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { MapPin, Phone, Mail, Clock, Send, Sparkles } from 'lucide-react';
 import { SEO } from '../../../components/SEO';
+import { siteService, type SiteSettingsData } from '../../../services/siteService';
 
 export const ContactUs: React.FC = () => {
+  const [siteSettings, setSiteSettings] = useState<SiteSettingsData | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    siteService.getSiteSettings().then(setSiteSettings).catch(() => {});
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) {
       toast.error('Please fill in all required fields.');
       return;
     }
 
-    setSubmitting(true);
-    setTimeout(() => {
-      toast.success('Thank you! Your message has been sent to Kuduchee Studio.');
+    try {
+      setSubmitting(true);
+      const res = await siteService.submitContactInquiry({
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        message: message.trim(),
+      });
+      toast.success(res.detail || 'Thank you! Your message has been sent to Kuduchee Studio.');
       setName('');
       setEmail('');
       setPhone('');
       setMessage('');
+    } catch (err: any) {
+      toast.error(err.response?.data?.detail || 'Failed to submit inquiry. Please try WhatsApp.');
+    } finally {
       setSubmitting(false);
-    }, 600);
+    }
   };
 
   return (
@@ -66,7 +81,7 @@ export const ContactUs: React.FC = () => {
                 <div>
                   <span className="font-bold text-charcoal block">Corporate Office &amp; Studio Location</span>
                   <span className="text-mid-gray leading-relaxed font-light block">
-                    510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009, India
+                    {siteSettings?.company_location || '510 A, Sun West Bank, Ashram Road, Ahmedabad, Gujarat 380009, India'}
                   </span>
                   <span className="inline-block text-[10px] font-mono font-bold text-brass bg-brass/10 border border-brass/20 px-2 py-0.5 rounded mt-1.5">
                     GSTIN: 24AAICK1328G1ZT
@@ -78,8 +93,8 @@ export const ContactUs: React.FC = () => {
                 <Phone className="w-4.5 h-4.5 text-brass shrink-0" />
                 <div>
                   <span className="font-bold text-charcoal block">Phone / WhatsApp</span>
-                  <a href="tel:9599652190" className="text-mid-gray hover:text-brass transition-colors font-mono">
-                    +91 9599652190
+                  <a href={`tel:${siteSettings?.contact_phone || '9599652190'}`} className="text-mid-gray hover:text-brass transition-colors font-mono">
+                    +91 {siteSettings?.contact_phone || '9599652190'}
                   </a>
                 </div>
               </div>
@@ -88,8 +103,8 @@ export const ContactUs: React.FC = () => {
                 <Mail className="w-4.5 h-4.5 text-brass shrink-0" />
                 <div>
                   <span className="font-bold text-charcoal block">Official Email Address</span>
-                  <a href="mailto:info@kuduchee.in" className="text-mid-gray hover:text-brass transition-colors font-mono">
-                    info@kuduchee.in
+                  <a href={`mailto:${siteSettings?.contact_email || 'info@kuduchee.in'}`} className="text-mid-gray hover:text-brass transition-colors font-mono">
+                    {siteSettings?.contact_email || 'info@kuduchee.in'}
                   </a>
                 </div>
               </div>

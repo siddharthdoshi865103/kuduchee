@@ -113,9 +113,19 @@ if os.environ.get('DATABASE_URL'):
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# ─── Cache ───────────────────────────────────────────────────────────────────
+# Database-backed cache works reliably across multi-process Gunicorn on AWS & local dev
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'kuduchee_cache_table',
+    }
+}
+
 # ─── CORS ─────────────────────────────────────────────────────────────────────
 
-CORS_ALLOW_ALL_ORIGINS = True
+# Allow all origins in local development; restrict in production with DATABASE_URL
+CORS_ALLOW_ALL_ORIGINS = not bool(os.environ.get('DATABASE_URL'))
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
@@ -123,8 +133,6 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.kuduchee.in',
     'https://kuduchee-q61rntfk2-kuduchee.vercel.app',
     'https://frontend-eight-lime-37.vercel.app',
-    'https://siddharth200306.pythonanywhere.com',
-    'https://siddharth.eu.pythonanywhere.com',
     'http://localhost:5173',
     'http://127.0.0.1:5173',
 ]
@@ -152,7 +160,7 @@ CORS_ALLOW_HEADERS = [
 
 CSRF_TRUSTED_ORIGINS_ENV = os.environ.get(
     'CSRF_TRUSTED_ORIGINS',
-    'https://kuduchee.in,https://www.kuduchee.in,https://kuduchee-q61rntfk2-kuduchee.vercel.app,https://frontend-eight-lime-37.vercel.app,https://siddharth200306.pythonanywhere.com,https://siddharth.eu.pythonanywhere.com'
+    'https://kuduchee.in,https://www.kuduchee.in,https://kuduchee-q61rntfk2-kuduchee.vercel.app,https://frontend-eight-lime-37.vercel.app,http://localhost:5173,http://127.0.0.1:5173'
 )
 CSRF_TRUSTED_ORIGINS = [o.strip() for o in CSRF_TRUSTED_ORIGINS_ENV.split(',')]
 

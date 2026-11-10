@@ -34,6 +34,7 @@ import AdminOrders from './features/admin/pages/AdminOrders';
 import AdminCancellations from './features/admin/pages/AdminCancellations';
 import AdminSettings from './features/admin/pages/AdminSettings';
 import AdminUsers from './features/admin/pages/AdminUsers';
+import AdminReviews from './features/admin/pages/AdminReviews';
 
 const App = () => {
   return (
@@ -73,6 +74,7 @@ const App = () => {
                 <Route path="categories" element={<AdminCategories />} />
                 <Route path="orders" element={<AdminOrders />} />
                 <Route path="cancellations" element={<AdminCancellations />} />
+                <Route path="reviews" element={<AdminReviews />} />
                 <Route path="users" element={<AdminUsers />} />
                 <Route path="settings" element={<AdminSettings />} />
               </Route>

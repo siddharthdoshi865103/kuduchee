@@ -79,6 +79,7 @@ export interface CreateOrderPayload {
   payment_method: string;
   utr_number?: string;
   payment_proof_url?: string;
+  discount_amount?: number;
 }
 
 export const orderService = {

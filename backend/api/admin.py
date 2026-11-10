@@ -5,7 +5,7 @@ from .models import (
     Category, SubCategory, Product, ProductVariant, ProductImage,
     WishlistItem, CartItem,
     PaymentSettings, Order, OrderItem,
-    Review, HeroBanner, SiteSettings,
+    Review, HeroBanner, SiteSettings, ContactInquiry,
 )
 
 
@@ -240,3 +240,12 @@ class HeroBannerAdmin(admin.ModelAdmin):
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(admin.ModelAdmin):
     list_display = ('company_legal_name', 'contact_email', 'contact_phone', 'updated_at')
+
+
+@admin.register(ContactInquiry)
+class ContactInquiryAdmin(admin.ModelAdmin):
+    list_display  = ('name', 'email', 'phone', 'is_resolved', 'created_at')
+    list_filter   = ('is_resolved', 'created_at')
+    search_fields = ('name', 'email', 'phone', 'message')
+    list_editable = ('is_resolved',)
+    readonly_fields = ('created_at',)

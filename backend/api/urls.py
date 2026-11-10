@@ -27,6 +27,7 @@ from .views import (
     HeroBannerViewSet,
     SiteSettingsView,
     AdminUserInfoView,
+    ContactInquiryView,
 )
 
 router = DefaultRouter()
@@ -58,6 +59,7 @@ urlpatterns = [
 
     # Dynamic Site Content & Settings
     path('site-settings/', SiteSettingsView.as_view(), name='site_settings'),
+    path('contact/', ContactInquiryView.as_view(), name='contact_inquiry'),
     path('payments/settings/', PaymentSettingsView.as_view(), name='payment_settings'),
     path('payments/razorpay/', RazorpayPaymentView.as_view(), name='razorpay_payment'),
 

@@ -26,11 +26,16 @@ export const Cart: React.FC = () => {
 
   const handleApplyPromo = (e: React.FormEvent) => {
     e.preventDefault();
-    if (promoCode.trim().toUpperCase() === 'KUDUCHEE10') {
-      setDiscount(Math.round(subtotal * 0.1));
-      toast.success('10% Kuduchee Welcome Discount applied!');
+    const code = promoCode.trim().toUpperCase();
+    if (code === 'KUDUCHEE10' || code === 'STUDIO10') {
+      const disc = Math.round(subtotal * 0.1);
+      setDiscount(disc);
+      try {
+        localStorage.setItem('kuduchee_applied_promo', JSON.stringify({ code, discount: disc }));
+      } catch {}
+      toast.success('10% Welcome Discount applied!');
     } else {
-      toast.error('Invalid promo code');
+      toast.error('Invalid promo code. Try STUDIO10');
     }
   };
 

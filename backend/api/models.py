@@ -432,6 +432,22 @@ class SiteSettings(models.Model):
         return "Global Site Settings"
 
 
+class ContactInquiry(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    phone = models.CharField(max_length=30, blank=True, default='')
+    message = models.TextField()
+    is_resolved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'Contact Inquiries'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Inquiry from {self.name} ({self.email})"
+
+
 # ─── Signals ──────────────────────────────────────────────────────────────────
 
 @receiver(post_save, sender=User)

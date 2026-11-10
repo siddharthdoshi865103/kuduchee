@@ -4,7 +4,7 @@ echo   Launching KUDUCHEE 2.0 (Django Backend + Vite Frontend)
 echo ========================================================
 echo.
 
-start "Kuduchee Backend (Django)" cmd /k "cd /d %~dp0backend && python manage.py runserver 8000"
+start "Kuduchee Backend (Django)" cmd /k "cd /d %~dp0backend && (if exist venv\Scripts\activate call venv\Scripts\activate) && python manage.py runserver 8000"
 start "Kuduchee Frontend (Vite)" cmd /k "cd /d %~dp0frontend && npm run dev"
 
 echo.

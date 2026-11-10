@@ -54,4 +54,14 @@ export const siteService = {
     const res = await api.put('/site-settings/', settings);
     return res.data;
   },
+
+  async submitContactInquiry(inquiry: {
+    name: string;
+    email: string;
+    phone?: string;
+    message: string;
+  }): Promise<{ detail: string }> {
+    const res = await api.post('/contact/', inquiry);
+    return res.data;
+  },
 };
