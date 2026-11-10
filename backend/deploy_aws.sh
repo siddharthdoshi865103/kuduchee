@@ -118,3 +118,4 @@ echo "✅ Kuduchee Backend is running and proxied via Nginx!"
 echo "➡️ Next, obtain your Free SSL Certificate with Let's Encrypt by running:"
 echo "   sudo certbot --nginx -d ${DOMAIN}"
 echo "===================================================================="
+

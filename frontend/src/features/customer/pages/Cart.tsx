@@ -32,7 +32,7 @@ export const Cart: React.FC = () => {
       setDiscount(disc);
       try {
         localStorage.setItem('kuduchee_applied_promo', JSON.stringify({ code, discount: disc }));
-      } catch {}
+      } catch { }
       toast.success('10% Welcome Discount applied!');
     } else {
       toast.error('Invalid promo code. Try STUDIO10');
@@ -73,7 +73,7 @@ export const Cart: React.FC = () => {
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
           {/* Left Column: Cart Items List */}
           <div className="lg:col-span-8 space-y-6">
-            
+
             {/* Free Shipping Progress Bar */}
             <div className="bg-warm-white border border-warm-gray/50 rounded-2xl p-6 shadow-sm space-y-3">
               <div className="flex items-center justify-between text-xs font-semibold text-charcoal">
